@@ -1,0 +1,163 @@
+import "bootstrap/dist/css/bootstrap.min.css"; 
+import "bootstrap/dist/js/bootstrap.bundle.min"; 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";  
+import { faMagnifyingGlass, faBell, faCalendar, faHouse, faGear, faCircleUser } from "@fortawesome/free-solid-svg-icons";  
+import { Toolbar, Tooltip } from "@mui/material";
+
+function Header() {
+    const navItems = ["Home", "Lead", "Contact", "Account", "Deals", "Task", "Meetings", "Services", "Projects"];
+    const iconItems = [
+        { icon: faMagnifyingGlass, label: "Search" },
+        { icon: faBell, label: "Signals" },
+        { icon: faCalendar, label: "Calender" },
+        { icon: faHouse, label: "Market place" },
+        { icon: faGear, label: "Settings" },
+        { icon: faCircleUser, label: "Profile" }
+    ];
+
+
+    
+
+    return ( 
+        <nav className="navbar navbar-expand-lg bg-secondary" >
+            <div className="container-fluid">
+                <a className="navbar-brand text-white" href="#">CRM</a>
+
+                <button 
+                    className="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNavDropdown" 
+                    aria-controls="navbarNavDropdown" 
+                    aria-expanded="false" 
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul className="navbar-nav" >
+                        {navItems.map((item, index) => (
+                            <li key={index} className="nav-item px-3">
+                                <a className="nav-link text-white" href="#">{item}</a>
+                            </li>
+                        ))}
+
+                        {/* Dropdown Menu */}
+                        <li className="nav-item dropdown px-3">
+                            <div className="dropdown" >
+                                <button 
+                                    className="btn btn-light " 
+                                    type="button" 
+                                    data-bs-toggle="dropdown" 
+                                    aria-expanded="false"
+                                    aria-label="Dropdown menu"
+                                    style={{
+                                        border: "none",
+                                        backgroundColor: "transparent",
+                                        fontSize: "21px",
+                                        color: "white"
+                                      }}
+                                      >
+                                        &hellip;
+                                      
+                                </button>
+                                <ul id="scrollspyMenu" className="dropdown-menu dropdown-menu-white scrollspy-example" 
+                                    style={{ maxHeight: "300px", overflowY: "auto" }} 
+                                    data-bs-spy="scroll" 
+                                    data-bs-target="#scrollspyMenu">
+                                    <li><a className="dropdown-item" href="#calls">Calls</a></li>
+                                    <li><a className="dropdown-item" href="#reports">Reports</a></li>
+                                    <li><a className="dropdown-item" href="#analytics">Analytics</a></li>
+                                    <li><a className="dropdown-item" href="#products">Products</a></li>
+                                    <li><a className="dropdown-item" href="#quotes">Quotes</a></li>
+                                    <li><a className="dropdown-item" href="#sales-orders">Sales Orders</a></li>
+                                    <li><a className="dropdown-item" href="#purchase-orders">Purchase Orders</a></li>
+                                    <li><a className="dropdown-item" href="#invoices">Invoices</a></li>
+                                    <li><a className="dropdown-item" href="#sales-inbox">Sales Inbox</a></li>
+                                    <li><a className="dropdown-item" href="#campaigns">Campaigns</a></li>
+                                    <li><a className="dropdown-item" href="#vendors">Vendors</a></li>
+                                    <li><a className="dropdown-item" href="#price-books">Price Books</a></li>
+                                    <li><a className="dropdown-item" href="#cases">Cases</a></li>
+                                    <li><a className="dropdown-item" href="#solutions">Solutions</a></li>
+                                    <li><a className="dropdown-item" href="#documents">Documents</a></li>
+                                    <li><a className="dropdown-item" href="#forecasts">Forecasts</a></li>
+                                    <li><a className="dropdown-item" href="#visits">Visits</a></li>
+                                    <li><a className="dropdown-item" href="#social">Social</a></li>
+                                    <li><a className="dropdown-item" href="#create-new">+Create new Module</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+
+                        <li className="nav-item dropdown px-3">
+                            <div className="dropdown" >
+                                <button 
+                                    className="btn btn-light " 
+                                    type="button" 
+                                    data-bs-toggle="dropdown" 
+                                    aria-expanded="false"
+                                    aria-label="Dropdown menu"
+                                    style={{
+                                        border: "none",
+                                        backgroundColor: "white",
+                                        fontSize: "21px",
+                                        color: "dark"
+                                      }}
+                                      >
+                                        +
+                                      
+                                </button>
+                                <ul id="scrollspyMenu" className="dropdown-menu dropdown-menu-white scrollspy-example" 
+                                    style={{ maxHeight: "300px", overflowY: "auto" }} 
+                                    data-bs-spy="scroll" 
+                                    data-bs-target="#scrollspyMenu">
+                                    <li><a className="dropdown-item" href="#calls">+ &nbsp;Lead</a></li>
+                                    <li><a className="dropdown-item" href="#reports">+  &nbsp;Contact</a></li>
+                                    <li><a className="dropdown-item" href="#analytics">+  &nbsp;Account</a></li>
+                                    <li><a className="dropdown-item" href="#products">+  &nbsp;Deal</a></li>
+                                    <li><a className="dropdown-item" href="#quotes">+  &nbsp;Task</a></li>
+                                    <li><a className="dropdown-item" href="#sales-orders">+  &nbsp;Meeting</a></li>
+                                    <li><a className="dropdown-item" href="#purchase-orders">+  &nbsp;Call</a></li>
+                                    <li><a className="dropdown-item" href="#invoices">+  &nbsp;Product</a></li>
+                                    <li><a className="dropdown-item" href="#sales-inbox">+  &nbsp;Quote</a></li>
+                                    <li><a className="dropdown-item" href="#campaigns">+  &nbsp;Sales Order</a></li>
+                                    <li><a className="dropdown-item" href="#vendors">+  &nbsp;Purchase Order</a></li>
+                                    <li><a className="dropdown-item" href="#price-books">+  &nbsp;Invoice</a></li>
+                                    <li><a className="dropdown-item" href="#cases">+  &nbsp;Campaign</a></li>
+                                    <li><a className="dropdown-item" href="#solutions">+  &nbsp;Vendor</a></li>
+                                    <li><a className="dropdown-item" href="#documents">+  &nbsp;Price Book</a></li>
+                                    <li><a className="dropdown-item" href="#forecasts">+  &nbsp;Case</a></li>
+                                    <li><a className="dropdown-item" href="#visits">+  &nbsp;Solutions</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+
+
+
+
+
+                        {/* Icons */}
+                        {iconItems.map((item, index) => (
+                <li key={index} className="nav-item px-2">
+                    <a className="nav-link text-white" href="#" aria-label={item.label}>
+                        <Tooltip title={`Go to ${item.label}`} arrow>
+                            <FontAwesomeIcon icon={item.icon} />
+                        </Tooltip>
+                    </a>
+                </li>
+            ))}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    );
+}
+
+export default Header;
