@@ -3,8 +3,11 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";  
 import { faMagnifyingGlass, faBell, faCalendar, faHouse, faGear, faCircleUser } from "@fortawesome/free-solid-svg-icons";  
 import { Toolbar, Tooltip } from "@mui/material";
+import Form1 from "./Form";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+    const navigate=useNavigate()
     const navItems = ["Home", "Lead", "Contact", "Account", "Deals", "Task", "Meetings", "Services", "Projects"];
     const iconItems = [
         { icon: faMagnifyingGlass, label: "Search" },
@@ -37,11 +40,34 @@ function Header() {
 
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav" >
-                        {navItems.map((item, index) => (
-                            <li key={index} className="nav-item px-3">
-                                <a className="nav-link text-white" href="#">{item}</a>
-                            </li>
-                        ))}
+                    <li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/")}>Home</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/Alllead")}>Lead</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/Allcontact")}>Contact</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/account")}>Account</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/deals")}>Deals</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/task")}>Task</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/meetings")}>Meetings</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/services")}>Services</a>
+</li>
+<li className="nav-item px-3">
+    <a className="nav-link text-white" onClick={() => navigate("/projects")}>Projects</a>
+</li>
+
 
                         {/* Dropdown Menu */}
                         <li className="nav-item dropdown px-3">
@@ -62,11 +88,11 @@ function Header() {
                                         &hellip;
                                       
                                 </button>
-                                <ul id="scrollspyMenu" className="dropdown-menu dropdown-menu-white scrollspy-example" 
+                              <ul id="scrollspyMenu" className="dropdown-menu dropdown-menu-white scrollspy-example" 
                                     style={{ maxHeight: "300px", overflowY: "auto" }} 
                                     data-bs-spy="scroll" 
                                     data-bs-target="#scrollspyMenu">
-                                    <li><a className="dropdown-item" href="#calls">Calls</a></li>
+                                    <li><a className="dropdown-item" >Calls</a></li>
                                     <li><a className="dropdown-item" href="#reports">Reports</a></li>
                                     <li><a className="dropdown-item" href="#analytics">Analytics</a></li>
                                     <li><a className="dropdown-item" href="#products">Products</a></li>
@@ -114,13 +140,13 @@ function Header() {
                                     style={{ maxHeight: "300px", overflowY: "auto" }} 
                                     data-bs-spy="scroll" 
                                     data-bs-target="#scrollspyMenu">
-                                    <li><a className="dropdown-item" href="#calls">+ &nbsp;Lead</a></li>
-                                    <li><a className="dropdown-item" href="#reports">+  &nbsp;Contact</a></li>
-                                    <li><a className="dropdown-item" href="#analytics">+  &nbsp;Account</a></li>
-                                    <li><a className="dropdown-item" href="#products">+  &nbsp;Deal</a></li>
-                                    <li><a className="dropdown-item" href="#quotes">+  &nbsp;Task</a></li>
+                                    <li><a className="dropdown-item"  onClick={()=>navigate('/leads')}>+ &nbsp;Lead</a></li>
+                                    <li><a className="dropdown-item"  onClick={()=>navigate('/Contact')}>+  &nbsp;Contact</a></li>
+                                    <li><a className="dropdown-item" onClick={()=>navigate('/Account')}>+  &nbsp;Account</a></li>
+                                    <li><a className="dropdown-item" onClick={()=>navigate('/Deal')}>+  &nbsp;Deal</a></li>
+                                    <li><a className="dropdown-item" onClick={()=>navigate('/Task')}>+  &nbsp;Task</a></li>
                                     <li><a className="dropdown-item" href="#sales-orders">+  &nbsp;Meeting</a></li>
-                                    <li><a className="dropdown-item" href="#purchase-orders">+  &nbsp;Call</a></li>
+                                    <li><a className="dropdown-item" onClick={()=>navigate('/calls')}>+  &nbsp;Call</a></li>
                                     <li><a className="dropdown-item" href="#invoices">+  &nbsp;Product</a></li>
                                     <li><a className="dropdown-item" href="#sales-inbox">+  &nbsp;Quote</a></li>
                                     <li><a className="dropdown-item" href="#campaigns">+  &nbsp;Sales Order</a></li>
@@ -130,7 +156,7 @@ function Header() {
                                     <li><a className="dropdown-item" href="#solutions">+  &nbsp;Vendor</a></li>
                                     <li><a className="dropdown-item" href="#documents">+  &nbsp;Price Book</a></li>
                                     <li><a className="dropdown-item" href="#forecasts">+  &nbsp;Case</a></li>
-                                    <li><a className="dropdown-item" href="#visits">+  &nbsp;Solutions</a></li>
+                                    <li><a className="dropdown-item" onClick={()=>navigate('/Solution')}>+  &nbsp;Solutions</a></li>
                                     
                                 </ul>
                             </div>

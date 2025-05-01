@@ -36,3 +36,72 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* Make dropdown menu invisible by default */
+.nav-item .dropdown-menu {
+  display: none;
+}
+
+/* Show dropdown menu when hovering over the dropdown button */
+.nav-item:hover .dropdown-menu {
+  display: block;
+}
+.task-form {
+  max-width: 500px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.task-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-bottom-color: #007BFF;
+}
+
+.checkbox-group {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
