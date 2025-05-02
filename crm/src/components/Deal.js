@@ -33,7 +33,7 @@ function Deal()
                 <a href="https://www.example.com">Edit Page Layout</a>
             </div>
 
-            <div style={{display:"flex",alignItems:"flex-end",gap:"20px", marginLeft:"auto"}}>
+            <div style={{display:"flex",alignItems:"flex-end",gap:"20px", width:'400px',marginLeft:"auto"}}>
             <button type="submit" style={{ borderRadius: "5px" }}>Cancel</button>
   <button type="reset"  style={{ borderRadius: "5px" }}>Save and New</button>
   <button type="button" onclick="alert('Hello!')"  style={{ borderRadius: "5px", backgroundColor:"lightblue"}}>Save</button>

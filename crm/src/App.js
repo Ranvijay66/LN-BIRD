@@ -16,6 +16,8 @@ import Solution from './components/Solution';
 import TaskForm from './components/Task';
 import Alllead from './components/Alllead';
 import Allcontact from './components/Allcontact';
+import Allaccount from './components/Allaccount';
+import Alldeals from './components/Alldeals';
 
 
 function App() {
@@ -32,6 +34,9 @@ function App() {
       <Route path='/Task' element={<TaskForm/>}></Route>
       <Route path='/Alllead' element={<Alllead/>}></Route>
       <Route path='/Allcontact' element={<Allcontact/>}></Route>
+      <Route path='/Allaccount' element={<Allaccount/>}></Route>
+      <Route path='/Alldeals' element={<Alldeals/>}></Route>
+
 
     </Routes>
     </BrowserRouter>

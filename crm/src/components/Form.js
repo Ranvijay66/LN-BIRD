@@ -24,15 +24,15 @@ function Form1()
 
        <Header/>
 
-        <div style={{ marginLeft: "10px", marginTop:"10px",display:"flex", width:"1200px"}}>
+        <div style={{ marginLeft: "10px", marginTop:"10px",display:"flex", width:"100%"}}>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <h5 style={{ margin: 0, marginLeft:"10px"}}>Create Leads</h5>
                 <a href="https://www.example.com">Edit Page Layout</a>
             </div>
 
-            <div style={{display:"flex",alignItems:"flex-end",gap:"20px", marginLeft:"auto"}}>
+            <div style={{display:"flex",alignItems:"flex-end",gap:"10px", marginLeft:"auto",width:'400px'}}>
             <button type="submit" style={{ borderRadius: "5px" }}>Cancel</button>
-  <button type="reset"  style={{ borderRadius: "5px" }}>Save and New</button>
+            <button type="submit" style={{ borderRadius: "5px" }}>save and new</button>
   <button type="button" onclick="alert('Hello!')"  style={{ borderRadius: "5px", backgroundColor:"lightblue"}}>Save</button>
             </div>
             

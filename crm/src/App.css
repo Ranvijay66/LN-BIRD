@@ -105,3 +105,9 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+/* Add pointer cursor to all navbar interactive elements */
+.navbar .nav-link,
+.navbar .dropdown-item,
+.navbar button {
+  cursor: pointer;
+}

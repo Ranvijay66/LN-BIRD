@@ -50,10 +50,10 @@ function Header() {
     <a className="nav-link text-white" onClick={() => navigate("/Allcontact")}>Contact</a>
 </li>
 <li className="nav-item px-3">
-    <a className="nav-link text-white" onClick={() => navigate("/account")}>Account</a>
+    <a className="nav-link text-white" onClick={() => navigate("/Allaccount")}>Account</a>
 </li>
 <li className="nav-item px-3">
-    <a className="nav-link text-white" onClick={() => navigate("/deals")}>Deals</a>
+    <a className="nav-link text-white" onClick={() => navigate("/Alldeals")}>Deals</a>
 </li>
 <li className="nav-item px-3">
     <a className="nav-link text-white" onClick={() => navigate("/task")}>Task</a>

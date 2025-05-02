@@ -29,32 +29,41 @@ const TaskForm = () => {
   };
 
   const inputStyle = {
-    border: 'none',
+    border: '1px solid #ccc',
     outline: 'none',
-    boxShadow: 'none'
+    padding: '10px',
+    fontSize: '16px',
+    width: '100%'
   };
 
   return (
     <div style={{ width: '100%' }}>
       <Header />
-      <div style={{ marginLeft: "100px", marginTop: "20px", display: "flex", flexDirection: "column", width: "100%" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "0px" }}>
-          <h5 style={{ marginRight: "20px", marginLeft: "10px" }}>Create Task</h5>
+      <div style={{
+        padding: '40px',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        maxWidth: '1600px',
+        margin: 'auto'
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", width: '100%' }}>
+          <h5>Create Task</h5>
           <a href="https://www.google.com">Edit Page Layout</a>
         </div>
 
         <hr style={{ width: '100%', border: 'none', borderBottom: '2px solid #000' }} />
 
-        <form className="task-form" onSubmit={handleSubmit}>
+        <form className="task-form" onSubmit={handleSubmit} style={{ width: '100%' }}>
 
           {/* Task Owner */}
-          <div className="form-group" style={{ borderBottom: '1px solid #333', width: '50%' }}>
-            <label style={{ marginTop: '50px' }}>Task Owner</label>
+          <div className="form-group" style={{ marginBottom: '20px', width: '100%' }}>
+            <label>Task Owner</label>
             <select
               name="taskOwner"
               value={formData.taskOwner}
               onChange={handleChange}
-              style={{ marginLeft: '50px', width: '70%', ...inputStyle }}
+              style={inputStyle}
             >
               <option value="dev.papayapalette">dev.papayapalette</option>
               <option value="papayapalette">papayapalette</option>
@@ -63,53 +72,51 @@ const TaskForm = () => {
           </div>
 
           {/* Subject */}
-          <div className="form-group" style={{ borderBottom: '1px solid #333', width: '50%' }}>
-            <label style={{ marginTop: '20px' }}>Subject</label>
+          <div className="form-group" style={{ marginBottom: '20px', width: '100%' }}>
+            <label>Subject</label>
             <input
               type="text"
               name="subject"
               value={formData.subject}
               onChange={handleChange}
-              style={{ marginLeft: '100px', width: '70%', ...inputStyle }}
+              style={inputStyle}
             />
           </div>
 
           {/* Due Date */}
-          <div className="form-group" style={{ borderBottom: '1px solid #333', width: '50%' }}>
-            <label style={{ marginTop: '20px',marginLeft:'0px' }}>Due Date</label>
+          <div className="form-group" style={{ marginBottom: '20px', width: '100%' }}>
+            <label>Due Date</label>
             <input
               type="date"
               name="dueDate"
               value={formData.dueDate}
               onChange={handleChange}
-              style={{ marginLeft: '85px', width: '70%', ...inputStyle }}
+              style={inputStyle}
             />
           </div>
 
           {/* Related To + Search */}
-          <div className="form-group" style={{ display: 'flex', borderBottom: '1px solid #333', alignItems: 'center', gap: '20px', width: '50%', marginTop: '20px' }}>
+          <div className="form-group" style={{ marginBottom: '20px', width: '100%', display: 'flex', gap: '10px' }}>
             <select
               name="relatedTo"
               value={formData.relatedTo}
               onChange={handleChange}
-              style={{ width: '50%', ...inputStyle }}
+              style={{ ...inputStyle, width: '80%' }}
             >
               <option value="Contact">Contact</option>
               <option value="Lead">Lead</option>
             </select>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', width: '50%' }}>
-              <FaSearch style={{ fontSize: '20px', color: '#ccc', cursor: 'pointer' }} />
-            </div>
+            <FaSearch style={{ fontSize: '24px', color: '#666', alignSelf: 'center', cursor: 'pointer' }} />
           </div>
 
-          {/* Account + Dropdown Button Input */}
-          <div className="input-group mb-3" style={{ display: 'flex', borderBottom: '1px solid #333', alignItems: 'start', width: '50%', marginTop: '20px' }}>
+          {/* Account Input + Dropdown */}
+          <div className="input-group" style={{ marginBottom: '20px', width: '100%', display: 'flex' }}>
             <button
               className="btn btn-outline-secondary dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
-              style={{ border: 'none', backgroundColor: 'transparent' }}
+              style={{ border: '1px solid #ccc', backgroundColor: 'white', padding: '10px' }}
             >
               Account
             </button>
@@ -126,13 +133,13 @@ const TaskForm = () => {
           </div>
 
           {/* Status */}
-          <div className="form-group" style={{ borderBottom: '1px solid #333', width: '50%' }}>
+          <div className="form-group" style={{ marginBottom: '20px', width: '100%' }}>
             <label>Status</label>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
-              style={{ marginLeft: '100px', width: '30%', ...inputStyle }}
+              style={{ ...inputStyle, width: '40%' }}
             >
               <option>Not Started</option>
               <option>In Progress</option>
@@ -141,13 +148,13 @@ const TaskForm = () => {
           </div>
 
           {/* Priority */}
-          <div className="form-group" style={{ borderBottom: '1px solid #333', width: '50%', marginTop: '20px' }}>
+          <div className="form-group" style={{ marginBottom: '20px', width: '100%' }}>
             <label>Priority</label>
             <select
               name="priority"
               value={formData.priority}
               onChange={handleChange}
-              style={{ marginLeft: '95px', width: '30%', ...inputStyle }}
+              style={{ ...inputStyle, width: '40%' }}
             >
               <option>Low</option>
               <option>Medium</option>
@@ -156,8 +163,8 @@ const TaskForm = () => {
           </div>
 
           {/* Reminder Toggle */}
-          <div className="form-check form-switch" style={{ display: 'flex', alignItems: 'center', marginLeft: '20px', marginTop: '20px' }}>
-            <label className="form-check-label" htmlFor="reminderSwitch" style={{ marginRight: '10px' }}>Reminder</label>
+          <div className="form-check form-switch" style={{ marginBottom: '20px' }}>
+            <label className="form-check-label" htmlFor="reminderSwitch">Reminder</label>
             <input
               className="form-check-input"
               type="checkbox"
@@ -165,13 +172,13 @@ const TaskForm = () => {
               name="reminder"
               checked={formData.reminder}
               onChange={handleChange}
-              style={{ marginLeft: '70px' }}
+              style={{ marginLeft: '20px' }}
             />
           </div>
 
           {/* Repeat Toggle */}
-          <div className="form-check form-switch" style={{ display: 'flex', alignItems: 'center', marginLeft: '20px', marginTop: '20px' }}>
-            <label className="form-check-label" htmlFor="repeatSwitch" style={{ marginRight: '50px' }}>Repeat</label>
+          <div className="form-check form-switch" style={{ marginBottom: '20px' }}>
+            <label className="form-check-label" htmlFor="repeatSwitch">Repeat</label>
             <input
               className="form-check-input"
               type="checkbox"
@@ -179,32 +186,37 @@ const TaskForm = () => {
               name="repeat"
               checked={formData.repeat}
               onChange={handleChange}
-              style={{ marginLeft: '50px' }}
+              style={{ marginLeft: '20px' }}
             />
           </div>
 
           {/* Description */}
-          <div className="form-group" style={{ marginLeft: '20px', marginTop: '20px', display: 'flex', flexDirection: 'column' }}>
-  <label style={{ marginBottom: '8px' }}>Description</label>
-  <textarea
-    name="description"
-    value={formData.description}
-    onChange={handleChange}
-    style={{
-      padding: '8px',
-      fontSize: '14px',
-      border: '2px solid #000',  // Corrected border
-      outline: 'none',
-      width: '50%',
-        // You may want to remove this if it overrides the border
-    }}
-  />
-</div>
-
+          <div className="form-group" style={{ marginBottom: '20px', width: '100%' }}>
+            <label>Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              rows="4"
+              style={{
+                ...inputStyle,
+                resize: 'vertical',
+              }}
+            />
+          </div>
 
           {/* Submit */}
-          <button type="submit" style={{ marginLeft: '20px',borderRadius:'20px',
-            backgroundColor:'blue', marginTop: '50px',   padding: '10px 20px' }}>
+          <button
+            type="submit"
+            style={{
+              borderRadius: '20px',
+              backgroundColor: 'blue',
+              color: 'white',
+              padding: '12px 30px',
+              fontSize: '16px',
+              border: 'none'
+            }}
+          >
             Save Task
           </button>
         </form>
