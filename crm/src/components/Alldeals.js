@@ -9,7 +9,17 @@ import Header from "./Header";
 
 function Alldeals() {
 
-    const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded1, setIsExpanded1] = useState(false);
+  const [isExpanded2, setIsExpanded2] = useState(false);
+  const [isExpanded3, setIsExpanded3] = useState(false);
+  const [isExpanded4, setIsExpanded4] = useState(false);
+  const [isExpanded5, setIsExpanded5] = useState(false);
+  const [isExpanded6, setIsExpanded6] = useState(false);
+  const [isExpanded7, setIsExpanded7] = useState(false);
+
+
+
+  
     return (
         <div style={{ width: "100%" }}>
             <Header />
@@ -484,11 +494,11 @@ function Alldeals() {
   </div>
 
   {/* Right Section with scrollable table */}
-  <div style={{ flex: 3, paddingLeft: '20px', maxHeight: '500px', overflowY: 'auto',display:'flex' }}>
+  <div style={{ flex: 3, paddingLeft: '20px', maxHeight: '500px', display:'flex' }}>
   <div
-      onClick={() => setIsExpanded(!isExpanded)}
+      onClick={() => setIsExpanded1(!isExpanded1)}
       style={{
-        width: isExpanded ? '400px' : '100px',
+        width: isExpanded1 ? '400px' : '100px',
         height: '500px',
         backgroundColor: 'lightgrey',
         cursor: 'pointer',
@@ -496,18 +506,168 @@ function Alldeals() {
         overflow: 'hidden',
         padding: '10px',
         display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+     <strong
+  style={
+    isExpanded1
+      ? {
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        }
+      : {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          lineHeight: '1.0',
+          height: '500px',
+          marginTop: '10px',
+          letterSpacing: '1px',
+          backgroundColor: 'lightblue',
+          whiteSpace: 'normal',
+          padding: '10px',
+          textAlign: 'center',
+        }
+  }
+>
+  {isExpanded1 ? (
+    'QUALIFICATION  1 .10% $250,000.00'
+  ) : (
+    <>
+      {'QUALIFICATION'.split('').map((char, idx) => (
+        <span key={`q-${idx}`}>{char}</span>
+      ))}
+      <span style={{ display: 'inline-block', width: '10px' }}></span>
+      <span
+        style={{
+          display: 'inline-block',
+          width: '20px',
+          height: '20px',
+          borderRadius: '50%',
+          backgroundColor: 'blue',
+          color: 'white',
+          textAlign: 'center',
+          lineHeight: '20px',
+          marginBottom: '5px',
+        }}
+      >
+        1
+      </span>
+      {'.10% $250,000.00'.split('').map((char, idx) => (
+        <span key={`rest-${idx}`}>{char}</span>
+      ))}
+    </>
+  )}
+</strong>
+
+
+      {isExpanded1 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '10px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    Qualification 
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      1
+    </span>
+    10%  
+    $250,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> Benton <br/>
+              Qualification <br/>
+              Benton(sample)<br/>
+              dev.papayapallete<br/>
+              John Butt(sample)<br/>
+              $250,000.00<br/>
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+
+
+    <div
+      onClick={() => setIsExpanded2(!isExpanded2)}
+      style={{
+        width: isExpanded2 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: 'flex-start',
         whiteSpace: 'nowrap',
       }}
     >
       <strong
         style={
-          isExpanded
+          isExpanded2
             ? {
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
-              }
+            }
             : {
                 display: 'flex',
                 flexDirection: 'column',
@@ -518,36 +678,693 @@ function Alldeals() {
         }
       >
         {
-          isExpanded
-            ? 'Qualification 1 .10% $250,000.00'
-            : 'Qualification 1 .10% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+          isExpanded2
+            ? 'Need Analysis 2 .20% $250,000.00'
+            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
         }
-      </strong>
+      </strong>            
+      
 
-      {isExpanded && (
+      {isExpanded2 && (
         <div
           style={{
-            marginLeft: '10px',
+            marginLeft: '0px',
             whiteSpace: 'normal',
             flex: 1,
           }}
         >
-          This is the expanded content for Div 1.
-        </div>
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    Need Analysis
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      2
+    </span>
+    10%  
+    $250,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> Benton <br/>
+              Qualification <br/>
+              Benton(sample)<br/>
+              dev.papayapallete<br/>
+              John Butt(sample)<br/>
+              $250,000.00<br/>
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+    <div
+      onClick={() => setIsExpanded3(!isExpanded3)}
+      style={{
+        width: isExpanded3 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <strong
+        style={
+          isExpanded3
+            ? {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                lineHeight: '1.2',
+                height: '100%',
+              }
+        }
+      >
+        {
+          isExpanded3
+            ? 'Need Analysis 2 .20% $250,000.00'
+            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+        }
+      </strong>            
+      
+
+      {isExpanded3 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    Need Analysis
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      2
+    </span>
+    10%  
+    $250,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> Benton <br/>
+              Qualification <br/>
+              Benton(sample)<br/>
+              dev.papayapallete<br/>
+              John Butt(sample)<br/>
+              $250,000.00<br/>
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
       )}
     </div>
 
 
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-    <div>5</div>
-    <div>6</div>
-    <div>7</div>
-    <div>8</div>
+
+
+
+
+    <div
+      onClick={() => setIsExpanded4(!isExpanded4)}
+      style={{
+        width: isExpanded2 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <strong
+        style={
+          isExpanded2
+            ? {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                lineHeight: '1.2',
+                height: '100%',
+              }
+        }
+      >
+        {
+          isExpanded4
+            ? 'Need Analysis 2 .20% $250,000.00'
+            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+        }
+      </strong>            
+      
+
+      {isExpanded4 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    Need Analysis
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      2
+    </span>
+    10%  
+    $250,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> Benton <br/>
+              Qualification <br/>
+              Benton(sample)<br/>
+              dev.papayapallete<br/>
+              John Butt(sample)<br/>
+              $250,000.00<br/>
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+
+
+
+    <div
+      onClick={() => setIsExpanded5(!isExpanded5)}
+      style={{
+        width: isExpanded5 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <strong
+        style={
+          isExpanded5
+            ? {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                lineHeight: '1.2',
+                height: '100%',
+              }
+        }
+      >
+        {
+          isExpanded5
+            ? 'Need Analysis 2 .20% $250,000.00'
+            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+        }
+      </strong>            
+      
+
+      {isExpanded5 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    Need Analysis
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      2
+    </span>
+    10%  
+    $250,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> Benton <br/>
+              Qualification <br/>
+              Benton(sample)<br/>
+              dev.papayapallete<br/>
+              John Butt(sample)<br/>
+              $250,000.00<br/>
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+
+    
+   
+    <div
+      onClick={() => setIsExpanded6(!isExpanded6)}
+      style={{
+        width: isExpanded6 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <strong
+        style={
+          isExpanded6
+            ? {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                lineHeight: '1.2',
+                height: '100%',
+              }
+        }
+      >
+        {
+          isExpanded6
+            ? 'Need Analysis 2 .20% $250,000.00'
+            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+        }
+      </strong>            
+      
+
+      {isExpanded6 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    Need Analysis
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      2
+    </span>
+    10%  
+    $250,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> Benton <br/>
+              Qualification <br/>
+              Benton(sample)<br/>
+              dev.papayapallete<br/>
+              John Butt(sample)<br/>
+              $250,000.00<br/>
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+
+    
+    <div
+      onClick={() => setIsExpanded7(!isExpanded7)}
+      style={{
+        width: isExpanded7 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <strong
+        style={
+          isExpanded7
+            ? {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                lineHeight: '1.2',
+                height: '100%',
+              }
+        }
+      >
+        {
+          isExpanded7
+            ? 'Need Analysis 2 .20% $250,000.00'
+            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+        }
+      </strong>            
+      
+
+      {isExpanded7 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    Need Analysis
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      2
+    </span>
+    10%  
+    $250,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> Benton <br/>
+              Qualification <br/>
+              Benton(sample)<br/>
+              dev.papayapallete<br/>
+              John Butt(sample)<br/>
+              $250,000.00<br/>
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+
     <div>9</div>
     
   </div>
+
+
+  
 </div>
 
 
