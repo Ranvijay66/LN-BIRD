@@ -16,6 +16,8 @@ function Alldeals() {
   const [isExpanded5, setIsExpanded5] = useState(false);
   const [isExpanded6, setIsExpanded6] = useState(false);
   const [isExpanded7, setIsExpanded7] = useState(false);
+  const [isExpanded8, setIsExpanded8] = useState(false);
+  const [isExpanded9, setIsExpanded9] = useState(false);
 
 
 
@@ -494,13 +496,18 @@ function Alldeals() {
   </div>
 
   {/* Right Section with scrollable table */}
-  <div style={{ flex: 3, paddingLeft: '20px', maxHeight: '500px', display:'flex' }}>
+
+  <div  style={{width:'1000px',overflowX:'auto'}}>
+  <div style={{ display: 'flex', flexDirection:  'row', justifyContent: 'flex-end',marginLeft:'10px',
+  
+    
+  }}>
   <div
       onClick={() => setIsExpanded1(!isExpanded1)}
       style={{
         width: isExpanded1 ? '400px' : '100px',
         height: '500px',
-        backgroundColor: 'lightgrey',
+        backgroundColor: 'lightblue',
         cursor: 'pointer',
         transition: 'width 0.3s ease',
         overflow: 'hidden',
@@ -680,7 +687,7 @@ function Alldeals() {
         {
           isExpanded2
             ? 'Need Analysis 2 .20% $250,000.00'
-            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+            : 'NEED ANALYSIS'.split('').map((char, idx) => <span key={idx}>{char}</span>)
         }
       </strong>            
       
@@ -796,8 +803,8 @@ function Alldeals() {
       >
         {
           isExpanded3
-            ? 'Need Analysis 2 .20% $250,000.00'
-            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+            ? 'Value Proposition 1 .40% $70,000.00'
+            : 'VALUE PROPOSITION '.split('').map((char, idx) => <span key={idx}>{char}</span>)
         }
       </strong>            
       
@@ -815,7 +822,7 @@ function Alldeals() {
          <div
   style={{
     display: 'flex',
-    width: '380px',
+    width: '400px',
     height: '100px',
     backgroundColor: 'red',
     flexDirection: 'row',
@@ -826,7 +833,7 @@ function Alldeals() {
 >
   
   <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
-    Need Analysis
+    Value Proposition
     <span 
       style={{
         display: 'inline-block', 
@@ -840,10 +847,10 @@ function Alldeals() {
         marginLeft: '10px'
       }}
     >
-      2
+      1
     </span>
-    10%  
-    $250,000.00
+    40%  
+    $70,000.00
   </label>
 
   <input type="checkbox" id="qualification-checkbox" />
@@ -861,12 +868,12 @@ function Alldeals() {
    
     paddingLeft: '10px', // Optional: adds space on the left
     marginTop:'20px'
-          }}> Benton <br/>
-              Qualification <br/>
-              Benton(sample)<br/>
+          }}> Chemel <br/>
+              Value proposition<br/>
+              Chemel(sample)<br/>
               dev.papayapallete<br/>
-              John Butt(sample)<br/>
-              $250,000.00<br/>
+              James Venere(sample)<br/>
+              $70,000.00<br/>
               21/3/2025
 
 
@@ -885,7 +892,7 @@ function Alldeals() {
     <div
       onClick={() => setIsExpanded4(!isExpanded4)}
       style={{
-        width: isExpanded2 ? '400px' : '100px',
+        width: isExpanded4 ? '400px' : '100px',
         height: '500px',
         backgroundColor: 'lightblue',
         cursor: 'pointer',
@@ -902,7 +909,7 @@ function Alldeals() {
     >
       <strong
         style={
-          isExpanded2
+          isExpanded4
             ? {
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
@@ -919,8 +926,8 @@ function Alldeals() {
       >
         {
           isExpanded4
-            ? 'Need Analysis 2 .20% $250,000.00'
-            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+            ? 'IDENTIFY DECISION MAKERS 2 .20% $250,000.00'
+            : 'IDENTIFY DECISION MAKERS '.split('').map((char, idx) => <span key={idx}>{char}</span>)
         }
       </strong>            
       
@@ -949,7 +956,7 @@ function Alldeals() {
 >
   
   <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
-    Need Analysis
+    IDENTIFY DECISION MAKERS
     <span 
       style={{
         display: 'inline-block', 
@@ -965,8 +972,8 @@ function Alldeals() {
     >
       2
     </span>
-    10%  
-    $250,000.00
+    60%  
+    $105,000.00
   </label>
 
   <input type="checkbox" id="qualification-checkbox" />
@@ -977,6 +984,26 @@ function Alldeals() {
 
           <div style={{
             display:'flex',
+            width:'400px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> IDENTIFY DECISION MAKERS<br/>
+            
+              KING(sample)<br/> 
+              dev.papayapallete<br/>
+              KRIS MARRIER(sample)<br/>
+              $60,000.00<br/>
+              21/3/2025
+
+
+              </div>
+
+              <div style={{
+            display:'flex',
             width:'380px',
             height:'200px',
             backgroundColor: 'lightgreen',
@@ -984,12 +1011,12 @@ function Alldeals() {
    
     paddingLeft: '10px', // Optional: adds space on the left
     marginTop:'20px'
-          }}> Benton <br/>
-              Qualification <br/>
-              Benton(sample)<br/>
+          }}> FELTZ PRINTING SERVICE <br/>
+              IDENTIFY DECISION MAKERS <br/>
+              FELTZ PRINTING SERVICE(sample)<br/>
               dev.papayapallete<br/>
-              John Butt(sample)<br/>
-              $250,000.00<br/>
+              CAPLA PAPROCKI(sample)<br/>
+              $45,000.00<br/>
               21/3/2025
 
 
@@ -1039,8 +1066,8 @@ function Alldeals() {
       >
         {
           isExpanded5
-            ? 'Need Analysis 2 .20% $250,000.00'
-            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+            ? 'PROPOSAL PRICE QUOTE 1 .75% $25,000.00'
+            : 'PROPOSAL /PRICE QUOTE '.split('').map((char, idx) => <span key={idx}>{char}</span>)
         }
       </strong>            
       
@@ -1069,7 +1096,7 @@ function Alldeals() {
 >
   
   <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
-    Need Analysis
+    PROPOSAL/PRICE QUOTE
     <span 
       style={{
         display: 'inline-block', 
@@ -1083,10 +1110,10 @@ function Alldeals() {
         marginLeft: '10px'
       }}
     >
-      2
+      1
     </span>
-    10%  
-    $250,000.00
+    75%  
+    $25,000.00
   </label>
 
   <input type="checkbox" id="qualification-checkbox" />
@@ -1104,12 +1131,12 @@ function Alldeals() {
    
     paddingLeft: '10px', // Optional: adds space on the left
     marginTop:'20px'
-          }}> Benton <br/>
-              Qualification <br/>
-              Benton(sample)<br/>
+          }}> PRINTING DIMENSIONS <br/>
+              PROPOSAL/PRICE QUOTE<br/>
+              PRINTING DIMENTIONS(sample)<br/>
               dev.papayapallete<br/>
-              John Butt(sample)<br/>
-              $250,000.00<br/>
+              DONETTE FOLLER(sample)<br/>
+              $25,000.00<br/>
               21/3/2025
 
 
@@ -1159,8 +1186,8 @@ function Alldeals() {
       >
         {
           isExpanded6
-            ? 'Need Analysis 2 .20% $250,000.00'
-            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+            ? 'NEGOTIATION/REVIEW 2 .20% $250,000.00'
+            : 'NEGOTIATION/ REVIEW '.split('').map((char, idx) => <span key={idx}>{char}</span>)
         }
       </strong>            
       
@@ -1189,7 +1216,7 @@ function Alldeals() {
 >
   
   <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
-    Need Analysis
+    NEGOTIATION/REVIEW
     <span 
       style={{
         display: 'inline-block', 
@@ -1203,10 +1230,10 @@ function Alldeals() {
         marginLeft: '10px'
       }}
     >
-      2
+      1
     </span>
-    10%  
-    $250,000.00
+    90%  
+    $70,000.00
   </label>
 
   <input type="checkbox" id="qualification-checkbox" />
@@ -1224,12 +1251,12 @@ function Alldeals() {
    
     paddingLeft: '10px', // Optional: adds space on the left
     marginTop:'20px'
-          }}> Benton <br/>
-              Qualification <br/>
-              Benton(sample)<br/>
+          }}> CHAPMAN <br/>
+              NEGOTIATION/REVIEW <br/>
+              CHAPMAN(sample)<br/>
               dev.papayapallete<br/>
-              John Butt(sample)<br/>
-              $250,000.00<br/>
+              SIMON MORASCA(sample)<br/>
+              $70,000.00<br/>
               21/3/2025
 
 
@@ -1278,8 +1305,8 @@ function Alldeals() {
       >
         {
           isExpanded7
-            ? 'Need Analysis 2 .20% $250,000.00'
-            : 'Need Analysis 2 .20% $250,000.00'.split('').map((char, idx) => <span key={idx}>{char}</span>)
+            ? 'CLOSED/WON 2 .20% $250,000.00'
+            : 'CLOSED/WON '.split('').map((char, idx) => <span key={idx}>{char}</span>)
         }
       </strong>            
       
@@ -1308,7 +1335,7 @@ function Alldeals() {
 >
   
   <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
-    Need Analysis
+    CLOSED WON
     <span 
       style={{
         display: 'inline-block', 
@@ -1322,10 +1349,10 @@ function Alldeals() {
         marginLeft: '10px'
       }}
     >
-      2
+      1
     </span>
-    10%  
-    $250,000.00
+    100%  
+    $35,000.00
   </label>
 
   <input type="checkbox" id="qualification-checkbox" />
@@ -1343,13 +1370,13 @@ function Alldeals() {
    
     paddingLeft: '10px', // Optional: adds space on the left
     marginTop:'20px'
-          }}> Benton <br/>
-              Qualification <br/>
-              Benton(sample)<br/>
+          }}> MORLONG ASSOCIATES <br/>
+              CLOSED WON <br/>
+              MORLONG ASSOCIATES(sample)<br/>
               dev.papayapallete<br/>
-              John Butt(sample)<br/>
-              $250,000.00<br/>
-              21/3/2025
+              MITSUE TOLLNER(sample)<br/>
+              $35,000.00<br/>
+              23/3/2025
 
 
               </div>
@@ -1359,7 +1386,245 @@ function Alldeals() {
       )}
     </div>
 
-    <div>9</div>
+
+
+    <div
+      onClick={() => setIsExpanded8(!isExpanded8)}
+      style={{
+        width: isExpanded8 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <strong
+        style={
+          isExpanded8
+            ? {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                lineHeight: '1.2',
+                height: '100%',
+              }
+        }
+      >
+        {
+          isExpanded8
+            ? 'CLOSED/LOST 1 .0% $45,000.00'
+            : 'CLOSED/LOST '.split('').map((char, idx) => <span key={idx}>{char}</span>)
+        }
+      </strong>            
+      
+
+      {isExpanded8 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    CLOSED LOST
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      1
+    </span>
+    0%  
+    $45,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> COMMERCIAL PRESS <br/>
+              CLOSED LOST <br/>
+              COMMERCIAL PRESS(sample)<br/>
+              dev.papayapallete<br/>
+              LEOTA DILLIARD(sample)<br/>
+              $45,000.00<br/>
+              22/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+
+
+
+
+
+
+    <div
+      onClick={() => setIsExpanded9(!isExpanded9)}
+      style={{
+        width: isExpanded9 ? '400px' : '100px',
+        height: '500px',
+        backgroundColor: 'lightblue',
+        cursor: 'pointer',
+        transition: 'width 0.3s ease',
+        overflow: 'hidden',
+        padding: '10px',
+        marginLeft:'10px',
+        
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      <strong
+        style={
+          isExpanded9
+            ? {
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+            }
+            : {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                lineHeight: '1.2',
+                height: '100%',
+              }
+        }
+      >
+        {
+          isExpanded9
+            ? 'CLOSED LOST TO COMPETITION .0% $,000.00'
+            : 'CLOSED LOST TO COMPETITION '.split('').map((char, idx) => <span key={idx}>{char}</span>)
+        }
+      </strong>            
+      
+
+      {isExpanded9 && (
+        <div
+          style={{
+            marginLeft: '0px',
+            whiteSpace: 'normal',
+            flex: 1,
+          }}
+        >
+         <div>
+
+         <div
+  style={{
+    display: 'flex',
+    width: '380px',
+    height: '100px',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingLeft: '20px', // Optional: adds space on the left
+    gap: '10px' // Optional: space between checkbox and text
+  }}
+>
+  
+  <label htmlFor="qualification-checkbox" style={{ margin: 0 }}>
+    CLOSED LOST TO COMPETITION
+    <span 
+      style={{
+        display: 'inline-block', 
+        width: '20px', 
+        height: '20px', 
+        borderRadius: '50%', 
+        backgroundColor: 'blue', 
+        color: 'white', 
+        textAlign: 'center', 
+        lineHeight: '20px', 
+        marginLeft: '10px'
+      }}
+    >
+      0
+    </span>
+    0%  
+    $,000.00
+  </label>
+
+  <input type="checkbox" id="qualification-checkbox" />
+</div>
+
+
+</div>
+
+          <div style={{
+            display:'flex',
+            width:'380px',
+            height:'200px',
+            backgroundColor: 'lightgreen',
+    flexDirection: 'row',
+   
+    paddingLeft: '10px', // Optional: adds space on the left
+    marginTop:'20px'
+          }}> NO DEALS FOUND <br/>
+             
+              21/3/2025
+
+
+              </div>
+          </div>
+          
+      
+      )}
+    </div>
+    </div>
     
   </div>
 

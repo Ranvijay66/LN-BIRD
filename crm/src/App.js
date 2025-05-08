@@ -18,6 +18,7 @@ import Alllead from './components/Alllead';
 import Allcontact from './components/Allcontact';
 import Allaccount from './components/Allaccount';
 import Alldeals from './components/Alldeals';
+import Alltask from './components/Alltask';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Route path='/Allcontact' element={<Allcontact/>}></Route>
       <Route path='/Allaccount' element={<Allaccount/>}></Route>
       <Route path='/Alldeals' element={<Alldeals/>}></Route>
+      <Route path='/Alltask' element={<Alltask/>}></Route>
 
 
     </Routes>
