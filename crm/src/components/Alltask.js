@@ -6,6 +6,10 @@ import Header from "./Header";
 function Alltask() {
   const [showKanban, setShowKanban] = useState(false);
   const [showKanban1, setShowKanban1] = useState(false);
+  const [showKanban2, setShowKanban2] = useState(false);
+  const [showKanban3, setShowKanban3] = useState(false);
+  const [showKanban4, setShowKanban4] = useState(false);
+
 
   return (
     <div style={{ width: "100%" }}>
@@ -202,6 +206,28 @@ function Alltask() {
               {showKanban1 ? "DEFERRED" : " DEFERRED"}
             </button>
           </div>
+
+           <div style={{ textAlign: 'center', marginTop: '-20px' }}>
+            <button className="btn btn-info" onClick={() => setShowKanban2(!showKanban2)}>
+              {showKanban2 ? "IN PROGRESS" : " IN PROGRESS"}
+            </button>
+          </div>
+
+
+           <div style={{ textAlign: 'center', marginTop: '-20px' }}>
+            <button className="btn btn-info" onClick={() => setShowKanban3(!showKanban3)}>
+              {showKanban3 ? "COMPLETED" : " COMPLETED"}
+            </button>
+          </div>
+
+
+           <div style={{ textAlign: 'center', marginTop: '-20px' }}>
+            <button className="btn btn-info" onClick={() => setShowKanban4(!showKanban4)}>
+              {showKanban3 ? "WAITING FOR INPUT" : " WAITING FOR INPUT"}
+            </button>
+          </div>
+
+
         </div>
 
 
@@ -272,6 +298,190 @@ function Alltask() {
 
         
         </div>
+
+
+
+        
+<div >
+
+{showKanban2 && (
+    <div style={{border: '1px solid #ccc', borderRadius: '10px', padding: '15px', marginBottom: '20px', 
+    overflowX: 'auto',backgroundColor: '#f7f7f7' }}>
+      <h5>IN PROGRESS</h5>
+      <div style={{  display: 'flex',
+  gap: '20px',
+  overflowX: 'auto',
+  overflowY: 'hidden',
+  whiteSpace: 'nowrap',
+  padding: '10px',
+  maxWidth: '100%'}}>
+        <div style={{
+          minWidth: '200px',
+          backgroundColor: '#d1ecf1',
+          padding: '10px',
+          borderRadius: '8px'
+        }}>
+          <strong>REFER CRM VIDEOS</strong><input type="checkbox"  />
+          <p>22/3/2025</p>
+          <p>Normal</p>
+          <p>dev.papayapalette</p>
+          <p>Mitsue Tollner(sample)</p>
+          <p>Morlong Associates(sample)</p>
+        </div>
+
+        <div style={{
+          minWidth: '200px',
+          backgroundColor: '#d1ecf1',
+          padding: '10px',
+          borderRadius: '8px'
+        }}>
+          <strong>Get Approval from Manager</strong><input type="checkbox"  />
+          <p>21/3/2025</p>
+          <p>Normal</p>
+          <p>dev.papayapalette</p>
+          <p>Leota Dilliard(sample)</p>
+          <p>Commercial Press</p>
+        </div>
+
+        <div style={{
+minWidth: '200px',
+backgroundColor: '#d1ecf1',
+padding: '10px',
+borderRadius: '8px',
+display: 'flex',
+alignItems: 'center', // Align the checkbox with the text
+gap: '10px', // Space between checkbox and task details
+flexDirection: 'row-reverse' // Moves the checkbox to the right side
+}}>
+
+<label htmlFor="task3" style={{ margin: 0 }}>
+<strong>Get Approval from Manager</strong> <input type="checkbox"  />
+<p>21/3/2025</p>
+<p>High</p>
+<p>dev.papayapalette</p>
+<p>Kris Marrier(sample)</p>
+<p>King(sample)</p>
+
+</label>
+</div>
+
+
+
+
+
+
+      </div>
+    </div>
+  )}
+
+
+</div>
+
+
+
+    
+<div >
+
+{showKanban3 && (
+    <div style={{border: '1px solid #ccc', borderRadius: '10px', padding: '15px', marginBottom: '20px', 
+    overflowX: 'auto',backgroundColor: '#f7f7f7' }}>
+      <h5>COMPLETED</h5>
+      <div style={{  display: 'flex',
+  gap: '20px',
+  overflowX: 'auto',
+  overflowY: 'hidden',
+  whiteSpace: 'nowrap',
+  padding: '10px',
+  maxWidth: '100%'}}>
+        <div style={{
+          minWidth: '200px',
+          backgroundColor: '#d1ecf1',
+          padding: '10px',
+          borderRadius: '8px'
+        }}>
+          <strong>Complete CRM Geting Started steps </strong><input type="checkbox"  />
+          <p>20/3/2025</p>
+          <p>Highest</p>
+          <p>dev.papayapalette</p>
+          <p>John Butt(sample)</p>
+          <p>Benton(sample)</p>
+        </div>
+
+        <div style={{
+          minWidth: '200px',
+          backgroundColor: '#d1ecf1',
+          padding: '10px',
+          borderRadius: '8px'
+        }}>
+          <strong>Complete CRM Getting started steps</strong><input type="checkbox"  />
+          <p>23/3/2025</p>
+          <p>Normal</p>
+          <p>dev.papayapalette</p>
+          <p>Theola Frey(sample)</p>
+          
+        </div>
+
+
+
+
+
+
+
+      </div>
+    </div>
+  )}
+
+
+</div>
+
+
+
+
+
+
+
+
+<div >
+
+{showKanban4 && (
+    <div style={{border: '1px solid #ccc', borderRadius: '10px', padding: '15px', marginBottom: '20px', 
+    overflowX: 'auto',backgroundColor: '#f7f7f7' }}>
+      <h5>WAITING FOR INPUT</h5>
+      <div style={{  display: 'flex',
+  gap: '20px',
+  overflowX: 'auto',
+  overflowY: 'hidden',
+  whiteSpace: 'nowrap',
+  padding: '10px',
+  maxWidth: '100%'}}>
+        <div style={{
+          minWidth: '200px',
+          backgroundColor: '#d1ecf1',
+          padding: '10px',
+          borderRadius: '8px'
+        }}>
+          <strong>NO TASK FOUND </strong><input type="checkbox"  />
+          <p>20/3/2025</p>
+          <p>Highest</p>
+          <p>dev.papayapalette</p>
+          <p>John Butt(sample)</p>
+          <p>Benton(sample)</p>
+        </div>
+
+        
+
+
+
+
+
+
+
+      </div>
+    </div>
+  )}
+
+
+</div>
 
 
       </div>

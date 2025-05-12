@@ -19,6 +19,9 @@ import Allcontact from './components/Allcontact';
 import Allaccount from './components/Allaccount';
 import Alldeals from './components/Alldeals';
 import Alltask from './components/Alltask';
+import Allmeeting from './components/Allmeeting';
+import AllServices from './components/Allservices';
+import Project from './components/Project';
 
 
 function App() {
@@ -38,6 +41,11 @@ function App() {
       <Route path='/Allaccount' element={<Allaccount/>}></Route>
       <Route path='/Alldeals' element={<Alldeals/>}></Route>
       <Route path='/Alltask' element={<Alltask/>}></Route>
+      <Route path='/Allmeeting' element={<Allmeeting/>}></Route>
+      <Route path='/Allservices' element={<AllServices/>}></Route>
+      <Route path='/Project' element={<Project/>}></Route>
+
+
 
 
     </Routes>
