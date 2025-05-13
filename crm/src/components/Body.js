@@ -6,14 +6,18 @@ const TwoDivsContainer = () => {
       <div style={styles.box}>
         <nav className="navbar navbar-expand-lg bg-body-lightblue d-flex">
           <div className="container-fluid">
-            <a className="navbar-brand" style={{ fontSize: "15px", marginRight:"400px"}} href="#">
-              MY Open Tasks 
+            <a
+              className="navbar-brand"
+              style={{ fontSize: "15px", marginRight: "400px" }}
+              href="#"
+            >
+              MY Open Tasks
             </a>
             <button
               className="navbar-toggler ms-auto"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown1"  // Unique ID for the first navbar
+              data-bs-target="#navbarNavDropdown1" // Unique ID for the first navbar
               aria-controls="navbarNavDropdown1"
               aria-expanded="false"
               aria-label="Toggle navigation"
@@ -47,7 +51,11 @@ const TwoDivsContainer = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" style={{ color: "red" }} href="#">
+                        <a
+                          className="dropdown-item"
+                          style={{ color: "red" }}
+                          href="#"
+                        >
                           Delete
                         </a>
                       </li>
@@ -55,27 +63,26 @@ const TwoDivsContainer = () => {
                   </div>
                 </li>
               </ul>
-            </div> 
-            
+            </div>
           </div>
         </nav>
       </div>
 
-      
-
       <div style={styles.box}>
         <nav className="navbar navbar-expand-lg bg-body-lightblue d-flex">
           <div className="container-fluid">
-            <a className="navbar-brand" style={{ fontSize: "15px", marginRight:"400px",
-              
-            }} href="#">
-              My Meetings 
+            <a
+              className="navbar-brand"
+              style={{ fontSize: "15px", marginRight: "400px" }}
+              href="#"
+            >
+              My Meetings
             </a>
             <button
               className="navbar-toggler ms-auto"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarNavDropdown2"  // Unique ID for the second navbar
+              data-bs-target="#navbarNavDropdown2" // Unique ID for the second navbar
               aria-controls="navbarNavDropdown2"
               aria-expanded="false"
               aria-label="Toggle navigation"
@@ -109,7 +116,11 @@ const TwoDivsContainer = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" style={{ color: "red" }} href="#">
+                        <a
+                          className="dropdown-item"
+                          style={{ color: "red" }}
+                          href="#"
+                        >
                           Delete
                         </a>
                       </li>
@@ -118,18 +129,12 @@ const TwoDivsContainer = () => {
                 </li>
               </ul>
             </div>
-
-
-            
           </div>
         </nav>
       </div>
     </div>
-    
   );
 };
-
-
 
 const styles = {
   container: {

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import '../style/Header.css';
-import '../style/Button.css';
-import '../style/Box.css';
+import "../style/Header.css";
+import "../style/Button.css";
+import "../style/Box.css";
 
 function Footer() {
   // Create individual refs for each hidden text
@@ -17,13 +17,13 @@ function Footer() {
   // Handlers for mouse events
   const handleMouseEnter = (index) => {
     if (hiddenTextRefs[index].current) {
-      hiddenTextRefs[index].current.style.display = 'block';
+      hiddenTextRefs[index].current.style.display = "block";
     }
   };
 
   const handleMouseLeave = (index) => {
     if (hiddenTextRefs[index].current) {
-      hiddenTextRefs[index].current.style.display = 'none';
+      hiddenTextRefs[index].current.style.display = "none";
     }
   };
 
@@ -35,11 +35,17 @@ function Footer() {
             MY Pipeline Deals
           </a>
         </div>
-
-        
       </nav>
 
-      <div id="box" style={{ position: "absolute", display: "flex", marginLeft: "50px", marginTop: "100px" }}>
+      <div
+        id="box"
+        style={{
+          position: "absolute",
+          display: "flex",
+          marginLeft: "50px",
+          marginTop: "100px",
+        }}
+      >
         <div id="box1"></div>
         <div id="box2">2</div>
         <div id="box3">3</div>
@@ -54,7 +60,7 @@ function Footer() {
           marginLeft: "260px",
           marginTop: "140px",
           position: "relative",
-          cursor: "pointer"
+          cursor: "pointer",
         }}
         onMouseEnter={() => handleMouseEnter(0)}
         onMouseLeave={() => handleMouseLeave(0)}
@@ -74,7 +80,7 @@ function Footer() {
             borderRadius: "3px",
             boxShadow: "0px 0px 5px rgba(246, 238, 238, 0.93)",
             color: "white",
-            fontSize: "15px"
+            fontSize: "15px",
           }}
         >
           Qualification:1
@@ -87,7 +93,7 @@ function Footer() {
           marginLeft: "-190px",
           position: "relative",
           cursor: "pointer",
-          marginTop: "180px"
+          marginTop: "180px",
         }}
         onMouseEnter={() => handleMouseEnter(1)}
         onMouseLeave={() => handleMouseLeave(1)}
@@ -107,7 +113,7 @@ function Footer() {
             borderRadius: "3px",
             boxShadow: "0px 0px 5px rgba(246, 238, 238, 0.93)",
             color: "white",
-            fontSize: "15px"
+            fontSize: "15px",
           }}
         >
           Need Analysis:2
@@ -120,7 +126,7 @@ function Footer() {
           marginLeft: "-200px",
           position: "relative",
           cursor: "pointer",
-          marginTop: "240px"
+          marginTop: "240px",
         }}
         onMouseEnter={() => handleMouseEnter(2)}
         onMouseLeave={() => handleMouseLeave(2)}
@@ -139,7 +145,7 @@ function Footer() {
             borderRadius: "3px",
             boxShadow: "0px 0px 5px rgba(246, 238, 238, 0.93)",
             color: "white",
-            fontSize: "14px"
+            fontSize: "14px",
           }}
         >
           Value Proposition:1
@@ -152,7 +158,7 @@ function Footer() {
           marginLeft: "-200px",
           position: "relative",
           cursor: "pointer",
-          marginTop: "290px"
+          marginTop: "290px",
         }}
         onMouseEnter={() => handleMouseEnter(3)}
         onMouseLeave={() => handleMouseLeave(3)}
@@ -171,7 +177,7 @@ function Footer() {
             borderRadius: "3px",
             boxShadow: "0px 0px 5px rgba(246, 238, 238, 0.93)",
             color: "white",
-            fontSize: "13px"
+            fontSize: "13px",
           }}
         >
           Identify Decision Makers:2
@@ -184,7 +190,7 @@ function Footer() {
           marginLeft: "-250px",
           position: "relative",
           cursor: "pointer",
-          marginTop: "350px"
+          marginTop: "350px",
         }}
         onMouseEnter={() => handleMouseEnter(4)}
         onMouseLeave={() => handleMouseLeave(4)}
@@ -203,7 +209,7 @@ function Footer() {
             borderRadius: "3px",
             boxShadow: "0px 0px 5px rgba(246, 238, 238, 0.93)",
             color: "white",
-            fontSize: "15px"
+            fontSize: "15px",
           }}
         >
           Proposal/Price Quote:1
@@ -216,7 +222,7 @@ function Footer() {
           marginLeft: "-210px",
           position: "relative",
           cursor: "pointer",
-          marginTop: "400px"
+          marginTop: "400px",
         }}
         onMouseEnter={() => handleMouseEnter(5)}
         onMouseLeave={() => handleMouseLeave(5)}
@@ -235,7 +241,7 @@ function Footer() {
             borderRadius: "3px",
             boxShadow: "0px 0px 5px rgba(246, 238, 238, 0.93)",
             color: "white",
-            fontSize: "15px"
+            fontSize: "15px",
           }}
         >
           Negotiation/Review:1
@@ -250,7 +256,7 @@ function Footer() {
           backgroundColor: "red",
           width: "45px",
           marginLeft: "227px",
-          marginTop: "400px"
+          marginTop: "400px",
         }}
       ></div>
     </div>
@@ -269,8 +275,8 @@ const styles = {
     color: "#fff",
     marginTop: "110px",
     marginLeft: "10px",
-    width: "47%" // Set the width of the parent div
-  }
+    width: "47%", // Set the width of the parent div
+  },
 };
 
 export default Footer;

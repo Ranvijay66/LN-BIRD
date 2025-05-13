@@ -22,6 +22,8 @@ import Alltask from './components/Alltask';
 import Allmeeting from './components/Allmeeting';
 import AllServices from './components/Allservices';
 import Project from './components/Project';
+import Call from './components/Call';
+import Report from './components/Report';
 
 
 function App() {
@@ -44,6 +46,10 @@ function App() {
       <Route path='/Allmeeting' element={<Allmeeting/>}></Route>
       <Route path='/Allservices' element={<AllServices/>}></Route>
       <Route path='/Project' element={<Project/>}></Route>
+       <Route path='/Call' element={<Call/>}></Route>
+       <Route path='/Report' element={<Report/>}></Route>
+
+
 
 
 

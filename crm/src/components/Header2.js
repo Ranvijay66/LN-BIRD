@@ -1,21 +1,23 @@
 import React from "react";
-import '../style/Header.css'
+import "../style/Header.css";
 
 const FourDivsContainer = () => {
   const dark = {
-    color: 'darkgray', // Example dark color for the icon
+    color: "darkgray", // Example dark color for the icon
   };
 
   return (
     <div className="container-fluid" style={styles.container}>
       <div style={styles.box} id="firstdiv">
-        <nav className="navbar navbar-expand-lg bg-body-lightblue" id="firstdiv">
-          <div className="container-fluid" >
+        <nav
+          className="navbar navbar-expand-lg bg-body-lightblue"
+          id="firstdiv"
+        >
+          <div className="container-fluid">
             <a className="navbar-brand" style={{ fontSize: "15px" }} href="#">
               MY Open Deals &nbsp;&nbsp;&nbsp;
             </a>
             <button
-            
               className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -23,17 +25,15 @@ const FourDivsContainer = () => {
               aria-controls="navbarNavDropdown"
               aria-expanded="false"
               aria-label="Toggle navigation"
-
-              
             >
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown1">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown px-3">
-                  <div className="dropdown" >
+                  <div className="dropdown">
                     <button
-                    id="firstdivbutton"
+                      id="firstdivbutton"
                       className="btn btn-light"
                       type="button"
                       data-bs-toggle="dropdown"
@@ -44,7 +44,7 @@ const FourDivsContainer = () => {
                         backgroundColor: "transparent",
                         fontSize: "25px",
                         color: "dark",
-                        display:"none"
+                        display: "none",
                       }}
                     >
                       &#8942;
@@ -56,7 +56,11 @@ const FourDivsContainer = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" style={{ color: "red" }}href="#">
+                        <a
+                          className="dropdown-item"
+                          style={{ color: "red" }}
+                          href="#"
+                        >
                           Delete
                         </a>
                       </li>
@@ -72,12 +76,11 @@ const FourDivsContainer = () => {
       {/* Fixed the syntax error here */}
       <div style={styles.box} id="firstdiv">
         <nav className="navbar navbar-expand-lg bg-body-light" id="firstdiv">
-          <div className="container-fluid" >
+          <div className="container-fluid">
             <a className="navbar-brand" style={{ fontSize: "15px" }} href="#">
               MY Untouched Deals &nbsp;&nbsp;&nbsp;
             </a>
             <button
-            
               className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -85,17 +88,15 @@ const FourDivsContainer = () => {
               aria-controls="navbarNavDropdown"
               aria-expanded="false"
               aria-label="Toggle navigation"
-
-              
             >
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown1">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown px-3">
-                  <div className="dropdown" >
+                  <div className="dropdown">
                     <button
-                    id="firstdivbutton"
+                      id="firstdivbutton"
                       className="btn btn-light"
                       type="button"
                       data-bs-toggle="dropdown"
@@ -106,7 +107,7 @@ const FourDivsContainer = () => {
                         backgroundColor: "transparent",
                         fontSize: "25px",
                         color: "dark",
-                        display:"none"
+                        display: "none",
                       }}
                     >
                       &#8942;
@@ -118,7 +119,11 @@ const FourDivsContainer = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" style={{ color: "red" }}href="#">
+                        <a
+                          className="dropdown-item"
+                          style={{ color: "red" }}
+                          href="#"
+                        >
                           Delete
                         </a>
                       </li>
@@ -130,16 +135,17 @@ const FourDivsContainer = () => {
           </div>
         </nav>
       </div>
-      
 
       <div style={styles.box} id="firstdiv">
-        <nav className="navbar navbar-expand-lg bg-body-lightblue" id="firstdiv">
-          <div className="container-fluid" >
+        <nav
+          className="navbar navbar-expand-lg bg-body-lightblue"
+          id="firstdiv"
+        >
+          <div className="container-fluid">
             <a className="navbar-brand" style={{ fontSize: "15px" }} href="#">
               MY Calls Today &nbsp;&nbsp;&nbsp;
             </a>
             <button
-            
               className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -147,17 +153,15 @@ const FourDivsContainer = () => {
               aria-controls="navbarNavDropdown"
               aria-expanded="false"
               aria-label="Toggle navigation"
-
-              
             >
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown1">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown px-3">
-                  <div className="dropdown" >
+                  <div className="dropdown">
                     <button
-                    id="firstdivbutton"
+                      id="firstdivbutton"
                       className="btn btn-light"
                       type="button"
                       data-bs-toggle="dropdown"
@@ -168,7 +172,7 @@ const FourDivsContainer = () => {
                         backgroundColor: "transparent",
                         fontSize: "25px",
                         color: "dark",
-                        display:"none"
+                        display: "none",
                       }}
                     >
                       &#8942;
@@ -180,7 +184,11 @@ const FourDivsContainer = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" style={{ color: "red" }}href="#">
+                        <a
+                          className="dropdown-item"
+                          style={{ color: "red" }}
+                          href="#"
+                        >
                           Delete
                         </a>
                       </li>
@@ -192,16 +200,17 @@ const FourDivsContainer = () => {
           </div>
         </nav>
       </div>
-      
 
       <div style={styles.box} id="firstdiv">
-        <nav className="navbar navbar-expand-lg bg-body-lightblue" id="firstdiv">
-          <div className="container-fluid" >
+        <nav
+          className="navbar navbar-expand-lg bg-body-lightblue"
+          id="firstdiv"
+        >
+          <div className="container-fluid">
             <a className="navbar-brand" style={{ fontSize: "15px" }} href="#">
               MY Leads &nbsp;&nbsp;&nbsp;
             </a>
             <button
-            
               className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
@@ -209,17 +218,15 @@ const FourDivsContainer = () => {
               aria-controls="navbarNavDropdown"
               aria-expanded="false"
               aria-label="Toggle navigation"
-
-              
             >
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown1">
               <ul className="navbar-nav">
                 <li className="nav-item dropdown px-3">
-                  <div className="dropdown" >
+                  <div className="dropdown">
                     <button
-                    id="firstdivbutton"
+                      id="firstdivbutton"
                       className="btn btn-light"
                       type="button"
                       data-bs-toggle="dropdown"
@@ -230,7 +237,7 @@ const FourDivsContainer = () => {
                         backgroundColor: "transparent",
                         fontSize: "25px",
                         color: "dark",
-                        display:"none"
+                        display: "none",
                       }}
                     >
                       &#8942;
@@ -242,7 +249,11 @@ const FourDivsContainer = () => {
                         </a>
                       </li>
                       <li>
-                        <a className="dropdown-item" style={{ color: "red" }}href="#">
+                        <a
+                          className="dropdown-item"
+                          style={{ color: "red" }}
+                          href="#"
+                        >
                           Delete
                         </a>
                       </li>
@@ -266,8 +277,6 @@ const styles = {
     flexWrap: "wrap",
     gap: "10px", // Add space between the divs
     padding: "10px",
-
-  
   },
   box: {
     flex: "1 1 20%", // Adjusted to take up more space
@@ -281,9 +290,5 @@ const styles = {
     color: "#fff", // Text color for contrast
   },
 };
-
-
-
-
 
 export default FourDivsContainer;

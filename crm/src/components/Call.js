@@ -5,7 +5,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "./Header";
 
-function Allmeeting() {
+function Call() {
   return (
     <div style={{ width: "100%" }}>
       <Header />
@@ -859,15 +859,16 @@ function Allmeeting() {
           }}
         >
           <table className="table table-striped table-bordered">
-            <thead className="table-dark">
+            <thead className="table-yellow">
               <tr>
                 <th style={{ width: "40px" }}></th>
-                <th>Title</th>
-                <th>from</th>
-                <th>To</th>
+                <th>Subject</th>
+                <th>Call Type</th>
+                <th>Call start time</th>
+                <th>Call Duration </th>
                 <th>Related To</th>
                 <th>Contact Name</th>
-                <th>Host</th>
+                <th>Call Owner</th>
               </tr>
             </thead>
             <tbody>
@@ -875,105 +876,12 @@ function Allmeeting() {
                 <td>
                   <input type="checkbox" />
                 </td>
-                <td>Demo 1</td>
-                <td>20/03/2025 02:47 PM</td>
-                <td>20/03/2025 03:47 PM</td>
-                <td>Printing Dimentions</td>
-                <td>Donetee Foller(sample)</td>
-                <td>dev.papayapalette</td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>Webinar</td>
-                <td>20/03/2025 04:47 PM</td>
-                <td>20/03/2025 05:47 PM</td>
-                <td>Commercial press(sample)</td>
-                <td>Leota Dilliard</td>
-                <td>dev.papayapalette</td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>TradeShow</td>
-                <td>20/03/2025</td>
-                <td>20/03/2025</td>
-                <td>Chemel</td>
-                <td>James Venere(sample)</td>
-                <td>dev.papayapalette</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>Webinar</td>
-                <td>20/03/2025 04:47 PM</td>
-                <td>20/03/2025 06:47 PM</td>
-                <td>Chanay(sample)</td>
-                <td>Josephine Darakjy(sample)</td>
-                <td>dev.papayapalette</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>Seminar</td>
-                <td>20/03/2025 02:47 PM</td>
-                <td>20/03/2025 04:47 PM</td>
-                <td>Carissa Kidman(sample)</td>
+                <td>Follow Up With Lead</td>
+                <td>Out bound</td>
+                <td>20/03/2025 12:47 PM</td>
                 <td></td>
-                <td>dev.papayapalette</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>Attend Customer Conference</td>
-                <td>20/03/2025 </td>
-                <td>20/03/2025 </td>
-                <td>Feltz Printing Service</td>
-                <td>Capla Paprocki(sample)</td>
-                <td>dev.papayapalette</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>CRM Webinar</td>
-                <td>20/03/2025 01:47 PM </td>
-                <td>20/03/2025 03:47 PM </td>
-                <td>Morlong Associates</td>
-                <td>Mitsue Tollner(sample)</td>
-                <td>dev.papayapalette</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>CRM Webinar</td>
-                <td>20/03/2025 12:47 PM </td>
-                <td>20/03/2025 01:47 PM</td>
-                <td>Felix Hirpara</td>
+                <td>Chau Kitzman(sample)</td>
                 <td></td>
-                <td>dev.papayapalette</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>CRM Webinar</td>
-                <td>20/03/2025 12:47 PM </td>
-                <td>20/03/2025 01:47 PM</td>
-                <td>Benton</td>
-                <td>John Butt(sample)</td>
                 <td>dev.papayapalette</td>
               </tr>
             </tbody>
@@ -984,4 +892,4 @@ function Allmeeting() {
   );
 }
 
-export default Allmeeting;
+export default Call;
