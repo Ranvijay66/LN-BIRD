@@ -26,6 +26,15 @@ import Call from "./components/Call";
 import Report from "./components/Report";
 import Allreport from "./components/Allreport";
 import Myreport from "./components/Myreport";
+import Favorites from "./components/Favorites";
+import Recent from "./components/Recent";
+import Delete from "./components/Recentlydelete";
+import Accountandcontact from "./components/Accountandcontact";
+import Dealreports from "./components/Dealreports";
+import Read from "./components/Readreports";
+import Campaign from "./components/Campaign";
+import Caseandsolution from "./components/Caseandsolution";
+import Productreport from "./components/Productreport";
 
 function App() {
   return (
@@ -49,22 +58,23 @@ function App() {
           <Route path="/Project" element={<Project />}></Route>
           <Route path="/Call" element={<Call />}></Route>
           <Route path="/Report" element={<Report />}></Route>
+          <Route path="/Favorites" element={<Favorites />}></Route>
           <Route path="/Allreport" element={<Allreport />}></Route>
-           <Route path="/Myreport" element={<Myreport />}></Route>
+          <Route path="/Myreport" element={<Myreport />}></Route>
+          <Route path="/Recent" element={<Recent />}></Route>
+          <Route path="/Recentlydelete" element={<Delete />}></Route>
+          <Route
+            path="/Accountandcontact"
+            element={<Accountandcontact />}
+          ></Route>
+          <Route path="/Dealreports" element={<Dealreports />}></Route>
+          <Route path="/Readreports" element={<Read />}></Route>
+          <Route path="/Campaignreports" element={<Campaign />}></Route>
+          <Route path="/Caseandsolution" element={<Caseandsolution />}></Route>
+          <Route path="/Productreport" element={<Productreport />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
-    // <>
-    //   <Header />
-    //   <ImageWithText />
-    //   <Header2/>
-    //   <Body/>
-    //   <Body2/>
-    //   <Body3/>
-    //   <Footer/>
-    //   <Form1/>
-
-    // </>
   );
 }
 

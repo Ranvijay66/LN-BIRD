@@ -251,7 +251,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => navigate("Myreport")}
+                  onClick={() => navigate("/Myreport")}
                 >
                   My Reports
                 </li>
@@ -263,7 +263,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Favorites")}
+                  onClick={() => navigate("/Favorites")}
                 >
                   Favorites
                 </li>
@@ -275,7 +275,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Recently Viewed")}
+                  onClick={() => navigate("/Recent")}
                 >
                   Recently Viewed
                 </li>
@@ -287,7 +287,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Recently Deleted")}
+                  onClick={() => navigate("/Recentlydelete")}
                 >
                   Recently Deleted
                 </li>
@@ -299,7 +299,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Account and Contact Reports")}
+                  onClick={() => navigate("/Accountandcontact")}
                 >
                   Account and Contact Reports
                 </li>
@@ -311,7 +311,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Deal Reports")}
+                  onClick={() => navigate("/Dealreports")}
                 >
                   Deal Reports
                 </li>
@@ -323,7 +323,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Lead Reports")}
+                  onClick={() => navigate("/Readreports")}
                 >
                   Lead Reports
                 </li>
@@ -335,7 +335,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Campaign Reports")}
+                  onClick={() => navigate("/Campaignreports")}
                 >
                   Campaign Reports
                 </li>
@@ -347,7 +347,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Case and Solution Reports")}
+                  onClick={() => navigate("/Caseandsolution")}
                 >
                   Case and Solution Reports
                 </li>
@@ -359,7 +359,7 @@ function Report() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => handleClick("Product Reports")}
+                  onClick={() => navigate("/Productreport")}
                 >
                   Product Reports
                 </li>

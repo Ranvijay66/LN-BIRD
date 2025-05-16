@@ -6,7 +6,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 
-function Myreport() {
+function Recent() {
   const navigate = useNavigate();
   const [activeFolder, setActiveFolder] = useState(null);
 
@@ -23,7 +23,7 @@ function Myreport() {
     <div style={{ width: "100%" }}>
       <Header />
 
-      <h5 style={{ marginLeft:"350px",marginTop:"20px",color:"green" }}>My Report</h5>
+      <h5 style={{ marginLeft:"350px",marginTop:"20px",color:"green" }}>Recently Viewed</h5>
 
 
      
@@ -186,7 +186,7 @@ function Myreport() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => navigate("/Caseandsolution")}
+                  onClick={() => navigate("/Caseandsolution ")}
                 >
                   Case and Solution Reports
                 </li>
@@ -234,16 +234,46 @@ function Myreport() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <input type="checkbox" />
-                </td>
-                <td>NO RECORD FOUND</td>
-                <td>NO RECORD FOUNDe</td>
-                <td>NO RECORD FOUND</td>
-                <td>NO RECORD FOUND</td>
-                <td>-</td>
-              </tr>
+               <tr>
+    <td><input type="checkbox" /></td>
+    <td>Campaigns Revenue Report</td>
+    <td>Revenue generated from this Campaign.</td>
+    <td>Campaign Reports</td>
+    <td>Yesterday</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" /></td>
+    <td>Sales Cycle Duration Across Deal Type</td>
+    <td>Average time taken for the Deal to be won, by type</td>
+    <td>Sales Metrics Reports</td>
+    <td>Yesterday</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" /></td>
+    <td>Sales Cycle Duration Across Lead Sources</td>
+    <td>Average time taken for Deal to be won, by Lead source</td>
+    <td>Sales Metrics Reports</td>
+    <td>Yesterday</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" /></td>
+    <td>Top 10 Users</td>
+    <td>Top 10 users based on Mails Sent Rate</td>
+    <td>Email Reports</td>
+    <td>Yesterday</td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox" /></td>
+    <td>Vendors vs Purchases</td>
+    <td>Vendors Based on Purchases</td>
+    <td>Vendor Reports</td>
+    <td>13/04/2025</td>
+    <td>-</td>
+  </tr>
 
               
             </tbody>
@@ -287,4 +317,4 @@ const styles = {
   },
 };
 
-export default Myreport;
+export default Recent;

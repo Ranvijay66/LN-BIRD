@@ -6,7 +6,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 
-function Myreport() {
+function Dealreports() {
   const navigate = useNavigate();
   const [activeFolder, setActiveFolder] = useState(null);
 
@@ -23,10 +23,9 @@ function Myreport() {
     <div style={{ width: "100%" }}>
       <Header />
 
-      <h5 style={{ marginLeft:"350px",marginTop:"20px",color:"green" }}>My Report</h5>
-
-
-     
+      <h5 style={{ marginLeft: "350px", marginTop: "20px", color: "green" }}>
+        Deal Reports
+      </h5>
 
       {/* Wrapper with flex layout */}
       <div
@@ -42,19 +41,20 @@ function Myreport() {
           style={{
             flex: 1,
 
-             
             display: "flex",
             borderRadius: "10px",
             flexDirection: "column",
             gap: "10px",
-           // overflowY: "auto",
-           // backgroundColor: "dark",
+            // overflowY: "auto",
+            // backgroundColor: "dark",
           }}
         >
           {/* First Dropdown */}
 
           <div style={styles.container}>
-            <h5 style={{ ...styles.header, color: "green" }}><b>Folders</b></h5>
+            <h5 style={{ ...styles.header, color: "green" }}>
+              <b>Folders</b>
+            </h5>
 
             <input
               type="text"
@@ -186,7 +186,7 @@ function Myreport() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => navigate("/Caseandsolution")}
+                  onClick={() => navigate("/Caseandsolution ")}
                 >
                   Case and Solution Reports
                 </li>
@@ -209,28 +209,27 @@ function Myreport() {
 
         {/* Right Section with scrollable table */}
 
-        
         <div
           style={{
-           
             paddingLeft: "10px",
             maxHeight: "500px",
             overflowY: "auto",
           }}
         >
           <table
-  className="table table-striped table-bordered"
-  style={{ marginRight: "200px" }}
->
-
+            className="table table-striped table-bordered"
+            style={{ marginRight: "200px" }}
+          >
             <thead className="table-yellow">
               <tr>
                 <th style={{ width: "40px" }}></th>
-                <th style={{color:"green"}}>Report Name</th>
-                <th style={{color:"green"}}>Description</th>
-                <th style={{color:"green"}}>Folder</th>
-                <th style={{ fontSize: "15px",color:"green"} }>Last Accessed Date</th>
-                <th style={{fontSize:"15px",color:"green"}}>Created By</th>
+                <th style={{ color: "green" }}>Report Name</th>
+                <th style={{ color: "green" }}>Description</th>
+
+                <th style={{ fontSize: "15px", color: "green" }}>
+                  Last Accessed Date
+                </th>
+                <th style={{ fontSize: "15px", color: "green" }}>Created By</th>
               </tr>
             </thead>
             <tbody>
@@ -238,14 +237,103 @@ function Myreport() {
                 <td>
                   <input type="checkbox" />
                 </td>
-                <td>NO RECORD FOUND</td>
-                <td>NO RECORD FOUNDe</td>
-                <td>NO RECORD FOUND</td>
-                <td>NO RECORD FOUND</td>
+                <td>Today's Sales</td>
+                <td>Today's Sales</td>
+                <td>-</td>
                 <td>-</td>
               </tr>
-
-              
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Stage Vs Deal Type Report</td>
+                <td>
+                  Summarizes the various stages of New and Existing Business
+                </td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Salesperson's Performance Report</td>
+                <td>Deals gained by salesperson</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Sales by Lead Source</td>
+                <td>Sales gained from various Lead Sources</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Sales This Month</td>
+                <td>This Month's Sales</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Pipeline by Stage</td>
+                <td>Deals by Stage</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Pipeline by Probability</td>
+                <td>Deals by Probability</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Open Deals</td>
+                <td>Deals Pending</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Lost Deals</td>
+                <td>Deals Lost</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Deals by Type</td>
+                <td>Deals by Type</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Deals Closing this Month</td>
+                <td>Deals closing this month</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -261,7 +349,7 @@ const styles = {
     padding: "10px",
     borderRight: "1px solid #ccc",
     fontFamily: "Arial, sans-serif",
-     overflowY: "auto",
+    overflowY: "auto",
   },
   header: {
     marginBottom: "10px",
@@ -287,4 +375,4 @@ const styles = {
   },
 };
 
-export default Myreport;
+export default Dealreports;

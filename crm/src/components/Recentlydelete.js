@@ -6,7 +6,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 
-function Myreport() {
+function Delete() {
   const navigate = useNavigate();
   const [activeFolder, setActiveFolder] = useState(null);
 
@@ -23,7 +23,7 @@ function Myreport() {
     <div style={{ width: "100%" }}>
       <Header />
 
-      <h5 style={{ marginLeft:"350px",marginTop:"20px",color:"green" }}>My Report</h5>
+      <h5 style={{ marginLeft:"350px",marginTop:"20px",color:"green" }}>Recently Deleted</h5>
 
 
      
@@ -287,4 +287,4 @@ const styles = {
   },
 };
 
-export default Myreport;
+export default Delete;
