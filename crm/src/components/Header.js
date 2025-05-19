@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { useNavigate } from "react-router-dom";
 import {
   faMagnifyingGlass,
   faBell,
@@ -11,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Toolbar, Tooltip } from "@mui/material";
 import Form1 from "./Form";
-import { useNavigate } from "react-router-dom";
+
 
 function Header() {
   const navigate = useNavigate();
@@ -167,91 +169,37 @@ function Header() {
                       Reports
                     </a>
                   </li>
+                  
+                  
+                  
+                 
+                 
+                  
+                  
                   <li>
-                    <a className="dropdown-item" href="#analytics">
-                      Analytics
+                    <a className="dropdown-item" onClick={() => navigate("/Mycampaign")}>
+                      Campaign
                     </a>
                   </li>
+                  
+                  
+                  
+                  
+                  
                   <li>
-                    <a className="dropdown-item" href="#products">
-                      Products
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#quotes">
-                      Quotes
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#sales-orders">
-                      Sales Orders
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#purchase-orders">
-                      Purchase Orders
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#invoices">
-                      Invoices
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#sales-inbox">
-                      Sales Inbox
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#campaigns">
-                      Campaigns
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#vendors">
-                      Vendors
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#price-books">
-                      Price Books
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#cases">
-                      Cases
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#solutions">
-                      Solutions
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#documents">
+                    <a className="dropdown-item" onClick={() => navigate("/Documents")}>
                       Documents
                     </a>
                   </li>
+                  
                   <li>
-                    <a className="dropdown-item" href="#forecasts">
-                      Forecasts
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#visits">
+                    <a className="dropdown-item" href="#documents">
                       Visits
                     </a>
                   </li>
-                  <li>
-                    <a className="dropdown-item" href="#social">
-                      Social
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#create-new">
-                      +Create new Module
-                    </a>
-                  </li>
+                  
+                  
+                  
                 </ul>
               </div>
             </li>

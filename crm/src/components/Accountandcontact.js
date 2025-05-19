@@ -203,6 +203,111 @@ function Accountandcontact() {
                   Product Reports
                 </li>
               )}
+
+              {isVisible("Vendor Reports") && (
+                <li
+                  style={
+                    activeFolder === "Vendor Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Vendor")}
+                >
+                  Vendor Reports
+                </li>
+              )}
+
+              {isVisible("Quote Reports") && (
+                <li
+                  style={
+                    activeFolder === "Quote Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Quotereport")}
+                >
+                  Quote Reports
+                </li>
+              )}
+
+               {isVisible("Sales Order  Reports") && (
+                <li
+                  style={
+                    activeFolder === "Sales Order Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Salesorderreport")}
+                >
+                  Sales Order Reports
+                </li>
+              )}
+
+               {isVisible("Purchase Order  Reports") && (
+                <li
+                  style={
+                    activeFolder === "Purchase Order Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Purchaseorder")}
+                >
+                  Purchase Order Reports
+                </li>
+              )}
+
+              {isVisible("Invoice  Reports") && (
+                <li
+                  style={
+                    activeFolder === "Invoice Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Invoicereport")}
+                >
+                  Invoice  Reports
+                </li>
+              )}
+
+               {isVisible("Sales Metrics  Reports") && (
+                <li
+                  style={
+                    activeFolder === "Sales Metrics Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Salesmetrics")}
+                >
+                  Sales Metrics  Reports
+                </li>
+              )}
+
+              
+               {isVisible("Email Reports") && (
+                <li
+                  style={
+                    activeFolder === "Email Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Emailreport")}
+                >
+                  Email  Reports
+                </li>
+              )}
+
+               {isVisible("Meeting Reports") && (
+                <li
+                  style={
+                    activeFolder === "Meeting Reports"
+                      ? styles.activeItem
+                      : styles.item
+                  }
+                  onClick={() => navigate("/Meetingreport")}
+                >
+                  Meeting  Reports
+                </li>
+              )}
             </ul>
           </div>
         </div>

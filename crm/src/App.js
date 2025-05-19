@@ -35,6 +35,16 @@ import Read from "./components/Readreports";
 import Campaign from "./components/Campaign";
 import Caseandsolution from "./components/Caseandsolution";
 import Productreport from "./components/Productreport";
+import Vendor from "./components/Vendor";
+import Quotereport from "./components/Quotereport";
+import Salesorderreport from "./components/Salesorderreport";
+import Purchaseorder from "./components/Purchaseorder";
+import Invoicereport from "./components/Invoicereport";
+import Salesmetrics from "./components/Salesmetrics";
+import Emailreport from "./components/Emailreport";
+import Meetingreport from "./components/Meetingreport";
+import Mycampaign from "./components/Mycampaign";
+import Documents from "./components/Documents";
 
 function App() {
   return (
@@ -72,6 +82,16 @@ function App() {
           <Route path="/Campaignreports" element={<Campaign />}></Route>
           <Route path="/Caseandsolution" element={<Caseandsolution />}></Route>
           <Route path="/Productreport" element={<Productreport />}></Route>
+          <Route path="/Vendor" element={<Vendor />}></Route>
+          <Route path="/Quotereport" element={<Quotereport />}></Route>
+          <Route path="/Salesorderreport" element={<Salesorderreport />}></Route>
+          <Route path="/Purchaseorder" element={<Purchaseorder />}></Route>
+          <Route path="/Invoicereport" element={<Invoicereport />}></Route>
+          <Route path="/Salesmetrics" element={<Salesmetrics />}></Route>
+          <Route path="/Emailreport" element={<Emailreport />}></Route>
+           <Route path="/Meetingreport" element={<Meetingreport />}></Route>
+           <Route path="/Mycampaign" element={<Mycampaign />}></Route>
+           <Route path="/Documents" element={<Documents/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

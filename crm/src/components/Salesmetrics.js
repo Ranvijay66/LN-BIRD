@@ -6,7 +6,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 
-function Recent() {
+function Salesmetrics() {
   const navigate = useNavigate();
   const [activeFolder, setActiveFolder] = useState(null);
 
@@ -23,10 +23,9 @@ function Recent() {
     <div style={{ width: "100%" }}>
       <Header />
 
-      <h5 style={{ marginLeft:"350px",marginTop:"20px",color:"green" }}>Recently Viewed</h5>
-
-
-     
+      <h5 style={{ marginLeft: "330px", marginTop: "20px", color: "green" }}>
+        Sales Metrics Reports
+      </h5>
 
       {/* Wrapper with flex layout */}
       <div
@@ -42,19 +41,20 @@ function Recent() {
           style={{
             flex: 1,
 
-             
             display: "flex",
             borderRadius: "10px",
             flexDirection: "column",
             gap: "10px",
-           // overflowY: "auto",
-           // backgroundColor: "dark",
+            // overflowY: "auto",
+            // backgroundColor: "dark",
           }}
         >
           {/* First Dropdown */}
 
           <div style={styles.container}>
-            <h5 style={{ ...styles.header, color: "green" }}><b>Folders</b></h5>
+            <h5 style={{ ...styles.header, color: "green" }}>
+              <b>Folders</b>
+            </h5>
 
             <input
               type="text"
@@ -186,7 +186,7 @@ function Recent() {
                       ? styles.activeItem
                       : styles.item
                   }
-                  onClick={() => navigate("/Caseandsolution ")}
+                  onClick={() => navigate("/Caseandsolution")}
                 >
                   Case and Solution Reports
                 </li>
@@ -230,7 +230,7 @@ function Recent() {
                 </li>
               )}
 
-               {isVisible("Sales Order  Reports") && (
+              {isVisible("Sales Order  Reports") && (
                 <li
                   style={
                     activeFolder === "Sales Order Reports"
@@ -243,7 +243,7 @@ function Recent() {
                 </li>
               )}
 
-               {isVisible("Purchase Order  Reports") && (
+              {isVisible("Purchase Order  Reports") && (
                 <li
                   style={
                     activeFolder === "Purchase Order Reports"
@@ -265,11 +265,11 @@ function Recent() {
                   }
                   onClick={() => navigate("/Invoicereport")}
                 >
-                  Invoice  Reports
+                  Invoice Reports
                 </li>
               )}
 
-               {isVisible("Sales Metrics  Reports") && (
+              {isVisible("Sales Metrics  Reports") && (
                 <li
                   style={
                     activeFolder === "Sales Metrics Reports"
@@ -278,7 +278,7 @@ function Recent() {
                   }
                   onClick={() => navigate("/Salesmetrics")}
                 >
-                  Sales Metrics  Reports
+                  Sales Metrics Reports
                 </li>
               )}
 
@@ -314,73 +314,128 @@ function Recent() {
 
         {/* Right Section with scrollable table */}
 
-        
         <div
           style={{
-           
             paddingLeft: "10px",
             maxHeight: "500px",
             overflowY: "auto",
           }}
         >
           <table
-  className="table table-striped table-bordered"
-  style={{ marginRight: "200px" }}
->
-
+            className="table table-striped table-bordered"
+            style={{ marginRight: "200px" }}
+          >
             <thead className="table-yellow">
               <tr>
                 <th style={{ width: "40px" }}></th>
-                <th style={{color:"green"}}>Report Name</th>
-                <th style={{color:"green"}}>Description</th>
-                <th style={{color:"green"}}>Folder</th>
-                <th style={{ fontSize: "15px",color:"green"} }>Last Accessed Date</th>
-                <th style={{fontSize:"15px",color:"green"}}>Created By</th>
+                <th style={{ color: "green" }}>Report Name</th>
+                <th style={{ color: "green" }}>Description</th>
+
+                <th style={{ fontSize: "15px", color: "green" }}>
+                  Last Accessed Date
+                </th>
+                <th style={{ fontSize: "15px", color: "green" }}>Created By</th>
               </tr>
             </thead>
             <tbody>
-               <tr>
-    <td><input type="checkbox" /></td>
-    <td>Campaigns Revenue Report</td>
-    <td>Revenue generated from this Campaign.</td>
-    <td>Campaign Reports</td>
-    <td>Yesterday</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" /></td>
-    <td>Sales Cycle Duration Across Deal Type</td>
-    <td>Average time taken for the Deal to be won, by type</td>
-    <td>Sales Metrics Reports</td>
-    <td>Yesterday</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" /></td>
-    <td>Sales Cycle Duration Across Lead Sources</td>
-    <td>Average time taken for Deal to be won, by Lead source</td>
-    <td>Sales Metrics Reports</td>
-    <td>Yesterday</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" /></td>
-    <td>Top 10 Users</td>
-    <td>Top 10 users based on Mails Sent Rate</td>
-    <td>Email Reports</td>
-    <td>Yesterday</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td><input type="checkbox" /></td>
-    <td>Vendors vs Purchases</td>
-    <td>Vendors Based on Purchases</td>
-    <td>Vendor Reports</td>
-    <td>13/04/2025</td>
-    <td>-</td>
-  </tr>
-
-              
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Sales Cycle Duration Across Owners</td>
+                <td>Average time taken for Deals won, by Owner Deal</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Sales Cycle Duration Across Lead Sources</td>
+                <td>Average time taken for Deal to be won, by Lead source</td>
+                <td>15/05/2025</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Sales Cycle Duration Across Deal Type</td>
+                <td>Average time taken for the Deal to be won, by type</td>
+                <td>15/05/2025</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Overall Sales Duration Across Lead Sources</td>
+                <td>
+                  Average number of days taken for the Lead to be converted to
+                  Deal from various Lead sources
+                </td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Overall Sales Duration Across Deal Type</td>
+                <td>
+                  Average time taken for Lead to be converted to Deal of
+                  different type
+                </td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Lead Conversion Count across Owners</td>
+                <td>
+                  Total number of Lead converted for the past 6 months, by all
+                  owners
+                </td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Lead Conversion Across Sources</td>
+                <td>
+                  Average time taken for Lead to be converted in the past 6
+                  months, by source
+                </td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Lead Conversion Across Owners</td>
+                <td>
+                  Average Lead conversion time for the past 6 months, by owner
+                </td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Lead Conversion Across Industries</td>
+                <td>
+                  Average time taken for Lead to be converted for the past six
+                  months, by industry
+                </td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -396,7 +451,7 @@ const styles = {
     padding: "10px",
     borderRight: "1px solid #ccc",
     fontFamily: "Arial, sans-serif",
-     overflowY: "auto",
+    overflowY: "auto",
   },
   header: {
     marginBottom: "10px",
@@ -422,4 +477,4 @@ const styles = {
   },
 };
 
-export default Recent;
+export default Salesmetrics;
