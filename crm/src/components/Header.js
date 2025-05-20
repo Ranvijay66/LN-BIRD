@@ -193,7 +193,7 @@ function Header() {
                   </li>
                   
                   <li>
-                    <a className="dropdown-item" href="#documents">
+                    <a className="dropdown-item"onClick={() => navigate("/Visit")}>
                       Visits
                     </a>
                   </li>

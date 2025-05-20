@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+//import { useState } from "react";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "./Header";
@@ -876,7 +876,10 @@ function Call() {
                 <td>
                   <input type="checkbox" />
                 </td>
-                <td>Follow Up With Lead</td>
+                <td>
+  <a href="/Followup">Follow Up With Lead</a>
+</td>
+
                 <td>Out bound</td>
                 <td>20/03/2025 12:47 PM</td>
                 <td></td>

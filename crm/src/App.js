@@ -45,6 +45,8 @@ import Emailreport from "./components/Emailreport";
 import Meetingreport from "./components/Meetingreport";
 import Mycampaign from "./components/Mycampaign";
 import Documents from "./components/Documents";
+import Visit from "./components/Visit";
+import Followup from "./components/Followup";
 
 function App() {
   return (
@@ -84,14 +86,19 @@ function App() {
           <Route path="/Productreport" element={<Productreport />}></Route>
           <Route path="/Vendor" element={<Vendor />}></Route>
           <Route path="/Quotereport" element={<Quotereport />}></Route>
-          <Route path="/Salesorderreport" element={<Salesorderreport />}></Route>
+          <Route
+            path="/Salesorderreport"
+            element={<Salesorderreport />}
+          ></Route>
           <Route path="/Purchaseorder" element={<Purchaseorder />}></Route>
           <Route path="/Invoicereport" element={<Invoicereport />}></Route>
           <Route path="/Salesmetrics" element={<Salesmetrics />}></Route>
           <Route path="/Emailreport" element={<Emailreport />}></Route>
-           <Route path="/Meetingreport" element={<Meetingreport />}></Route>
-           <Route path="/Mycampaign" element={<Mycampaign />}></Route>
-           <Route path="/Documents" element={<Documents/>}></Route>
+          <Route path="/Meetingreport" element={<Meetingreport />}></Route>
+          <Route path="/Mycampaign" element={<Mycampaign />}></Route>
+          <Route path="/Documents" element={<Documents />}></Route>
+          <Route path="/Visit" element={<Visit />}></Route>
+          <Route path="/Followup" element={<Followup />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
