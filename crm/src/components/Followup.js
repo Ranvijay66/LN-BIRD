@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Header from "./Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+// Add this import at the top if not already present:
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Followup = () => {
   const [showCompletedMenu, setShowCompletedMenu] = useState(false);
@@ -51,14 +53,14 @@ const Followup = () => {
   };
 
   const rightInner60 = {
-    width: "60%",
+    width: "70%",
     backgroundColor: "#ffffff",
     marginRight: "10px",
     padding: "20px",
   };
 
   const rightInner40 = {
-    width: "40%",
+    width: "30%",
     backgroundColor: "#eaeaea",
     padding: "20px",
   };
@@ -126,15 +128,19 @@ const Followup = () => {
       <Header />
 
       <div style={containerStyle}>
-        <div style={leftStyle}> <h5>
-          <FontAwesomeIcon icon={faArrowLeft} style={{ marginRight: "8px" }} />
-          All Calls </h5>
-
-           <div style={{backgroundColor:"lightgreen"}}>Chau Kitzman (Sample)
-</div>
+        <div style={leftStyle}>
+          {" "}
+          <h5>
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              style={{ marginRight: "8px" }}
+            />
+            All Calls{" "}
+          </h5>
+          <div style={{ backgroundColor: "lightgreen" }}>
+            Chau Kitzman (Sample)
+          </div>
         </div>
-
-       
 
         <div style={rightOuterStyle}>
           <div style={topContentStyle}>
@@ -285,7 +291,72 @@ const Followup = () => {
               </div>
             </div>
 
-            <div style={rightInner40}>Right Inner 40%</div>
+            <div style={rightInner40}>
+              <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">
+                    Info
+                  </a>
+                  <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                          Timeline
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">
+                          conversation
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              <h6
+                style={{
+                  marginTop: "10px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  style={{ fontSize: "20px", marginRight: "8px" }}
+                />
+                Chau Kitzman (Sample) Lead
+              </h6>
+              <button
+                style={{
+                  width: "100px",
+                  height: "30px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "5px",
+                  fontSize: "14px",
+                }}
+              >
+                Send Mail
+              </button>
+              <div>
+                <p>🏢 Creative Business Systems</p>
+                <p>📞 555-555-5555</p>
+                <p>📲 555-555-5555</p>
+                <p>chau-kitzman@noemail.invalid</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
