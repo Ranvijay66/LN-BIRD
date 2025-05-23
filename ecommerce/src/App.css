@@ -75,3 +75,31 @@ body, html, #root {
   overflow-y: auto;
   background-color: #f8f9fa;
 }
+
+
+
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.left {
+  width: 70%;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.right {
+  width: 30%;
+  padding: 10px;
+  background-color:  #f0f0f0;
+}
+
+.box {
+  display: block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 10px;
+}

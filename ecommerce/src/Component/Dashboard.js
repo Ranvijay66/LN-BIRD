@@ -7,161 +7,19 @@ import Icon1 from "../Icon1 (1).png";
 import Graphimage from "../Graphimage.png";
 import User from "../User.png";
 import Cube from "../Cube.png";
+import { useNavigate } from "react-router-dom";
+import Sidebar from "./sidebar";
+
 
 function Dashboard() {
   const [productsOpen, setProductsOpen] = useState(false);
   const [pagesOpen, setPagesOpen] = useState(false);
+  const navigate = useNavigate();
+
 
   return (
     <div className="d-flex">
-      {/* Sidebar */}
-      <div
-        className="sidebar d-flex flex-column p-3"
-        style={{ width: "250px",backgroundColor:"white" }}
-      >
-        <img
-          src={logo1}
-          alt="eBazar Logo"
-          className="mb-4"
-          style={{ maxWidth: "150px" }}
-        />
-
-        <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-tachometer-alt me-2"></i> Dashboard
-            </a>
-          </li>
-
-          {/* Products Dropdown */}
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center justify-content-between"
-              onClick={() => setProductsOpen(!productsOpen)}
-            >
-              <span>
-                <i className="fas fa-boxes me-2"></i> Products
-              </span>
-              <i className="fas fa-angle-right"></i>
-            </a>
-            {productsOpen && (
-              <div className="ps-4">
-                <a href="#" className="nav-link text-start">
-                 Products List
-                </a>
-                 <a href="#" className="nav-link text-start">
-                 Products Grid
-                </a>
-                <a href="#" className="nav-link text-start">
-                  Add Product
-                </a>
-              </div>
-            )}
-          </li>
-
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-th-large me-2"></i> Category
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-shopping-cart me-2"></i> Order
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-tags me-2"></i> Brand
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-gift me-2"></i> Coupons
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-user-circle me-2"></i> Profile
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-store me-2"></i> Online Store
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-users me-2"></i> Our Staff
-            </a>
-          </li>
-
-          {/* Pages Dropdown */}
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center justify-content-between"
-              onClick={() => setPagesOpen(!pagesOpen)}
-            >
-              <span>
-                <i className="fas fa-file-alt me-2"></i> Pages
-              </span>
-              <i className="fas fa-angle-right"></i>
-            </a>
-            {pagesOpen && (
-              <div className="ps-4">
-                <a href="#" className="nav-link text-start">
-                  About Us
-                </a>
-                <a href="#" className="nav-link text-start">
-                  Contact
-                </a>
-              </div>
-            )}
-          </li>
-        </ul>
-
-        {/* Logout */}
-        <div
-          className="logout-btn mt-auto"
-          style={{
-            borderRadius: "5px",
-            paddingLeft: "5px",
-            marginLeft: "30px",
-          }}
-        >
-          <a
-            href="#"
-            className="nav-link text-white text-start d-flex align-items-center"
-          >
-            <i className="fas fa-sign-out-alt me-2"></i> Logout
-          </a>
-        </div>
-      </div>
+    <Sidebar/>
 
       {/* Content Area */}
       <div className="content flex-grow-1 p-4" style={{ marginTop: "-50px" }}>
@@ -242,7 +100,7 @@ function Dashboard() {
               padding: "20px",
               maxWidth: "100%",
               height: "20%",
-              backgroundColor:"lightgreen",
+              backgroundColor:"white",
               // border: "1px solid #ccc",
               marginTop: "30px",
             }}
