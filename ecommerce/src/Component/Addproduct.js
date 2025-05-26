@@ -11,10 +11,24 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Uploadimage from "../Uploadimage.png";
 
+import ProductVariations from "./Addimage";
+
 function Addproduct() {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
+
+
+
+  const [fields, setFields] = useState([]);
+
+  const addField = () => {
+    setFields([...fields, { id: Date.now() }]);
+  };
+
+  const removeField = (id) => {
+    setFields(fields.filter((field) => field.id !== id));
+  };
 
   return (
     <div className="d-flex">
@@ -27,7 +41,7 @@ function Addproduct() {
           <div className="d-flex justify-content-between align-items-end flex-wrap">
             <div className="page-title mb-4">
               <Header />
-              <h3 className="mb-0 text-start">Add Product</h3>
+              <h4 className="mb-0 text-start">Add Product</h4>
 
 
 
@@ -56,9 +70,9 @@ function Addproduct() {
 
 
               
-              <h6 style={{ display: "inline", marginLeft: "10px" }}>
-                Add Product
-              </h6>
+               <h6 style={{ display: "inline", marginLeft: "10px" }}>
+  &#8226; Add Product
+</h6>
             </div>
           </div>
           <div className="container">
@@ -341,21 +355,13 @@ function Addproduct() {
                 </div>
               </div>
 
-              <div className="box" style={{ height: "130px", padding: "15px" }}>
-                <h5>Product Variations</h5>
+              <div className="box" style={{ height: "auto", padding: "15px" }}>
+      <ProductVariations/>
 
-                <button
-                  style={{
-                    backgroundColor: "blue",
-                    color: "white",
-                    borderRadius: "10px",
-                    border: "none",
-                    padding: "10px 20px",
-                  }}
-                >
-                  Add Field
-                </button>
-              </div>
+    </div>
+
+    
+
 
               <button
                 style={{

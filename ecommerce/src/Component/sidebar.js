@@ -3,16 +3,15 @@ import logo1 from "../logo3.png";
 import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
-
-      const [productsOpen, setProductsOpen] = useState(false);
-      const [pagesOpen, setPagesOpen] = useState(false);
-      const navigate = useNavigate();
+  const [productsOpen, setProductsOpen] = useState(false);
+  const [pagesOpen, setPagesOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div>
-       <div
+      <div
         className="sidebar d-flex flex-column p-3"
-        style={{ width: "250px",backgroundColor:"white" }}
+        style={{ width: "270px", backgroundColor: "white" }}
       >
         <img
           src={logo1}
@@ -24,8 +23,9 @@ function Sidebar() {
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
             <a
-              
-              className="nav-link text-start d-flex align-items-center" onClick={() => navigate("/")}
+              className="nav-link text-start d-flex align-items-center"
+              onClick={() => navigate("/")}
+              style={{ cursor: "pointer" }}
             >
               <i className="fas fa-tachometer-alt me-2"></i> Dashboard
             </a>
@@ -39,19 +39,33 @@ function Sidebar() {
               onClick={() => setProductsOpen(!productsOpen)}
             >
               <span>
-                <i className="fas fa-boxes me-2"></i> Products
+                <i
+                  className="fas fa-boxes me-2"
+                  style={{ marginTop: "15px" }}
+                ></i>{" "}
+                Products
               </span>
               <i className="fas fa-angle-right"></i>
             </a>
             {productsOpen && (
               <div className="ps-4">
-                <a  className="nav-link text-start"  onClick={() => navigate("/Productlist")}>
-                 Products List
+                <a
+                  className="nav-link text-start"
+                  onClick={() => navigate("/Productlist")}
+                  style={{ cursor: "pointer" }}
+                >
+                  Products List
                 </a>
-                 <a href="#" className="nav-link text-start"   >
-                 Products Grid
+
+                <a  className="nav-link text-start" onClick={() => navigate("/Productgrid")}
+                  style={{ cursor: "pointer" }}>
+                  Products Grid
                 </a>
-                <a  className="nav-link text-start"  onClick={() => navigate("/Addproduct")}>
+                <a
+                  className="nav-link text-start"
+                  onClick={() => navigate("/Addproduct")}
+                  style={{ cursor: "pointer" }}
+                >
                   Add Product
                 </a>
               </div>
@@ -60,10 +74,16 @@ function Sidebar() {
 
           <li>
             <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i className="fas fa-th-large me-2"></i> Category
+              
+              className="nav-link text-start d-flex align-items-center"onClick={() => navigate("/Category")}
+                  style={{ cursor: "pointer" }}>
+                  
+            
+              <i
+                className="fas fa-th-large me-2"
+                style={{ marginTop: "15px" }}
+              ></i>{" "}
+              Category
             </a>
           </li>
           <li>
@@ -71,7 +91,11 @@ function Sidebar() {
               href="#"
               className="nav-link text-start d-flex align-items-center"
             >
-              <i className="fas fa-shopping-cart me-2"></i> Order
+              <i
+                className="fas fa-shopping-cart me-2"
+                style={{ marginTop: "15px" }}
+              ></i>{" "}
+              Order
             </a>
           </li>
           <li>
@@ -79,7 +103,8 @@ function Sidebar() {
               href="#"
               className="nav-link text-start d-flex align-items-center"
             >
-              <i className="fas fa-tags me-2"></i> Brand
+              <i className="fas fa-tags me-2" style={{ marginTop: "15px" }}></i>{" "}
+              Brand
             </a>
           </li>
           <li>
@@ -87,7 +112,8 @@ function Sidebar() {
               href="#"
               className="nav-link text-start d-flex align-items-center"
             >
-              <i className="fas fa-gift me-2"></i> Coupons
+              <i className="fas fa-gift me-2" style={{ marginTop: "15px" }}></i>{" "}
+              Coupons
             </a>
           </li>
           <li>
@@ -95,7 +121,11 @@ function Sidebar() {
               href="#"
               className="nav-link text-start d-flex align-items-center"
             >
-              <i className="fas fa-user-circle me-2"></i> Profile
+              <i
+                className="fas fa-user-circle me-2"
+                style={{ marginTop: "15px" }}
+              ></i>{" "}
+              Profile
             </a>
           </li>
           <li>
@@ -103,7 +133,11 @@ function Sidebar() {
               href="#"
               className="nav-link text-start d-flex align-items-center"
             >
-              <i className="fas fa-store me-2"></i> Online Store
+              <i
+                className="fas fa-store me-2"
+                style={{ marginTop: "15px" }}
+              ></i>{" "}
+              Online Store
             </a>
           </li>
           <li>
@@ -111,7 +145,11 @@ function Sidebar() {
               href="#"
               className="nav-link text-start d-flex align-items-center"
             >
-              <i className="fas fa-users me-2"></i> Our Staff
+              <i
+                className="fas fa-users me-2"
+                style={{ marginTop: "15px" }}
+              ></i>{" "}
+              Our Staff
             </a>
           </li>
 
@@ -123,7 +161,11 @@ function Sidebar() {
               onClick={() => setPagesOpen(!pagesOpen)}
             >
               <span>
-                <i className="fas fa-file-alt me-2"></i> Pages
+                <i
+                  className="fas fa-file-alt me-2"
+                  style={{ marginTop: "15px" }}
+                ></i>{" "}
+                Pages
               </span>
               <i className="fas fa-angle-right"></i>
             </a>
@@ -135,7 +177,7 @@ function Sidebar() {
                 <a href="#" className="nav-link text-start">
                   Login
                 </a>
-                 <a href="#" className="nav-link text-start">
+                <a href="#" className="nav-link text-start">
                   Forget Password
                 </a>
               </div>
@@ -161,7 +203,7 @@ function Sidebar() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

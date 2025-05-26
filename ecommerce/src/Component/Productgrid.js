@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Uploadimage from "../Uploadimage.png";
 
-function Productlist() {
+function Productgrid() {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
@@ -57,9 +57,10 @@ function Productlist() {
 
 
               
-               <h6 style={{ display: "inline", marginLeft: "10px" }}>
-  &#8226; Product List
+            <h6 style={{ display: "inline", marginLeft: "10px" }}>
+  &#8226; Product Grid
 </h6>
+
             </div>
           </div>
          
@@ -197,14 +198,7 @@ function Productlist() {
 
   <tbody>
     {/* Example row */}
-    <tr>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}><p style={{fontSize:"13px"}}>showing 0 of 0</p> </td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-    </tr>
+    
 
     {/* Add more rows as needed */}
   </tbody>
@@ -218,4 +212,4 @@ function Productlist() {
   );
 }
 
-export default Productlist;
+export default Productgrid;

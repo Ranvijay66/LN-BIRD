@@ -103,3 +103,46 @@ body, html, #root {
   padding: 8px;
   margin-bottom: 10px;
 }
+
+
+
+.remove-button {
+  margin-top: -150px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  border: 3px solid red; /* inner circle border */
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 28px;
+  padding: 0;
+  outline: 1px solid black; /* outer square border */
+  outline-offset: 3px; /* space between circle and square */
+  transition: outline-color 0.3s ease;
+}
+
+.remove-button:hover {
+  outline-color: red; /* outer border changes to red on hover */
+}
+.outer-border:hover {
+  border-color: red;
+}
+
+
+.input-light-border {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.09); /* very light border */
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-light-border:focus {
+  border-color: blue; /* border changes to blue on focus */
+ 
+}
