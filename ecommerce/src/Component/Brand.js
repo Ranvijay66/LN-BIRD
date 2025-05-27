@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
 import Uploadimage from "../Uploadimage.png";
 
-function Category() {
+function Brand() {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
@@ -31,7 +31,7 @@ function Category() {
           <div className="d-flex justify-content-between align-items-end flex-wrap">
             <div className="page-title mb-4">
               <Header />
-              <h4 className="mb-0 text-start"> Category</h4>
+              <h4 className="mb-0 text-start"> Brands</h4>
 
               <a
                 onClick={() => navigate("/Dashboard")}
@@ -51,7 +51,7 @@ function Category() {
               </a>
 
               <h6 style={{ display: "inline", marginLeft: "10px" }}>
-                &#8226; Category List
+                &#8226; Brands
               </h6>
             </div>
           </div>
@@ -128,28 +128,42 @@ function Category() {
               </button>
 
               <div style={{ marginBottom: "10px" }}>
-                <label>Parent</label>
+                <label>name</label>
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder="name"
                   className="input-light-border"
                 />
               </div>
 
               <div style={{ marginBottom: "5px" }}>
-                <label>Children</label>
+                <label>email</label>
                 <input
                   type="text"
-                  placeholder="Enter children"
+                  placeholder="email"
                   style={{ width: "100%", padding: "8px", marginTop: "5px" }}
                   className="input-light-border"
                 />
-                <small>
-                  {" "}
-                  <i style={{ fontSize: "15px", opacity: "0.6" }}>
-                    Press enter to add new children
-                  </i>
-                </small>
+              </div>
+
+              <div style={{ marginBottom: "5px" }}>
+                <label>website</label>
+                <input
+                  type="text"
+                  placeholder="website"
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  className="input-light-border"
+                />
+              </div>
+
+              <div style={{ marginBottom: "5px" }}>
+                <label>location</label>
+                <input
+                  type="text"
+                  placeholder="location"
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  className="input-light-border"
+                />
               </div>
 
               <div style={{ margin: "15px 0" }}>
@@ -167,6 +181,71 @@ function Category() {
                 ></textarea>
               </div>
 
+            <div className="dropdown-wrapper">
+  <label htmlFor="status">Status</label>
+  <div
+    className="custom-select"
+    style={{
+      position: "relative",
+      width: "100%",
+      height: "40px",
+      display: "inline-flex",
+      alignItems: "center",
+    }}
+  >
+    <select
+      id="status"
+      defaultValue=""
+      className="input-light-border"
+      style={{
+        height: "40px",
+        paddingRight: "30px",
+        appearance: "none",
+        WebkitAppearance: "none",
+        MozAppearance: "none",
+        boxSizing: "border-box",
+        marginTop: "0px", // override default if needed
+      }}
+    >
+      <option value="" disabled>
+        &nbsp;&nbsp;&nbsp;&nbsp;Select
+      </option>
+      <option value="active">Active</option>
+      <option value="inactive">Inactive</option>
+    </select>
+
+    {/* Vertical divider */}
+    <div
+      className="icon-wrapper"
+      style={{
+        position: "absolute",
+        right: "30px",
+        height: "24px",
+        borderLeft: "1px solid rgba(0, 0, 0, 0.2)",
+        top: "50%",
+        transform: "translateY(-50%)",
+      }}
+    ></div>
+
+    {/* Dropdown arrow icon */}
+    <div
+      className="dropdown-icon"
+      style={{
+        position: "absolute",
+        right: "8px",
+        top: "50%",
+        transform: "translateY(-50%)",
+        pointerEvents: "none",
+        width: "10px",
+        height: "10px",
+        borderLeft: "5px solid transparent",
+        borderRight: "5px solid transparent",
+        borderTop: "5px solid rgba(0, 0, 0, 0.2)",
+      }}
+    ></div>
+  </div>
+</div>
+
               <button
                 style={{
                   backgroundColor: "blue",
@@ -176,14 +255,15 @@ function Category() {
                   height: "40px",
                   borderRadius: "4px", // optional: makes it look cleaner
                   cursor: "pointer", // optional: pointer cursor on hover
+                  marginTop: "20px",
                 }}
               >
-                Add Category
+                Add Brand
               </button>
             </div>
 
             {/* Right Div */}
-            <div style={{ width: "65%" , backgroundColor: "#fff",}}>
+            <div style={{ width: "65%",  backgroundColor: "#fff",}}>
               {/* Scrollable Table Container */}
               <div
                 style={{
@@ -204,25 +284,17 @@ function Category() {
                   }}
                 >
                   <thead>
-                    <tr style={{ opacity: 0.2 }}>
+                    <tr style={{ opacity: 0.3 ,fontSize:"12px"}}>
                       <th style={{ textAlign: "left", padding: "10px" }}>Id</th>
+                     
                       <th
                         style={{
                           textAlign: "left",
                           padding: "10px",
-                          paddingLeft: "500px",
+                          paddingLeft: "200px",
                         }}
                       >
-                        Name
-                      </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "300px",
-                        }}
-                      >
-                        Item
+                        NAME
                       </th>
                       <th
                         style={{
@@ -231,7 +303,39 @@ function Category() {
                           paddingLeft: "100px",
                         }}
                       >
-                        Action
+                        EMAIL
+                      </th>
+
+
+
+                      <th
+                        style={{
+                          textAlign: "left",
+                          padding: "10px",
+                          paddingLeft: "100px",
+                        }}
+                      >
+                        WEBSITE
+                      </th>
+
+
+                      <th
+                        style={{
+                          textAlign: "left",
+                          padding: "10px",
+                          paddingLeft: "100px",
+                        }}
+                      >
+                        LOCATION
+                      </th>
+                      <th
+                        style={{
+                          textAlign: "left",
+                          padding: "10px",
+                          paddingLeft: "75px",
+                        }}
+                      >
+                        ACTION
                       </th>
                     </tr>
                   </thead>
@@ -240,7 +344,7 @@ function Category() {
               </div>
 
               {/* Text below scrollable table */}
-              <div style={{ marginTop: "10px", fontSize: "14px" ,marginLeft:"20px"}}>
+              <div style={{ marginTop: "10px",marginLeft:"20px", fontSize: "14px" }}>
                 Showing 1–0 of 0
               </div>
             </div>
@@ -251,4 +355,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default Brand;

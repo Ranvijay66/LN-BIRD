@@ -24,7 +24,7 @@ function Productlist() {
 
       {/* Content Area */}
       <div className="content flex-grow-1 p-4" style={{ marginTop: "-50px" }}>
-        <div className="body-content px-4 py-4 bg-light">
+        <div className="body-content px-4 py-4 " style={{ backgroundColor: '#f1f5f9' }}>
           <div className="d-flex justify-content-between align-items-end flex-wrap">
             <div className="page-title mb-4">
               <Header />

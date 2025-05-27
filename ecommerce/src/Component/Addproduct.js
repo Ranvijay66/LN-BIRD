@@ -37,8 +37,9 @@ function Addproduct() {
 
       {/* Content Area */}
       <div className="content flex-grow-1 p-4" style={{ marginTop: "-50px" }}>
-        <div className="body-content px-4 py-4 bg-light">
-          <div className="d-flex justify-content-between align-items-end flex-wrap">
+        <div className="body-content px-4 py-4" style={{ backgroundColor: '#f1f5f9' }}>
+
+          <div className="d-flex justify-content-between align-items-end flex-wrap" >
             <div className="page-title mb-4">
               <Header />
               <h4 className="mb-0 text-start">Add Product</h4>
@@ -75,7 +76,7 @@ function Addproduct() {
 </h6>
             </div>
           </div>
-          <div className="container">
+          <div className="container" style={{ backgroundColor: '#f1f5f9' }}>
             <div className="left">
               <div className="box" style={{ height: "300px", padding: "20px" }}>
                  <h4 style={{ fontWeight: 500 }}>General</h4>

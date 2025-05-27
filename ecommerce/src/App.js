@@ -1,28 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-import Dashboard from './Component/Dashboard';
+import logo from "./logo.svg";
+import "./App.css";
+import Dashboard from "./Component/Dashboard";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Addproduct from './Component/Addproduct';
-import Productlist from './Component/Productlist';
-import Productgrid from './Component/Productgrid';
-import Category from './Component/Category';
+import Addproduct from "./Component/Addproduct";
+import Productlist from "./Component/Productlist";
+import Productgrid from "./Component/Productgrid";
+import Category from "./Component/Category";
+import Order from "./Component/Order";
+import Brand from "./Component/Brand";
+import Coupons from "./Component/Coupons";
+import Profile from "./Component/Profile";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-      <Routes>
-         <Route path="/" element={<Dashboard/>}></Route>
-         <Route path="/Dashboard" element={<Dashboard />}></Route>
-         <Route path="/Addproduct" element={<Addproduct/>}></Route>
-         <Route path="/Productlist" element={<Productlist/>}></Route>
-         <Route path="/Home" element={<Dashboard />}></Route>
-         <Route path="/Productgrid" element={<Productgrid />}></Route>
+        <Routes>
+          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/Dashboard" element={<Dashboard />}></Route>
+          <Route path="/Addproduct" element={<Addproduct />}></Route>
+          <Route path="/Productlist" element={<Productlist />}></Route>
+          <Route path="/Home" element={<Dashboard />}></Route>
+          <Route path="/Productgrid" element={<Productgrid />}></Route>
           <Route path="/Category" element={<Category />}></Route>
-         
-      </Routes>
+          <Route path="/Order" element={< Order/>}></Route>
+          <Route path="/Brand" element={< Brand/>}></Route>
+          <Route path="/Coupons" element={< Coupons/>}></Route>
+          <Route path="/Profile" element={< Profile/>}></Route>
+        </Routes>
       </BrowserRouter>
-     
     </div>
   );
 }

@@ -88,9 +88,10 @@ function Sidebar() {
           </li>
           <li>
             <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
+              
+              className="nav-link text-start d-flex align-items-center"onClick={() => navigate("/Order")}
+                  style={{ cursor: "pointer" }}>
+            
               <i
                 className="fas fa-shopping-cart me-2"
                 style={{ marginTop: "15px" }}
@@ -100,27 +101,31 @@ function Sidebar() {
           </li>
           <li>
             <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
+              
+              className="nav-link text-start d-flex align-items-center" onClick={() => navigate("/Brand")}
+                  style={{ cursor: "pointer" }}>
+            
               <i className="fas fa-tags me-2" style={{ marginTop: "15px" }}></i>{" "}
               Brand
             </a>
           </li>
           <li>
             <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
+              
+              className="nav-link text-start d-flex align-items-center" onClick={() => navigate("/Coupons")}
+                  style={{ cursor: "pointer" }}>
+            
               <i className="fas fa-gift me-2" style={{ marginTop: "15px" }}></i>{" "}
               Coupons
             </a>
           </li>
           <li>
             <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
+              
+              className="nav-link text-start d-flex align-items-center" onClick={() => navigate("/Profile")}
+                  style={{ cursor: "pointer" }}>
+            
+            
               <i
                 className="fas fa-user-circle me-2"
                 style={{ marginTop: "15px" }}
@@ -130,7 +135,7 @@ function Sidebar() {
           </li>
           <li>
             <a
-              href="#"
+              href="https://hamart-shop.vercel.app/"
               className="nav-link text-start d-flex align-items-center"
             >
               <i

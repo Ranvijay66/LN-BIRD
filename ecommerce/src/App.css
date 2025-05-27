@@ -40,6 +40,8 @@ body, html, #root {
   height: 100%;
   margin: 0;
   overflow: hidden;
+  
+  
 }
 
 .sidebar {
@@ -73,7 +75,7 @@ body, html, #root {
   margin-left: 250px;
   height: 100vh;
   overflow-y: auto;
-  background-color: #f8f9fa;
+ background-color:#F1F5F9
 }
 
 
@@ -82,24 +84,28 @@ body, html, #root {
 .container {
   display: flex;
   width: 100%;
+   background-color:#f1f5f9
+
+ 
 }
 
 .left {
   width: 70%;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color:#f1f5f9
+
 }
 
 .right {
   width: 30%;
   padding: 10px;
-  background-color:  #f0f0f0;
+    background-color:#f1f5f9
 }
 
 .box {
   display: block;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 0px solid #ccc;
   padding: 8px;
   margin-bottom: 10px;
 }
@@ -146,3 +152,17 @@ body, html, #root {
   border-color: blue; /* border changes to blue on focus */
  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
