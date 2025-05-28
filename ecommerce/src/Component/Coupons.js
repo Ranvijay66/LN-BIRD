@@ -1,37 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import logo1 from "../logo3.png";
-import Header from "./Header";
-import Icon1 from "../Icon1 (1).png";
-import Graphimage from "../Graphimage.png";
-import User from "../User.png";
-import Cube from "../Cube.png";
-import { useNavigate } from "react-router-dom";
+import BootstrapToast from "bootstrap/js/dist/toast";
+
 import Sidebar from "./sidebar";
+import Header from "./Header";
+
 import Uploadimage from "../Uploadimage.png";
 
 function Coupons() {
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const toastRef = useRef(null);
+
+  const showToast = () => {
+    if (toastRef.current) {
+      toastRef.current.classList.remove("show");
+      toastRef.current.classList.add("slide-in");
+
+      const toast = BootstrapToast.getOrCreateInstance(toastRef.current);
+      toast.show();
+
+      setTimeout(() => {
+        toastRef.current.classList.remove("slide-in");
+      }, 500); // match animation duration
+    }
+  };
 
   return (
     <div className="d-flex">
-      {/* Sidebar */}
       <Sidebar />
 
-      {/* Content Area */}
       <div className="content flex-grow-1 p-4" style={{ marginTop: "-50px" }}>
         <div
-          className="body-content px-4 py-4 "
+          className="body-content px-4 py-4"
           style={{ backgroundColor: "#f1f5f9" }}
         >
           <div className="d-flex justify-content-between align-items-end flex-wrap">
             <div className="page-title mb-4">
               <Header />
-              <h4 className="mb-0 text-start"> Coupon</h4>
+              <h4 className="mb-0 text-start">Coupon</h4>
 
               <a
                 onClick={() => navigate("/Dashboard")}
@@ -51,15 +62,15 @@ function Coupons() {
               </a>
 
               <h6 style={{ display: "inline", marginLeft: "10px" }}>
-                &#8226; Coupon List
+                • Coupon List
               </h6>
             </div>
           </div>
+
           <div
             className="container"
             style={{
               width: "100%",
-
               backgroundColor: "#f1f5f9",
               display: "flex",
               justifyContent: "space-between",
@@ -69,7 +80,6 @@ function Coupons() {
               marginTop: "20px",
             }}
           >
-            {/* Right Div */}
             <div
               style={{
                 width: "100%",
@@ -90,63 +100,269 @@ function Coupons() {
                   marginTop: "20px",
                 }}
               >
-                {/* Search Input with Icon INSIDE to the LEFT */}
-
                 <div
                   className="search-box"
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    border: "1px solid rgba(210, 206, 206, 0.3)",
-
+                    border: isFocused
+                      ? "1px solid blue"
+                      : "1px solid rgba(210, 206, 206, 0.3)",
                     borderRadius: "4px",
                     padding: "6px 10px",
                     width: "250px",
                     backgroundColor: "#fff",
                     marginTop: "20px",
-                    border: isFocused
-                      ? "1px solid blue"
-                      : "1px solid  rgba(210, 206, 206, 0.3)",
                   }}
                 >
                   <i
                     className="fas fa-search"
                     style={{ marginRight: "8px", color: "#666" }}
                   ></i>
-
                   <input
                     type="text"
                     placeholder="Search by Invoice no"
-                    style={{
-                      border: "none",
-                      outline: "none",
-                      width: "100%",
-                    }}
+                    style={{ border: "none", outline: "none", width: "100%" }}
                     onFocus={() => setIsFocused(true)}
                     onBlur={() => setIsFocused(false)}
                   />
                 </div>
 
-                {/* Right Side Controls */}
                 <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    marginLeft: "auto",
-                  }}
+                  style={{ display: "flex", gap: "10px", marginLeft: "auto" }}
                 >
-                  
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={showToast}
+                  >
+                    Add Coupon
+                  </button>
 
-               <button style={{ backgroundColor: "blue", border: "none", marginRight: "10px", color: "white",
-                width:"150px",height:"30px",borderRadius:"5PX"
-                }}>
-  Add Coupon
-</button>
+                  <div className="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div
+                      ref={toastRef}
+                      className="toast fade"
+                      role="alert"
+                      aria-live="assertive"
+                      aria-atomic="true"
+                    >
+                      <div
+                        className="toast-header"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <button
+                          type="button"
+                          className="btn-close"
+                          data-bs-dismiss="toast"
+                          aria-label="Close"
+                          style={{ marginRight: 0 }} // remove marginRight
+                        ></button>
+                        <strong style={{ marginLeft: "8px" }}>
+                          Enter coupons Details
+                        </strong>
+                        {/* optional small margin to separate button and text */}
+                      </div>
 
+                      <div
+                        style={{
+                          width: "100%",
+                          backgroundColor: "white",
+                          padding: "15px",
+                          borderRadius: "5px",
+                          maxHeight: "580px", // ⬅️ limit height
+                          overflowY: "auto", // ⬅️ enable vertical scroll
+                          overflowX: "hidden", // ⬅️ hide horizontal scroll
+                        }}
+                      >
+                        <h6 style={{ marginTop: "20px" }}>Upload Image</h6>
+                        <div style={{ marginBottom: "10px" }}>
+                          <img
+                            src={Uploadimage}
+                            alt="upload-img"
+                            style={{
+                              width: "30%",
+                              height: "auto",
+                              objectFit: "cover",
+                              display: "block",
+                              margin: "0 auto",
+                            }}
+                          />
+                          <small
+                            style={{ display: "block", textAlign: "center" }}
+                          >
+                            (Only png, jpg, jpeg, webp will be accepted)
+                          </small>
+                        </div>
+
+                        <button
+                          style={{
+                            marginBottom: "15px",
+                            width: "100%",
+                            height: "40px",
+                            border: "0.5px solid rgba(97, 94, 94, 0.09)",
+                            backgroundColor: "transparent",
+                            color: "gray",
+                            padding: "10px",
+                            cursor: "pointer",
+                            transition: "all 0.3s ease",
+                            borderRadius: "4px",
+                            display: "block",
+                            textAlign: "center",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = "blue";
+                            e.currentTarget.style.color = "white";
+                            e.currentTarget.style.borderColor = "blue";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor =
+                              "transparent";
+                            e.currentTarget.style.color = "black";
+                            e.currentTarget.style.borderColor =
+                              "rgba(97, 94, 94, 0.09)";
+                          }}
+                        >
+                          <p style={{ opacity: 0.6, margin: 0 }}>
+                            Upload Image
+                          </p>
+                        </button>
+
+                        <div style={{ marginBottom: "10px" }}>
+                          <label>Name</label>
+                          <input
+                            type="text"
+                            placeholder="name"
+                            className="input-light-border"
+                          />
+                        </div>
+
+                        <div style={{ marginBottom: "5px" }}>
+                          <label>Product Type</label>
+                          <input
+                            type="text"
+                            placeholder="select"
+                            style={{
+                              width: "100%",
+                              padding: "8px",
+                              marginTop: "5px",
+                            }}
+                            className="input-light-border"
+                          />
+                        </div>
+
+                        <div style={{ marginBottom: "5px" }}>
+                          <label>Code</label>
+                          <input
+                            type="text"
+                            placeholder="Code"
+                            style={{
+                              width: "100%",
+                              padding: "8px",
+                              marginTop: "5px",
+                            }}
+                            className="input-light-border"
+                          />
+                        </div>
+
+                        <div style={{ marginBottom: "5px" }}>
+                          <label>end time</label>
+                          <input
+                            type="text"
+                            placeholder="dd-mm-yy"
+                            style={{
+                              width: "100%",
+                              padding: "8px",
+                              marginTop: "5px",
+                            }}
+                            className="input-light-border"
+                          />
+                        </div>
+
+                        <div style={{ marginBottom: "5px" }}>
+                          <label>discount percentage</label>
+                          <input
+                            type="text"
+                            placeholder="dd-mm-yy"
+                            style={{
+                              width: "100%",
+                              padding: "8px",
+                              marginTop: "5px",
+                            }}
+                            className="input-light-border"
+                          />
+                        </div>
+
+                        <div style={{ marginBottom: "5px" }}>
+                          <label>minimum amount</label>
+                          <input
+                            type="text"
+                            placeholder="dd-mm-yy"
+                            style={{
+                              width: "100%",
+                              padding: "8px",
+                              marginTop: "5px",
+                            }}
+                            className="input-light-border"
+                          />
+                        </div>
+
+                        <div
+                          style={{
+                            display: "flex",
+                            gap: "10px",
+                            marginTop: "20px",
+                            position: "sticky",
+                            bottom: "0px",
+                            zIndex: 10,
+                          }}
+                        >
+                          {/* Add Brand Button */}
+                          <button
+                            style={{
+                              backgroundColor: "blue",
+                              border: "none",
+                              color: "white",
+                              width: "150px",
+                              height: "40px",
+                              borderRadius: "4px",
+                              cursor: "pointer",
+                            }}
+                          >
+                            Add Brand
+                          </button>
+
+                          {/* Cancel Button */}
+                          <button
+                            className="cancel-button"
+                            style={{
+                              backgroundColor: "white",
+                              border: "1px solid rgba(128, 128, 128, 0.2)", // Light gray with opacity
+                              color: "black",
+                              width: "150px",
+                              height: "40px",
+                              borderRadius: "4px",
+                              cursor: "pointer",
+                              transition: "all 0.3s ease",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = "red";
+                              e.currentTarget.style.color = "white";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = "white";
+                              e.currentTarget.style.color = "black";
+                            }}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              {/* Scrollable Table Container */}
-              {/* Scrollable Table Container */}
+
               <div
                 style={{
                   backgroundColor: "#fff",
@@ -156,8 +372,8 @@ function Coupons() {
                   overflowY: "auto",
                   overflowX: "auto",
                   boxSizing: "border-box",
-                  marginBottom: "20px", // Adds spacing between scrollbar and next element
-                  paddingBottom: "10px", // Adds space inside for scrollbar
+                  marginBottom: "20px",
+                  paddingBottom: "10px",
                 }}
               >
                 <table
@@ -175,84 +391,39 @@ function Coupons() {
                       style={{
                         opacity: 0.6,
                         fontSize: "12px",
-                        borderBottom: "1px solid rgba(0, 0, 0, 0.1)", // 👈 Light bottom border
+                        borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
                       }}
                     >
-                      <th
-                        style={{
-                          textAlign: "left",
-                          // padding: "10px",
-                          whiteSpace: "nowrap",
-                        }}
-                      >
+                      <th style={{ textAlign: "left", whiteSpace: "nowrap" }}>
                         NAME
                       </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "100px",
-                        }}
-                      >
+                      <th style={{ textAlign: "left", paddingLeft: "100px" }}>
                         CODE
                       </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "100px",
-                        }}
-                      >
+                      <th style={{ textAlign: "left", paddingLeft: "100px" }}>
                         AMOUNT
                       </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "100px",
-                        }}
-                      >
+                      <th style={{ textAlign: "left", paddingLeft: "100px" }}>
                         STATUS
                       </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "100px",
-                        }}
-                      >
+                      <th style={{ textAlign: "left", paddingLeft: "100px" }}>
                         START
                       </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "70px",
-                        }}
-                      >
+                      <th style={{ textAlign: "left", paddingLeft: "70px" }}>
                         END
                       </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "30px",
-                        }}
-                      >
+                      <th style={{ textAlign: "left", paddingLeft: "30px" }}>
                         ACTION
                       </th>
                     </tr>
                   </thead>
                   <tbody style={{ fontSize: "11px" }}>
-                    {/* No data row for now */}
-                    <tr style={{ marginleft: "0px", whiteSpace: "nowrap" }}>
-                      Showing 1–0 of 0
+                    <tr style={{ whiteSpace: "nowrap" }}>
+                      <td colSpan="7">Showing 1–0 of 0</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-
-              {/* Text below scrollable table */}
             </div>
           </div>
         </div>

@@ -143,6 +143,7 @@ function Productgrid() {
 
     <button
       className="add-button"
+       onClick={() => navigate("/Addproduct")}
       style={{
         //padding: '6px 14px',
         backgroundColor: '#007bff',

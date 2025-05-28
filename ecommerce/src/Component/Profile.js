@@ -133,7 +133,9 @@ function Profile() {
      className="input-highlight"
       type="text"
       placeholder="Name"
-      style={{ width: "100%", height: "40px", padding: "8px" }}
+      style={{ width: "100%", height: "40px", padding: "8px",borderRadius:"4px",
+        border: "1px solid #ebedef",
+       }}
     />
 
     </>
@@ -157,7 +159,8 @@ function Profile() {
     className="input-highlight"
       type="email"
       placeholder="Email"
-      style={{ width: "100%", height: "40px", padding: "8px" }}
+      style={{ width: "100%", height: "40px", padding: "8px",borderRadius:"4px",
+        border: "1px solid #ebedef",}}
     />
 
     </>
@@ -180,7 +183,8 @@ function Profile() {
       className="input-highlight"
       type="tel"
       placeholder="Phone"
-      style={{ width: "100%", height: "40px", padding: "8px" }}
+      style={{ width: "100%", height: "40px", padding: "8px" ,borderRadius:"4px",
+        border: "1px solid #ebedef",}}
     /> 
     </>
   </div>
@@ -204,14 +208,18 @@ function Profile() {
       height: "40px",
       padding: "8px",
       borderRadius: "4px",
-      border: "1px solid rgba(0, 0, 0, 0.2)",
+     
       outline: "none",
+      borderRadius:"4px",
+        border: "1px solid #ebedef",
     }}
     defaultValue=""
   >
-    <option value="" disabled>
-      Admin
-    </option>
+  <option value="" style={{ color: "#6c757d" }}>
+  Admin
+</option>
+
+
     <option value="admin">Admin</option>
     <option value="super-admin">Super Admin</option>
     <option value="manager">Manager</option>
@@ -277,7 +285,8 @@ function Profile() {
      className="input-highlight"
       type="text"
       placeholder="Current Password"
-      style={{ width: "100%", height: "40px", padding: "8px" }}
+      style={{ width: "100%", height: "40px", padding: "8px",borderRadius:"4px",
+        border: "1px solid #ebedef",}}
     />
     </>
   </div>
@@ -301,7 +310,8 @@ function Profile() {
     className="input-highlight"
       type="password"
       placeholder="Password"
-      style={{ width: "100%", height: "40px", padding: "8px" }}
+      style={{ width: "100%", height: "40px", padding: "8px", borderRadius:"4px",
+        border: "1px solid #ebedef", }}
     />
     </>
   </div>
@@ -323,7 +333,8 @@ function Profile() {
     className="input-highlight"
       type="password"
       placeholder="Conform Password"
-      style={{ width: "100%", height: "40px", padding: "8px" }}
+      style={{ width: "100%", height: "40px", padding: "8px", borderRadius:"4px",
+        border: "1px solid #ebedef", }}
     />
     </>
   </div>

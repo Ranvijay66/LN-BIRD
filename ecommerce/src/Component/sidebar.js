@@ -7,6 +7,15 @@ function Sidebar() {
   const [pagesOpen, setPagesOpen] = useState(false);
   const navigate = useNavigate();
 
+  const linkStyle = {
+    cursor: "pointer",
+    fontSize: "16px",
+    fontFamily: "Poppins, Fallba, sans-serif",
+    fontWeight: 500,
+    color: "#010F1C",
+    
+  };
+
   return (
     <div>
       <div
@@ -21,29 +30,25 @@ function Sidebar() {
         />
 
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
+          <li className="nav-item" style={{ marginTop: "10px" }}>
             <a
               className="nav-link text-start d-flex align-items-center"
               onClick={() => navigate("/")}
-              style={{ cursor: "pointer" }}
+              style={linkStyle}
             >
               <i className="fas fa-tachometer-alt me-2"></i> Dashboard
             </a>
           </li>
 
-          {/* Products Dropdown */}
-          <li>
+          <li style={{ marginTop: "13px" }}>
             <a
               href="#"
               className="nav-link text-start d-flex align-items-center justify-content-between"
+              style={linkStyle}
               onClick={() => setProductsOpen(!productsOpen)}
             >
               <span>
-                <i
-                  className="fas fa-boxes me-2"
-                  style={{ marginTop: "15px" }}
-                ></i>{" "}
-                Products
+                <i className="fas fa-boxes me-2"></i> Products
               </span>
               <i className="fas fa-angle-right"></i>
             </a>
@@ -52,19 +57,21 @@ function Sidebar() {
                 <a
                   className="nav-link text-start"
                   onClick={() => navigate("/Productlist")}
-                  style={{ cursor: "pointer" }}
+                  style={linkStyle}
                 >
                   Products List
                 </a>
-
-                <a  className="nav-link text-start" onClick={() => navigate("/Productgrid")}
-                  style={{ cursor: "pointer" }}>
+                <a
+                  className="nav-link text-start"
+                  onClick={() => navigate("/Productgrid")}
+                  style={linkStyle}
+                >
                   Products Grid
                 </a>
                 <a
                   className="nav-link text-start"
                   onClick={() => navigate("/Addproduct")}
-                  style={{ cursor: "pointer" }}
+                  style={linkStyle}
                 >
                   Add Product
                 </a>
@@ -72,117 +79,99 @@ function Sidebar() {
             )}
           </li>
 
-          <li>
+          <li style={{ marginTop: "13px" }}>
             <a
-              
-              className="nav-link text-start d-flex align-items-center"onClick={() => navigate("/Category")}
-                  style={{ cursor: "pointer" }}>
-                  
-            
-              <i
-                className="fas fa-th-large me-2"
-                style={{ marginTop: "15px" }}
-              ></i>{" "}
-              Category
-            </a>
-          </li>
-          <li>
-            <a
-              
-              className="nav-link text-start d-flex align-items-center"onClick={() => navigate("/Order")}
-                  style={{ cursor: "pointer" }}>
-            
-              <i
-                className="fas fa-shopping-cart me-2"
-                style={{ marginTop: "15px" }}
-              ></i>{" "}
-              Order
-            </a>
-          </li>
-          <li>
-            <a
-              
-              className="nav-link text-start d-flex align-items-center" onClick={() => navigate("/Brand")}
-                  style={{ cursor: "pointer" }}>
-            
-              <i className="fas fa-tags me-2" style={{ marginTop: "15px" }}></i>{" "}
-              Brand
-            </a>
-          </li>
-          <li>
-            <a
-              
-              className="nav-link text-start d-flex align-items-center" onClick={() => navigate("/Coupons")}
-                  style={{ cursor: "pointer" }}>
-            
-              <i className="fas fa-gift me-2" style={{ marginTop: "15px" }}></i>{" "}
-              Coupons
-            </a>
-          </li>
-          <li>
-            <a
-              
-              className="nav-link text-start d-flex align-items-center" onClick={() => navigate("/Profile")}
-                  style={{ cursor: "pointer" }}>
-            
-            
-              <i
-                className="fas fa-user-circle me-2"
-                style={{ marginTop: "15px" }}
-              ></i>{" "}
-              Profile
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://hamart-shop.vercel.app/"
               className="nav-link text-start d-flex align-items-center"
+              onClick={() => navigate("/Category")}
+              style={linkStyle}
             >
-              <i
-                className="fas fa-store me-2"
-                style={{ marginTop: "15px" }}
-              ></i>{" "}
-              Online Store
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="nav-link text-start d-flex align-items-center"
-            >
-              <i
-                className="fas fa-users me-2"
-                style={{ marginTop: "15px" }}
-              ></i>{" "}
-              Our Staff
+              <i className="fas fa-th-large me-2"></i> Category
             </a>
           </li>
 
-          {/* Pages Dropdown */}
-          <li>
+          <li style={{ marginTop: "13px" }}>
+            <a
+              className="nav-link text-start d-flex align-items-center"
+              onClick={() => navigate("/Order")}
+              style={linkStyle}
+            >
+              <i className="fas fa-shopping-cart me-2"></i> Order
+            </a>
+          </li>
+
+          <li style={{ marginTop: "13px" }}>
+            <a
+              className="nav-link text-start d-flex align-items-center"
+              onClick={() => navigate("/Brand")}
+              style={linkStyle}
+            >
+              <i className="fas fa-tags me-2"></i> Brand
+            </a>
+          </li>
+
+          <li style={{ marginTop: "13px" }}>
+            <a
+              className="nav-link text-start d-flex align-items-center"
+              onClick={() => navigate("/Coupons")}
+              style={linkStyle}
+            >
+              <i className="fas fa-gift me-2"></i> Coupons
+            </a>
+          </li>
+
+          <li style={{ marginTop: "13px" }}>
+            <a
+              className="nav-link text-start d-flex align-items-center"
+              onClick={() => navigate("/Profile")}
+              style={linkStyle}
+            >
+              <i className="fas fa-user-circle me-2"></i> Profile
+            </a>
+          </li>
+
+          <li style={{ marginTop: "13px" }}>
+            <a
+              href="https://hamart-shop.vercel.app/"
+              className="nav-link text-start d-flex align-items-center"
+              style={linkStyle}
+            >
+              <i className="fas fa-store me-2"></i> Online Store
+            </a>
+          </li>
+
+          <li style={{ marginTop: "13px" }}>
+            <a
+              
+              className="nav-link text-start d-flex align-items-center"
+               onClick={() => navigate("/Ourstaff")}
+              style={linkStyle}
+            >
+              
+              <i className="fas fa-users me-2"></i> Our Staff
+            </a>
+          </li>
+
+          <li style={{ marginTop: "13px" }}>
             <a
               href="#"
               className="nav-link text-start d-flex align-items-center justify-content-between"
+              style={linkStyle}
               onClick={() => setPagesOpen(!pagesOpen)}
             >
               <span>
-                <i
-                  className="fas fa-file-alt me-2"
-                  style={{ marginTop: "15px" }}
-                ></i>{" "}
-                Pages
+                <i className="fas fa-file-alt me-2"></i> Pages
               </span>
               <i className="fas fa-angle-right"></i>
             </a>
             {pagesOpen && (
               <div className="ps-4">
-                <a href="#" className="nav-link text-start">
+                <a  className="nav-link text-start"  onClick={() => navigate("/RegisterForm")} style={linkStyle}>
                   Register
                 </a>
-                <a href="#" className="nav-link text-start">
+                <a href="#" className="nav-link text-start"  onClick={() => navigate("/LoginForm")}style={linkStyle}>
                   Login
                 </a>
-                <a href="#" className="nav-link text-start">
+                <a href="#" className="nav-link text-start" onClick={() => navigate("/ResetPassword")} style={linkStyle}>
                   Forget Password
                 </a>
               </div>

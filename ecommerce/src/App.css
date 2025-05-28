@@ -51,6 +51,7 @@ body, html, #root {
   background-color: #ebeff3;
   color: rgb(15, 9, 9);
   position: fixed;
+  
 }
 
 .sidebar .nav-link {
@@ -63,7 +64,7 @@ body, html, #root {
 }
 
 .logout-btn {
-  position: sticky;
+ 
   bottom: 0;
   background-color: #1f7ad4;
   padding: 10px 0;

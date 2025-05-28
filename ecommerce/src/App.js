@@ -10,6 +10,11 @@ import Order from "./Component/Order";
 import Brand from "./Component/Brand";
 import Coupons from "./Component/Coupons";
 import Profile from "./Component/Profile";
+import Ourstaff from "./Component/Ourstaff";
+import RegisterForm from "./Component/Register";
+import LoginForm from "./Component/LoginForm";
+import ResetPassword from "./Component/ResetPassword";
+import Toast from "./Component/Toast";
 
 function App() {
   return (
@@ -23,10 +28,16 @@ function App() {
           <Route path="/Home" element={<Dashboard />}></Route>
           <Route path="/Productgrid" element={<Productgrid />}></Route>
           <Route path="/Category" element={<Category />}></Route>
-          <Route path="/Order" element={< Order/>}></Route>
-          <Route path="/Brand" element={< Brand/>}></Route>
-          <Route path="/Coupons" element={< Coupons/>}></Route>
-          <Route path="/Profile" element={< Profile/>}></Route>
+          <Route path="/Order" element={<Order />}></Route>
+          <Route path="/Brand" element={<Brand />}></Route>
+          <Route path="/Coupons" element={<Coupons />}></Route>
+          <Route path="/Profile" element={<Profile />}></Route>
+          <Route path="/Ourstaff" element={<Ourstaff />}></Route>
+          <Route path="/RegisterForm" element={<RegisterForm />}></Route>
+          <Route path="/LoginForm" element={<LoginForm />}></Route>
+          <Route path="/ResetPassword" element={<ResetPassword />}></Route>
+           <Route path="/Toast" element={<Toast/>}></Route>
+
         </Routes>
       </BrowserRouter>
     </div>

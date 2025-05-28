@@ -169,7 +169,7 @@ function Dashboard() {
 
 
         <div className="recent-orders"style={{
-    backgroundColor: "white", borderRadius:"10px"
+    backgroundColor: "white", borderRadius:"10px",marginLeft:"20px"
   
   }} overflow="auto">
   <div className="d-flex justify-content-between align-items-center mb-3">
@@ -179,32 +179,38 @@ function Dashboard() {
   </div>
 
   {/* Scrollable container */}
-  <div style={{ maxHeight: "100px", overflow: "auto" ,fontSize:'15px'}}>
-    <table className="table table-bordered table-hover" style={{ minWidth: "900px" }}>
-      <thead className="table-light" style={{ position: "sticky", top: 0, background: "#f8f9fa", zIndex: 1 }}>
-        <tr>
+  <div style={{ maxHeight: "100px", overflow: "auto" ,fontSize:'12px',marginLeft:"20PX",opacity:"0.3"}}>
+   <table 
+  className="table table-hover" 
+  style={{ 
+    borderTop: "none", 
+    borderLeft: "none", 
+    borderRight: "none", 
+    borderBottom: "1px solid black", 
+    minWidth: "900px" 
+  }}
+>
+      <thead className="table-light" style={{  top: 0, backgroundColor: "white", zIndex: 1 }}>
+        <tr style={{backgroundColor:"white"}}>
           <th>INVOICE NO</th>
           <th>ORDER TIME</th>
           <th>CUSTOMER NAME</th>
-          <th>Price</th>
-          <th>Status</th>
-          <th>Action</th>
-          <th>Invoice</th>
+          <th>PRICE</th>
+          <th>STATUS</th>
+          <th>ACTION</th>
+          <th>INVOICE</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td colSpan="7" className="text-center text-muted">
-            No recent orders available.
-          </td>
-        </tr>
+       
       </tbody>
     </table>
   </div>
 
-  <div className="text-end text-muted mt-2">
-    Showing 1-0 of 0
-  </div>
+  <div className="text-start text-muted mt-2" style={{ marginLeft: "20px" }}>
+  Showing 1–0 of 0
+</div>
+
 </div>
 
 

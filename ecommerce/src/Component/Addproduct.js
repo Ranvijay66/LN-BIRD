@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import logo1 from "../logo3.png";
@@ -13,10 +14,22 @@ import Uploadimage from "../Uploadimage.png";
 
 import ProductVariations from "./Addimage";
 
+
+
 function Addproduct() {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
+  const fileInputRef = useRef(null);
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    console.log("Selected file:", file);
+    // You can now handle the file (upload it, preview it, etc.)
+  };
+
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
 
 
 
@@ -389,23 +402,37 @@ function Addproduct() {
                   style={{ maxWidth: "75px" }}
                 />{" "}
                 <br />
-                <button
-                  style={{
-                    backgroundColor: isHovered ? "blue" : "white",
-                    color: isHovered ? "white" : "black",
-                    borderRadius: "5px",
-                  border: "1px solid #ebedef",
-                    padding: "10px 20px",
-                    marginTop: "10px",
-                    width: "100%",
-                    cursor: "pointer",
-                    transition: "background-color 0.3s ease, color 0.3s ease",
-                  }}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  Upload Image
-                </button>
+
+                <>
+                 <button
+        style={{
+          backgroundColor: isHovered ? "blue" : "white",
+          color: isHovered ? "white" : "black",
+          borderRadius: "5px",
+          border: "1px solid #ebedef",
+          padding: "10px 20px",
+          marginTop: "10px",
+          width: "100%",
+          cursor: "pointer",
+          transition: "background-color 0.3s ease, color 0.3s ease",
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleButtonClick}
+      >
+        Upload Image
+      </button>
+
+      <input
+        type="file"
+        accept="image/*"
+        style={{ display: "none" }}
+        ref={fileInputRef}
+        onChange={handleFileChange}
+      />
+
+
+                </>
               </div>
 
               <div
