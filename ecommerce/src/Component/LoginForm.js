@@ -84,8 +84,19 @@ function LoginForm() {
           >
             {/* Email */}
             <label style={{ fontWeight: "600" }}>
-              Email *
+              Email<span style={{ color: "red" }}>*</span>
+               <>
+  <style>
+    {`
+      .input-highlight:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    `}
+  </style>
               <input
+
+               className="input-highlight"
                 type="email"
                 name="email"
                 placeholder="Enter your email"
@@ -101,12 +112,28 @@ function LoginForm() {
                   fontSize: "16px",
                 }}
               />
+
+
+              </>
             </label>
+            
 
             {/* Password */}
             <label style={{ fontWeight: "600" }}>
-              Password *
+              Password <span style={{ color: "red" }}>*</span>
+
+               <>
+  <style>
+    {`
+      .input-highlight:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    `}
+     </style>
               <input
+
+               className="input-highlight"
                 type="password"
                 name="password"
                 placeholder="••••••••••••••"
@@ -122,6 +149,9 @@ function LoginForm() {
                   fontSize: "16px",
                 }}
               />
+              </>
+
+              
             </label>
 
             {/* Remember Me & Forgot Password */}

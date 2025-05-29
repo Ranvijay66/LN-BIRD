@@ -59,21 +59,24 @@ function Sidebar() {
                   onClick={() => navigate("/Productlist")}
                   style={linkStyle}
                 >
-                  Products List
+                 <span className="sidebar-subitem">&#8226; Product List</span>
+
                 </a>
                 <a
                   className="nav-link text-start"
                   onClick={() => navigate("/Productgrid")}
                   style={linkStyle}
                 >
-                  Products Grid
+                  <span className="sidebar-subitem">&#8226; Product Grid</span>
+ 
                 </a>
                 <a
                   className="nav-link text-start"
                   onClick={() => navigate("/Addproduct")}
                   style={linkStyle}
                 >
-                  Add Product
+                   <span className="sidebar-subitem">&#8226; Add Product</span>
+
                 </a>
               </div>
             )}
@@ -166,13 +169,13 @@ function Sidebar() {
             {pagesOpen && (
               <div className="ps-4">
                 <a  className="nav-link text-start"  onClick={() => navigate("/RegisterForm")} style={linkStyle}>
-                  Register
+                   <span className="sidebar-subitem">&#8226;  Register</span>
                 </a>
                 <a href="#" className="nav-link text-start"  onClick={() => navigate("/LoginForm")}style={linkStyle}>
-                  Login
+                  <span className="sidebar-subitem">&#8226;  Login</span>
                 </a>
                 <a href="#" className="nav-link text-start" onClick={() => navigate("/ResetPassword")} style={linkStyle}>
-                  Forget Password
+                   <span className="sidebar-subitem">&#8226;  Forget Password</span>
                 </a>
               </div>
             )}
@@ -180,21 +183,27 @@ function Sidebar() {
         </ul>
 
         {/* Logout */}
-        <div
-          className="logout-btn mt-auto"
-          style={{
-            borderRadius: "5px",
-            paddingLeft: "5px",
-            marginLeft: "30px",
-          }}
-        >
-          <a
-            href="#"
-            className="nav-link text-white text-start d-flex align-items-center"
-          >
-            <i className="fas fa-sign-out-alt me-2"></i> Logout
-          </a>
-        </div>
+       <div
+  className="logout-btn"
+  style={{
+    borderRadius: "5px",
+    paddingLeft: "5px",
+    marginLeft: "50px",
+    marginTop: "30px", // This now works as expected
+  }}
+>
+  <a
+    href="#"
+    className="text-white text-start d-flex align-items-center"
+    style={{
+      textDecoration: "none",
+    }}
+  >
+    <i className="fas fa-sign-out-alt me-2"></i> Logout
+  </a>
+</div>
+
+
       </div>
     </div>
   );

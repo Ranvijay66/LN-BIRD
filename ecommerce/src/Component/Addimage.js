@@ -181,19 +181,10 @@ const ProductVariations = () => {
 
       {/* Add Field Button */}
       <div style={{ marginTop: '20px' }}>
-      <button 
-  onClick={handleAddField} 
-  style={{ 
-    backgroundColor: 'blue', 
-    color: 'white', 
-    border: 'none', 
-    padding: '10px 15px', 
-    borderRadius: '4px', 
-    cursor: 'pointer' 
-  }}
->
+      <button onClick={handleAddField} className="hover-blue-button">
   Add Field
 </button>
+
 
 
       </div>

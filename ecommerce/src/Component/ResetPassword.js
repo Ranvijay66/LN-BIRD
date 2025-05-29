@@ -42,7 +42,18 @@ function ResetPassword() {
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
           <label style={{ fontWeight: "600" }}>
             Email  <span style={{ color: "red" }}>*</span>
+
+              <>
+  <style>
+    {`
+      .input-highlight:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    `}
+     </style>
             <input
+            className="input-highlight"
               type="email"
               placeholder="Enter Your Email"
               value={email}
@@ -57,6 +68,8 @@ function ResetPassword() {
                 fontSize: "16px",
               }}
             />
+
+            </>
           </label>
 
           <button

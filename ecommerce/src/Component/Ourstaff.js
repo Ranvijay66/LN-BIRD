@@ -39,18 +39,21 @@ function Ourstaff() {
                 onMouseEnter={() => setIsHovered1(true)}
                 onMouseLeave={() => setIsHovered1(false)}
               >
-                <h6
+                 <h6
                   style={{
                     display: "inline",
                     color: isHovered1 ? "blue" : "black",
                     margin: 0,
+                    opacity: 0.6,
+                    fontSize: "13px",
                   }}
                 >
                   Home
                 </h6>
               </a>
 
-              <h6 style={{ display: "inline", marginLeft: "10px" }}>
+              <h6 style={{ display: "inline", marginLeft: "10px", opacity: 0.6,
+                    fontSize: "13px",}}>
                 &#8226; Category List
               </h6>
             </div>
@@ -236,21 +239,8 @@ function Ourstaff() {
 
 
               
+<button className="my-button">Add Staff</button>
 
-              <button
-                style={{
-                  backgroundColor: "blue",
-                  border: "none",
-                  color: "white",
-                  width: "150px",
-                  height: "40px",
-                  borderRadius: "4px", // optional: makes it look cleaner
-                  cursor: "pointer", // optional: pointer cursor on hover
-                  marginTop:"20px"
-                }}
-              >
-                Add Staff
-              </button>
             </div>
 
             {/* Right Div */}

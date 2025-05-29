@@ -9,6 +9,7 @@ import User from "../User.png";
 import Cube from "../Cube.png";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "./sidebar";
+import SalesStatistics from "./Sales";
 
 
 function Dashboard() {
@@ -94,74 +95,22 @@ function Dashboard() {
           </div>
 
           {/* Sales Statistics Section */}
-          <div
-            style={{
-              fontFamily: "Arial, sans-serif",
-              padding: "20px",
-              maxWidth: "100%",
-              height: "20%",
-              backgroundColor:"white",
-              // border: "1px solid #ccc",
-              marginTop: "30px",
-            }}
-          >
-            <h5 style={{ textAlign: "left" }}>Sales Statistics</h5>
-
-            {/* Navigation Bar */}
-            <div style={{ display: "flex", gap: "20px", marginBottom: "10px" }}>
-              <a href="#" style={{ textDecoration: "none", color: "#007bff" }}>
-                Sales
-              </a>
-              <a href="#" style={{ textDecoration: "none", color: "#007bff" }}>
-                Order
-              </a>
-            </div>
-
-            <hr />
-
-            {/* Scale from 1.0 to 0.0 */}
-          <div
+         <div
   style={{
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    
+    fontFamily: "Arial, sans-serif",
+    paddingBottom: "30px",
+    maxWidth: "100%",
+    height: "20%",
+    backgroundColor: "white",
+    marginTop: "10px",
+    borderRadius: "6px",
+    overflow: "hidden",      // <--- clip children inside rounded corners
+    boxShadow: "0 0 5px rgba(0,0,0,0.1)"  // optional, to better see the edges
   }}
 >
-  {/* Vertical Scale */}
-  <div
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-start",
-    marginRight: "10px",  // Margin on the right (from the content next to it)
-    marginLeft: "10px",   // Margin on the left side
-    borderRight: "1px solid black", // Right border for separation
-    paddingRight: "10px",  // Adds space inside the container next to the border
-  }}
->
-  <div>1.0</div> 
-  <div>0.9</div>
-  <div>0.8</div>
-  <div>0.7</div>
-  <div>0.6</div>
-  <div>0.5</div>
-  <div>0.4</div>
-  <div>0.3</div>
-  <div>0.2</div>
-  <div>0.1</div>
-  <div>0.0</div>
+  <SalesStatistics />
 </div>
 
-
-
-  {/* Horizontal Lines for Each Scale */}
- 
-</div>
-
-
-
-          </div>
 
           <div style={{width:"50%",height:"300px",backgroundColor:"white",marginTop:"20px",
             padding:"20px", borderRadius:"10px"}}> <h6>  Most Selling Category     </h6></div>

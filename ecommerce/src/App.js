@@ -14,7 +14,6 @@ import Ourstaff from "./Component/Ourstaff";
 import RegisterForm from "./Component/Register";
 import LoginForm from "./Component/LoginForm";
 import ResetPassword from "./Component/ResetPassword";
-import Toast from "./Component/Toast";
 
 function App() {
   return (
@@ -36,8 +35,7 @@ function App() {
           <Route path="/RegisterForm" element={<RegisterForm />}></Route>
           <Route path="/LoginForm" element={<LoginForm />}></Route>
           <Route path="/ResetPassword" element={<ResetPassword />}></Route>
-           <Route path="/Toast" element={<Toast/>}></Route>
-
+           
         </Routes>
       </BrowserRouter>
     </div>

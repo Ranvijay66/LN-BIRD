@@ -46,6 +46,8 @@ function Productgrid() {
           display: "inline",
           color: isHovered1 ? "blue" : "black",
           margin: 0,
+          opacity:0.6,
+          fontSize:"13px"
         }}
       >
         Home
@@ -57,7 +59,8 @@ function Productgrid() {
 
 
               
-            <h6 style={{ display: "inline", marginLeft: "10px" }}>
+            <h6 style={{ display: "inline", marginLeft: "10px",opacity:0.6,
+          fontSize:"13px" }}>
   &#8226; Product Grid
 </h6>
 
@@ -141,20 +144,9 @@ function Productgrid() {
       <option>Inactive</option>
     </select>
 
-    <button
-      className="add-button"
-       onClick={() => navigate("/Addproduct")}
-      style={{
-        //padding: '6px 14px',
-        backgroundColor: '#007bff',
-        color: 'white',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        width:"150px"
-        , height:"30px",
-        marginTop:"20px"
-      }}
+   <button
+      className="custom-button"
+      onClick={() => navigate("/Addproduct")}
     >
       Add Product
     </button>

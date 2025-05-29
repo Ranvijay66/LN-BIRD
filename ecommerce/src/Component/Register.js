@@ -89,8 +89,22 @@ const navigate = useNavigate();
         >
           {/* Name */}
           <label style={{ fontWeight: "600" }}>
-            Your Name *
+            Your Name <span style={{ color: "red" }}>*</span>
+
+
+
+             <>
+  <style>
+    {`
+      .input-highlight:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    `}
+     </style>
             <input
+
+             className="input-highlight"
               type="text"
               name="name"
               placeholder="Enter Your Name"
@@ -106,12 +120,26 @@ const navigate = useNavigate();
                 fontSize: "16px",
               }}
             />
+
+            </>
           </label>
 
           {/* Email */}
           <label style={{ fontWeight: "600" }}>
-            Your Email *
+            Your Email <span style={{ color: "red" }}>*</span>
+
+            
+             <>
+  <style>
+    {`
+      .input-highlight:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    `}
+     </style>
             <input
+             className="input-highlight"
               type="email"
               name="email"
               placeholder="example@example.com"
@@ -127,12 +155,25 @@ const navigate = useNavigate();
                 fontSize: "16px",
               }}
             />
+            </>
           </label>
 
           {/* Password */}
           <label style={{ fontWeight: "600" }}>
-            Password *
+            Password <span style={{ color: "red" }}>*</span>
+
+             <>
+  <style>
+    {`
+      .input-highlight:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    `}
+     </style>
             <input
+
+             className="input-highlight"
               type="password"
               name="password"
               placeholder="••••••••••••••"
@@ -148,6 +189,8 @@ const navigate = useNavigate();
                 fontSize: "16px",
               }}
             />
+
+            </>
           </label>
 
           {/* Terms */}

@@ -55,7 +55,10 @@ function Addproduct() {
           <div className="d-flex justify-content-between align-items-end flex-wrap" >
             <div className="page-title mb-4">
               <Header />
-              <h4 className="mb-0 text-start">Add Product</h4>
+              <h4 className="mb-0 text-start" style={{ marginLeft: "20px" }}>
+  Add Product
+</h4>
+
 
 
 
@@ -73,6 +76,9 @@ function Addproduct() {
           display: "inline",
           color: isHovered1 ? "blue" : "black",
           margin: 0,
+          opacity:0.6,
+          fontSize:"13px",
+           marginLeft: "20px" 
         }}
       >
         Home
@@ -84,7 +90,8 @@ function Addproduct() {
 
 
               
-               <h6 style={{ display: "inline", marginLeft: "10px" }}>
+               <h6 style={{ display: "inline", marginLeft: "20px" ,opacity:0.6,
+          fontSize:"13px"}}>
   &#8226; Add Product
 </h6>
             </div>
@@ -377,18 +384,10 @@ function Addproduct() {
     
 
 
-              <button
-                style={{
-                  backgroundColor: "blue",
-                  color: "white",
-                  borderRadius: "10px",
-                  border: "none",
-                  padding: "10px 20px",
-                  marginTop: "150pX",
-                }}
-              >
-                Submit Product
-              </button>
+              <button className="submit-button">
+  Submit Product
+</button>
+
             </div>
             <div className="right">
               <div

@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import BootstrapToast from "bootstrap/js/dist/toast";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 import Sidebar from "./sidebar";
 import Header from "./Header";
@@ -18,15 +20,21 @@ function Coupons() {
 
   const showToast = () => {
     if (toastRef.current) {
-      toastRef.current.classList.remove("show");
-      toastRef.current.classList.add("slide-in");
+      const toastEl = toastRef.current;
 
-      const toast = BootstrapToast.getOrCreateInstance(toastRef.current);
-      toast.show();
+      // Remove any previous animation classes
+      toastEl.classList.remove("slide-in", "slide-out");
 
       setTimeout(() => {
-        toastRef.current.classList.remove("slide-in");
-      }, 500); // match animation duration
+        toastEl.classList.add("slide-in");
+
+        // Get or create toast with autohide set to false
+        const toast = BootstrapToast.getOrCreateInstance(toastEl, {
+          autohide: false, // <-- disable auto close
+        });
+
+        toast.show();
+      }, 10);
     }
   };
 
@@ -55,13 +63,22 @@ function Coupons() {
                     display: "inline",
                     color: isHovered1 ? "blue" : "black",
                     margin: 0,
+                    opacity: 0.6,
+                    fontSize: "13px",
                   }}
                 >
                   Home
                 </h6>
               </a>
 
-              <h6 style={{ display: "inline", marginLeft: "10px" }}>
+              <h6
+                style={{
+                  display: "inline",
+                  marginLeft: "10px",
+                  opacity: 0.6,
+                  fontSize: "13px",
+                }}
+              >
                 • Coupon List
               </h6>
             </div>
@@ -154,10 +171,24 @@ function Coupons() {
                         <button
                           type="button"
                           className="btn-close"
-                          data-bs-dismiss="toast"
                           aria-label="Close"
-                          style={{ marginRight: 0 }} // remove marginRight
+                          onClick={(e) => {
+                            e.preventDefault(); // prevent default close
+                            const toastEl = toastRef.current;
+
+                            // Trigger slide-out animation
+                            toastEl.classList.remove("slide-in");
+                            toastEl.classList.add("slide-out");
+
+                            // Hide the toast after animation completes
+                            setTimeout(() => {
+                              const toast =
+                                BootstrapToast.getOrCreateInstance(toastEl);
+                              toast.hide();
+                            }, 500); // match animation duration
+                          }}
                         ></button>
+
                         <strong style={{ marginLeft: "8px" }}>
                           Enter coupons Details
                         </strong>
@@ -238,18 +269,27 @@ function Coupons() {
                         </div>
 
                         <div style={{ marginBottom: "5px" }}>
-                          <label>Product Type</label>
-                          <input
-                            type="text"
-                            placeholder="select"
-                            style={{
-                              width: "100%",
-                              padding: "8px",
-                              marginTop: "5px",
-                            }}
-                            className="input-light-border"
-                          />
-                        </div>
+  <label>Product Type</label>
+  <select
+    style={{
+      width: "100%",
+      padding: "8px",
+      marginTop: "5px",
+      boxSizing: "border-box",
+    }}
+    className="input-light-border"
+  >
+    <option value="" disabled selected>
+      Select
+    </option>
+    <option value="electronics">Electronics</option>
+    <option value="clothing">Clothing</option>
+    <option value="books">Books</option>
+    <option value="furniture">Furniture</option>
+    {/* Add more options as needed */}
+  </select>
+</div>
+
 
                         <div style={{ marginBottom: "5px" }}>
                           <label>Code</label>
@@ -265,25 +305,32 @@ function Coupons() {
                           />
                         </div>
 
-                        <div style={{ marginBottom: "5px" }}>
-                          <label>end time</label>
-                          <input
-                            type="text"
-                            placeholder="dd-mm-yy"
-                            style={{
-                              width: "100%",
-                              padding: "8px",
-                              marginTop: "5px",
-                            }}
-                            className="input-light-border"
-                          />
-                        </div>
+                     <div style={{ marginBottom: "5px", position: "relative" }}>
+  <label>endt ime</label>
+  <input
+  type="date"
+  style={{
+    width: "100%",
+    padding: "8px 35px 8px 8px", // right padding for calendar icon space
+    marginTop: "5px",
+    boxSizing: "border-box",
+    color: "#6c757d", // optional to make the text look like a placeholder
+    fontSize: "14px",
+  }}
+  className="input-light-border"
+/>
+
+ 
+</div>
+
+
+
 
                         <div style={{ marginBottom: "5px" }}>
                           <label>discount percentage</label>
                           <input
                             type="text"
-                            placeholder="dd-mm-yy"
+                            placeholder="discount percentage"
                             style={{
                               width: "100%",
                               padding: "8px",
@@ -297,7 +344,7 @@ function Coupons() {
                           <label>minimum amount</label>
                           <input
                             type="text"
-                            placeholder="dd-mm-yy"
+                            placeholder="minimum amount"
                             style={{
                               width: "100%",
                               padding: "8px",
@@ -318,19 +365,10 @@ function Coupons() {
                           }}
                         >
                           {/* Add Brand Button */}
-                          <button
-                            style={{
-                              backgroundColor: "blue",
-                              border: "none",
-                              color: "white",
-                              width: "150px",
-                              height: "40px",
-                              borderRadius: "4px",
-                              cursor: "pointer",
-                            }}
-                          >
-                            Add Brand
-                          </button>
+                         <button className="btn-blue">
+  Add Brand
+</button>
+
 
                           {/* Cancel Button */}
                           <button

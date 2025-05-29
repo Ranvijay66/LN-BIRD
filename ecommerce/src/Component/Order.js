@@ -40,17 +40,20 @@ function Order() {
                 onMouseLeave={() => setIsHovered1(false)}
               >
                 <h6
-                  style={{
-                    display: "inline",
-                    color: isHovered1 ? "blue" : "black",
-                    margin: 0,
-                  }}
-                >
-                  Home
-                </h6>
+        style={{
+          display: "inline",
+          color: isHovered1 ? "blue" : "black",
+          margin: 0,
+          opacity:0.6,
+          fontSize:"13px"
+        }}
+      >
+        Home
+      </h6>
               </a>
 
-              <h6 style={{ display: "inline", marginLeft: "10px" }}>
+              <h6 style={{ display: "inline", marginLeft: "10px", opacity:0.6,
+          fontSize:"13px" }}>
                 &#8226; Order List
               </h6>
             </div>
