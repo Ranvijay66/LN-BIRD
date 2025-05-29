@@ -204,9 +204,10 @@ function Coupons() {
                           maxHeight: "580px", // ⬅️ limit height
                           overflowY: "auto", // ⬅️ enable vertical scroll
                           overflowX: "hidden", // ⬅️ hide horizontal scroll
+                           paddingBottom: "70px", 
                         }}
                       >
-                        <h6 style={{ marginTop: "20px" }}>Upload Image</h6>
+                        <h6 style={{ marginTop: "10px" }}>Upload Image</h6>
                         <div style={{ marginBottom: "10px" }}>
                           <img
                             src={Uploadimage}
@@ -234,7 +235,7 @@ function Coupons() {
                             border: "0.5px solid rgba(97, 94, 94, 0.09)",
                             backgroundColor: "transparent",
                             color: "gray",
-                            padding: "10px",
+                            padding: "0px",
                             cursor: "pointer",
                             transition: "all 0.3s ease",
                             borderRadius: "4px",
@@ -306,7 +307,7 @@ function Coupons() {
                         </div>
 
                      <div style={{ marginBottom: "5px", position: "relative" }}>
-  <label>endt ime</label>
+  <label>end time</label>
   <input
   type="date"
   style={{
@@ -354,19 +355,25 @@ function Coupons() {
                           />
                         </div>
 
-                        <div
-                          style={{
-                            display: "flex",
-                            gap: "10px",
-                            marginTop: "20px",
-                            position: "sticky",
-                            bottom: "0px",
-                            zIndex: 10,
-                          }}
-                        >
+                       <div
+  style={{
+    display: "flex",
+    gap: "10px",
+    marginTop: "20px",
+    position: "fixed",
+    bottom: "0px",
+    zIndex: 1000,
+    backgroundColor: "white",
+    padding: "0px 0", // extra padding to give room
+    boxShadow: "0 -4px 6px rgba(0, 0, 0, 0.05)", // subtle shadow on top
+    height:"50px"
+  }}
+>
+
+                        
                           {/* Add Brand Button */}
                          <button className="btn-blue">
-  Add Brand
+  Add Coupon
 </button>
 
 
