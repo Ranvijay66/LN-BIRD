@@ -1,212 +1,267 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import logo1 from "../logo3.png";
-import Header from "./Header";
-import Icon1 from "../Icon1 (1).png";
-import Graphimage from "../Graphimage.png";
-import User from "../User.png";
-import Cube from "../Cube.png";
 import { useNavigate } from "react-router-dom";
+
+import Header from "./Header";
 import Sidebar from "./sidebar";
-import Uploadimage from "../Uploadimage.png";
 
 function Productlist() {
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = useState(false);
+
+  const [products, setProducts] = useState([]);
   const [isHovered1, setIsHovered1] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
+
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/product/getproduct");
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  const promptDelete = (product) => {
+    setProductToDelete(product);
+    setShowConfirmModal(true);
+  };
+
+  const confirmDelete = async () => {
+    if (!productToDelete) return;
+
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/product/products/${productToDelete._id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete product");
+      }
+
+      // Update UI
+      setProducts((prev) => prev.filter((p) => p._id !== productToDelete._id));
+      setShowConfirmModal(false);
+      setProductToDelete(null);
+
+      // Show success message
+      setShowSuccessMessage(true);
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 2000);
+    } catch (error) {
+      console.error("Delete error:", error);
+      alert("❌ Failed to delete product.");
+      setShowConfirmModal(false);
+    }
+  };
 
   return (
     <div className="d-flex">
-      {/* Sidebar */}
       <Sidebar />
 
-      {/* Content Area */}
       <div className="content flex-grow-1 p-4" style={{ marginTop: "-50px" }}>
-        <div className="body-content px-4 py-4 " style={{ backgroundColor: '#f1f5f9' }}>
+        <div className="body-content px-4 py-4" style={{ backgroundColor: "#f1f5f9" }}>
           <div className="d-flex justify-content-between align-items-end flex-wrap">
             <div className="page-title mb-4">
               <Header />
-              <h4 className="mb-0 text-start"> Product</h4>
+              <h4 className="mb-0 text-start">Product</h4>
 
-
-
-
-
-
-    <a
-      onClick={() => navigate("/Dashboard")}
-      style={{ cursor: "pointer", textDecoration: "none" }}
-      onMouseEnter={() => setIsHovered1(true)}
-      onMouseLeave={() => setIsHovered1(false)}
-    >
-       <h6
-        style={{
-          display: "inline",
-          color: isHovered1 ? "blue" : "black",
-          margin: 0,
-          opacity:0.6,
-          fontSize:"13px"
-        }}
-      >
-        Home
-      </h6>
-    </a>
-
-
-
-
-
-              
-               <h6 style={{ display: "inline", marginLeft: "10px",opacity:0.6,
-          fontSize:"13px" }}>
-  &#8226; Product List
-</h6>
+              <a
+                onClick={() => navigate("/Dashboard")}
+                style={{ cursor: "pointer", textDecoration: "none" }}
+                onMouseEnter={() => setIsHovered1(true)}
+                onMouseLeave={() => setIsHovered1(false)}
+              >
+                <h6
+                  style={{
+                    display: "inline",
+                    color: isHovered1 ? "blue" : "black",
+                    margin: 0,
+                    opacity: 0.6,
+                    fontSize: "13px",
+                  }}
+                >
+                  Home
+                </h6>
+              </a>
+              <h6
+                style={{
+                  display: "inline",
+                  marginLeft: "10px",
+                  opacity: 0.6,
+                  fontSize: "13px",
+                }}
+              >
+                • Product List
+              </h6>
             </div>
           </div>
-         
-<div
-  className="container"
-  style={{
-    width: '100%',
-    backgroundColor: 'white',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '10px',
-    gap: '10px',
-    marginTop:"20px"
-  }}
->
-  {/* Search Input with Icon INSIDE to the LEFT */}
 
-   
-  <div
-    className="search-box"
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-     border: '1px solid rgba(210, 206, 206, 0.3)',
+          <div
+            className="container"
+            style={{
+              backgroundColor: "white",
+              padding: "10px",
+              marginTop: "20px",
+            }}
+          >
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                backgroundColor: "white",
+              }}
+            >
+              <thead>
+                <tr>
+                  {["Product", "SKU", "QTY", "Price", "Status", "Action"].map((header) => (
+                    <th
+                      key={header}
+                      style={{
+                        opacity: 0.2,
+                        padding: "8px",
+                        textAlign: "left",
+                        borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+                        fontSize: "15px",
+                      }}
+                    >
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
 
-      borderRadius: '4px',
-      padding: '6px 10px',
-      width: '250px',
-      backgroundColor: '#fff',
-       marginTop:"50px",
-       border: isFocused ? "1px solid blue" : "1px solid  rgba(210, 206, 206, 0.3)",
-    }}
-  >
-    <i
-      className="fas fa-search"
-      style={{ marginRight: '8px', color: '#666' }}
-    ></i>
+              <tbody>
+                {products.length === 0 ? (
+                  <tr>
+                    <td colSpan="6" style={{ padding: "8px", fontSize: "13px" }}>
+                      No products available.
+                    </td>
+                  </tr>
+                ) : (
+                  products.map((product, index) => (
+                    <tr key={index}>
+                      <td style={{ padding: "8px", fontSize: "13px" }}>{product.title}</td>
+                      <td style={{ padding: "8px", fontSize: "13px" }}>{product.sku}</td>
+                      <td style={{ padding: "8px", fontSize: "13px" }}>{product.quantity}</td>
+                      <td style={{ padding: "8px", fontSize: "13px" }}>₹{product.price}</td>
+                      <td style={{ padding: "8px", fontSize: "13px" }}>
+                        {product.quantity > 0 ? "Active" : "Inactive"}
+                      </td>
+                      <td style={{ padding: "8px", fontSize: "13px" }}>
+                        <button
+                          className="btn btn-sm btn-primary"
+                          onClick={() => navigate("/EditProduct", { state: { product } })}
+                        >
+                          Edit
+                        </button>
 
-    
-
-    
-
-
-    <input
-        type="text"
-        placeholder="Search by product name"
-        style={{
-          border: "none",
-          outline: "none",
-          width: "100%",
-        }}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-      />
-
-    
-  </div>
-
-  {/* Right Side Controls */}
-  <div
-    style={{
-      display: 'flex',
-      gap: '10px',
-      marginLeft: 'auto',
-    }}
-  ><p style={{ fontSize: '15px',marginTop:"20px" }}>Status:</p>
-
-    <select
-      style={{
-        padding: '6px 10px',
-        borderRadius: '4px',
-        border: '0px solid #ccc',
-      }}
-    > 
-      <option>Status</option>
-      <option>Active</option>
-      <option>Inactive</option>
-    </select>
-
-    <button
-      className="custom-button"
-      onClick={() => navigate("/Addproduct")}
-    >
-      Add Product
-    </button>
-
-
-
-
-    
-  </div>
-
-
-
-  
-</div>
-
-<table
-  style={{
-    width: '100%',
-    borderCollapse: 'collapse',
-    backgroundColor:"white"
-  }}
->
-  <thead>
-    <tr>
-      {['Product', 'SKU', 'QTY', 'Price', 'Status', 'Action'].map((header) => (
-        <th
-          key={header}
-        style={{
-  opacity: 0.2,
-  padding: '8px',
-  textAlign: 'left',
-  borderBottom: '1px solid rgba(0, 0, 0, 0.1)', // very light bottom border
-  fontSize: '15px'
-}}
-
-        >
-          {header}
-        </th>
-      ))}
-    </tr>
-  </thead>
-
-  <tbody>
-    {/* Example row */}
-    <tr>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}><p style={{fontSize:"13px"}}>showing 0 of 0</p> </td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-      <td style={{ padding: '8px', borderBottom: '0px solid rgba(0,0,0,0.1)' }}></td>
-    </tr>
-
-    {/* Add more rows as needed */}
-  </tbody>
-</table>
-
-
-
+                        <button
+                          className="btn btn-sm"
+                          onClick={() => promptDelete(product)}
+                          style={{
+                            marginLeft: "3px",
+                            background: "red",
+                            border: "none",
+                            color: "white",
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
+
+      {/* Full-Screen Confirmation Modal */}
+      {showConfirmModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              background: "white",
+              padding: "30px",
+              borderRadius: "8px",
+              boxShadow: "0 2px 10px rgba(0, 0, 0, 0.3)",
+              width: "300px",
+              textAlign: "center",
+            }}
+          >
+            <h5>Are you sure?</h5>
+            <p>This action will delete the product.</p>
+            <div style={{ display: "flex", justifyContent: "space-around", marginTop: "20px" }}>
+              <button className="btn btn-danger" onClick={confirmDelete}>
+                Yes, Delete
+              </button>
+              <button className="btn btn-secondary" onClick={() => setShowConfirmModal(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Full-Screen Success Message */}
+      {showSuccessMessage && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 128, 0, 0.1)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9998,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "20px 40px",
+              borderRadius: "10px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "green",
+              boxShadow: "0px 0px 10px rgba(0,0,0,0.3)",
+            }}
+          >
+            ✅ Product deleted successfully
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -14,6 +14,8 @@ import Ourstaff from "./Component/Ourstaff";
 import RegisterForm from "./Component/Register";
 import LoginForm from "./Component/LoginForm";
 import ResetPassword from "./Component/ResetPassword";
+import EditProduct from "./Component/EditProduct";
+import DeleteProduct from "./Component/DeleteProduct";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
           <Route path="/RegisterForm" element={<RegisterForm />}></Route>
           <Route path="/LoginForm" element={<LoginForm />}></Route>
           <Route path="/ResetPassword" element={<ResetPassword />}></Route>
+          <Route path="/EditProduct" element={<EditProduct />}></Route>
+          <Route path="/DeleteProduct" element={<DeleteProduct />}></Route>
            
         </Routes>
       </BrowserRouter>

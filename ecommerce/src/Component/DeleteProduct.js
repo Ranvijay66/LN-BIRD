@@ -12,8 +12,10 @@ import Sidebar from "./sidebar";
 import Uploadimage from "../Uploadimage.png";
 
 import ProductVariations from "./Addimage";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
-function Addproduct() {
+function DeleteProduct() {
   const navigate = useNavigate();
 
   // Hover states for buttons/links
@@ -24,10 +26,33 @@ function Addproduct() {
   const [successMessage, setSuccessMessage] = useState(""); // ✅ For success message
 
 
+  const location = useLocation();
+const product = location.state?.product; // Safely access passed product
+
+
+
   // Image upload and preview
   const fileInputRef = useRef(null);
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+
+  useEffect(() => {
+  if (product) {
+    setTitle(product.title || "");
+    setDescription(product.description || "");
+    setPrice(product.price || "");
+    setSku(product.sku || "");
+    setQuantity(product.quantity || "");
+    setDiscount(product.discount || "");
+    setBrand(product.brand || "");
+    setUnit(product.unit || "");
+    setTags(product.tags || []);
+    setColors(product.colors || []);
+    // If image URL is passed
+    setImagePreview(product.imageUrl || null);
+  }
+}, [product]);
+
   
 
  const handleFileChange = (event) => {
@@ -110,10 +135,10 @@ const handleSubmit = async (e) => {
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/product", {
-      method: "POST",
-      body: formData,
-    });
+    const response = await fetch(`http://localhost:5000/api/product/products/${product._id}`, {
+  method: "DELETE",
+  body: formData,
+});
 
     if (!response.ok) {
       throw new Error("Failed to submit product");
@@ -121,9 +146,16 @@ const handleSubmit = async (e) => {
 
     const data = await response.json();
     console.log("Product saved:", data);
+   
+
+
+
+
+
+    
 
     // ✅ Show success message
-   setSuccessMessage("✅ Product added successfully!");
+   setSuccessMessage("✅The product was Deleted successfully.!");
 window.scrollTo({ top: 0, behavior: "smooth" });
 setTimeout(() => setSuccessMessage(""), 3000);
 
@@ -160,8 +192,11 @@ setTimeout(() => setSuccessMessage(""), 3000);
 
       {/* Content Area */}
       <div className="content flex-grow-1 p-4" style={{ marginTop: "-50px" }}>
-      
-
+       {successMessage && (
+  <div className="success-message">
+    {successMessage}
+  </div>
+)}
 
 
 
@@ -173,7 +208,7 @@ setTimeout(() => setSuccessMessage(""), 3000);
             <div className="page-title mb-4">
               <Header />
               <h4 className="mb-0 text-start" style={{ marginLeft: "20px" }}>
-                Add Product
+                 Product Details
               </h4>
 
               <a
@@ -204,7 +239,7 @@ setTimeout(() => setSuccessMessage(""), 3000);
                   fontSize: "13px",
                 }}
               >
-                &#8226; Add Product
+                &#8226;  Product Details
               </h6>
             </div>
           </div>
@@ -437,11 +472,10 @@ setTimeout(() => setSuccessMessage(""), 3000);
                   <ProductVariations />
                 </div>
 
-                <button type="submit" className="submit-button" style={{ marginTop: 20 }}>
-                  Submit Product
+                <button type="submit" className="submit-button" style={{ marginTop: 20 ,backgroundColor:"red"}}>
+                  Delete Product
                 </button>
               </div>
-              
 
               {/* Right side */}
               <div className="right">
@@ -645,9 +679,13 @@ setTimeout(() => setSuccessMessage(""), 3000);
             outline: none;
           }
         `}</style>
+
+        
       </div>
+
+      
     </div>
   );
 }
 
-export default Addproduct;
+export default DeleteProduct;
