@@ -9,6 +9,11 @@ app.use(cors());
 app.get('/',(req,res)=>res.send('user Managment system is running'));
 app.use('/api/user',require('./routes/user.route'));
 app.use('/api/product',require('./routes/product.route'));
+app.use('/api/category',require('./routes/category.route'));
+app.use('/api/staff', require('./routes/staff.route'));
+app.use('/uploads', express.static('uploads'));
+
+
 app.listen(process.env.PORT,()=>{console.log(`server listing to PORT ${process.env.PORT} `);
 })
 
