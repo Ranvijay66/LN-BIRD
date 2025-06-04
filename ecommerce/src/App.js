@@ -16,13 +16,15 @@ import LoginForm from "./Component/LoginForm";
 import ResetPassword from "./Component/ResetPassword";
 import EditProduct from "./Component/EditProduct";
 import DeleteProduct from "./Component/DeleteProduct";
+import SetNewPassword from "./Component/SetNewPassword";
+
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard />}></Route>
+          <Route path="/" element={<RegisterForm />}></Route>
           <Route path="/Dashboard" element={<Dashboard />}></Route>
           <Route path="/Addproduct" element={<Addproduct />}></Route>
           <Route path="/Productlist" element={<Productlist />}></Route>
@@ -39,6 +41,8 @@ function App() {
           <Route path="/ResetPassword" element={<ResetPassword />}></Route>
           <Route path="/EditProduct" element={<EditProduct />}></Route>
           <Route path="/DeleteProduct" element={<DeleteProduct />}></Route>
+          <Route path="/Setpassword" element={<SetNewPassword />} />
+
            
         </Routes>
       </BrowserRouter>

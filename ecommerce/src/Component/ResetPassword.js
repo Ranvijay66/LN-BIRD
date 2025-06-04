@@ -6,11 +6,31 @@ function ResetPassword() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Password reset link sent to: ${email}`);
-    // Add actual reset password logic here (API call, etc.)
-  };
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("http://localhost:5000/api/user/forgot-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Password reset email sent!");
+      setEmail("");
+    } else {
+      alert(data.message || "Failed to send email.");
+    }
+  } catch (error) {
+    console.error("Error sending reset email:", error);
+    alert("Something went wrong. Try again.");
+  }
+};
 
   return (
     <div

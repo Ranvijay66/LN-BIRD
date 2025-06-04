@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
-
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginForm() {
   const [formData, setFormData] = useState({
@@ -9,7 +9,9 @@ function LoginForm() {
     rememberMe: false,
   });
 
-   const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState(""); // ✅ Success message state
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -19,9 +21,34 @@ function LoginForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Logging in with email: ${formData.email}`);
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/user/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      if (response.status === 200) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userEmail", formData.email);
+
+        setSuccessMessage("✅ Login successful! ");
+
+        setTimeout(() => {
+          setSuccessMessage("");
+          navigate("/dashboard");
+        }, 2000);
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert(
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        "Login failed. Please try again."
+      );
+    }
   };
 
   return (
@@ -36,7 +63,39 @@ function LoginForm() {
         padding: "40px",
       }}
     >
-      {/* Container for both sides */}
+      {successMessage && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 9999,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              padding: "20px 40px",
+              backgroundColor: "#e6ffe6",
+              color: "green",
+              border: "2px solid green",
+              borderRadius: "8px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              boxShadow: "0 0 15px rgba(0,0,0,0.3)",
+              textAlign: "center",
+            }}
+          >
+            {successMessage}
+          </div>
+        </div>
+      )}
+
       <div
         style={{
           display: "flex",
@@ -44,10 +103,9 @@ function LoginForm() {
           boxShadow: "0 0 15px rgba(0,0,0,0.1)",
           borderRadius: "8px",
           overflow: "hidden",
-          width: "800px", // total width for two sides
+          width: "800px",
         }}
       >
-        {/* Left Gray Div */}
         <div
           style={{
             width: "400px",
@@ -60,7 +118,6 @@ function LoginForm() {
           <h2 style={{ color: "#555" }}>Welcome Back</h2>
         </div>
 
-        {/* Right Login Form */}
         <div
           style={{
             padding: "40px",
@@ -71,9 +128,14 @@ function LoginForm() {
           <h2 style={{ marginBottom: "10px", textAlign: "center" }}>Login Now.</h2>
           <p style={{ textAlign: "center", marginBottom: "30px", fontSize: "14px" }}>
             Don't have an account?{" "}
-            <a onClick={() => navigate("/RegisterForm")}style={{ color: "#0d6efd", textDecoration: "none"
-                ,cursor:"pointer"
-             }}>
+            <a
+              onClick={() => navigate("/RegisterForm")}
+              style={{
+                color: "#0d6efd",
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+            >
               Sign Up
             </a>
           </p>
@@ -82,79 +144,68 @@ function LoginForm() {
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: "15px" }}
           >
-            {/* Email */}
             <label style={{ fontWeight: "600" }}>
               Email<span style={{ color: "red" }}>*</span>
-               <>
-  <style>
-    {`
-      .input-highlight:focus {
-        border: 1px solid blue !important;
-        outline: none;
-      }
-    `}
-  </style>
-              <input
-
-               className="input-highlight"
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  marginTop: "5px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                  fontSize: "16px",
-                }}
-              />
-
-
+              <>
+                <style>
+                  {`
+                    .input-highlight:focus {
+                      border: 1px solid blue !important;
+                      outline: none;
+                    }
+                  `}
+                </style>
+                <input
+                  className="input-highlight"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    marginTop: "5px",
+                    border: "1px solid #ccc",
+                    borderRadius: "4px",
+                    fontSize: "16px",
+                  }}
+                />
               </>
             </label>
-            
 
-            {/* Password */}
             <label style={{ fontWeight: "600" }}>
-              Password <span style={{ color: "red" }}>*</span>
-
-               <>
-  <style>
-    {`
-      .input-highlight:focus {
-        border: 1px solid blue !important;
-        outline: none;
-      }
-    `}
-     </style>
-              <input
-
-               className="input-highlight"
-                type="password"
-                name="password"
-                placeholder="••••••••••••••"
-                value={formData.password}
-                onChange={handleChange}
-                required
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  marginTop: "5px",
-                  border: "1px solid #ccc",
-                  borderRadius: "4px",
-                  fontSize: "16px",
-                }}
-              />
+              Password<span style={{ color: "red" }}>*</span>
+              <>
+                <style>
+                  {`
+                    .input-highlight:focus {
+                      border: 1px solid blue !important;
+                      outline: none;
+                    }
+                  `}
+                </style>
+                <input
+                  className="input-highlight"
+                  type="password"
+                  name="password"
+                  placeholder="••••••••••••••"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    marginTop: "5px",
+                    border: "1px solid #ccc",
+                    borderRadius: "4px",
+                    fontSize: "16px",
+                  }}
+                />
               </>
-
-              
             </label>
 
-            {/* Remember Me & Forgot Password */}
             <div
               style={{
                 display: "flex",
@@ -172,14 +223,18 @@ function LoginForm() {
                 />
                 Remember Me
               </label>
-              <a onClick={() => navigate("/ResetPassword")} style={{ color: "#0d6efd", textDecoration: "none",
-                cursor:"pointer"
-               }}>
+              <a
+                onClick={() => navigate("/ResetPassword")}
+                style={{
+                  color: "#0d6efd",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
                 Forgot Password ?
               </a>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               style={{
