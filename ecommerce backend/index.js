@@ -11,6 +11,10 @@ app.use('/api/user',require('./routes/user.route'));
 app.use('/api/product',require('./routes/product.route'));
 app.use('/api/category',require('./routes/category.route'));
 app.use('/api/staff', require('./routes/staff.route'));
+app.use('/api/brand', require('./routes/brand.route'));
+app.use('/api/coupon', require('./routes/coupon.route'));
+
+
 app.use('/uploads', express.static('uploads'));
 
 
