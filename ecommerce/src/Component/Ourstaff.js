@@ -16,8 +16,7 @@ function Ourstaff() {
   const fileInputRef = useRef(null);
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-const [successMessage, setSuccessMessage] = useState("");
-
+  const [successMessage, setSuccessMessage] = useState("");
 
   const [isHovered1, setIsHovered1] = useState(false);
 
@@ -31,38 +30,33 @@ const [successMessage, setSuccessMessage] = useState("");
     image: null,
   });
 
-  const [staffList, setStaffList] = useState([]); // Store staff list here
+  const [staffList, setStaffList] = useState([]);
 
   const handleDelete = async (id) => {
-  if (!window.confirm("Are you sure you want to delete this staff?")) return;
+    if (!window.confirm("Are you sure you want to delete this staff?")) return;
 
-  try {
-    console.log(id);
-    
-    const response = await fetch(`http://localhost:5000/api/staff/staff/${id}`, {
-      method: "DELETE",
+    try {
+      console.log(id);
+      const response = await fetch(`http://localhost:5000/api/staff/staff/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        setSuccessMessage("✅ Staff deleted successfully!");
+        setShowSuccessMessage(true);
+        setTimeout(() => setShowSuccessMessage(false), 3000);
 
-    });
-    if (response.ok) {
-     setSuccessMessage("✅ Staff deleted successfully!");
-setShowSuccessMessage(true);
-setTimeout(() => setShowSuccessMessage(false), 3000);
-
-      setStaffList((prev) => prev.filter((staff) => staff._id !== id));
-    } else {
-      alert("Failed to delete staff");
+        setStaffList((prev) => prev.filter((staff) => staff._id !== id));
+      } else {
+        alert("Failed to delete staff");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while deleting");
     }
-  } catch (error) {
-    console.error(error);
-    alert("An error occurred while deleting");
-  }
-};
+  };
 
+  const [editingStaffId, setEditingStaffId] = useState(null);
 
-const [editingStaffId, setEditingStaffId] = useState(null);
-
-
-  // Fetch all staff on component mount
   useEffect(() => {
     fetch("http://localhost:5000/api/staff/getstaff")
       .then(res => res.json())
@@ -77,83 +71,76 @@ const [editingStaffId, setEditingStaffId] = useState(null);
   };
 
   const handleSubmit = async () => {
-  const data = new FormData();
-  data.append('name', formData.name);
-  data.append('email', formData.email);
-  if (!editingStaffId) { // password only on add
-    data.append('password', formData.password);
-  }
-  data.append('phone', formData.phone);
-  data.append('joiningDate', formData.joiningDate);
-  data.append('role', formData.role);
-  if (formData.image) {
-    data.append('image', formData.image);
-  }
-
-  try {
-    let response;
-    if (editingStaffId) {
-      // Update staff
-      response = await fetch(`http://localhost:5000/api/staff/staff/${editingStaffId}`, {
-        method: 'PUT',
-        body: data,
-      });
-    } else {
-      // Add new staff
-      response = await fetch("http://localhost:5000/api/staff/addstaff", {
-        method: "POST",
-        body: data,
-      });
+    const data = new FormData();
+    data.append('name', formData.name);
+    data.append('email', formData.email);
+    if (!editingStaffId) {
+      data.append('password', formData.password);
+    }
+    data.append('phone', formData.phone);
+    data.append('joiningDate', formData.joiningDate);
+    data.append('role', formData.role);
+    if (formData.image) {
+      data.append('image', formData.image);
     }
 
-    if (response.ok) {
-      const savedStaff = await response.json();
-      setSuccessMessage(editingStaffId ? "✅ Staff updated successfully!" : "✅ Staff added successfully!");
-setShowSuccessMessage(true);
-setTimeout(() => setShowSuccessMessage(false), 3000);
-
+    try {
+      let response;
       if (editingStaffId) {
-        // Update staffList with edited staff
-        setStaffList(prevList => prevList.map(staff => (staff._id === editingStaffId ? savedStaff : staff)));
+        response = await fetch(`http://localhost:5000/api/staff/staff/${editingStaffId}`, {
+          method: 'PUT',
+          body: data,
+        });
       } else {
-        // Add new staff to the list
-        setStaffList(prevList => [...prevList, savedStaff]);
+        response = await fetch("http://localhost:5000/api/staff/addstaff", {
+          method: "POST",
+          body: data,
+        });
       }
 
-      // Reset form and editing state
-      setFormData({
-        name: '',
-        email: '',
-        password: '',
-        phone: '',
-        joiningDate: '',
-        role: '',
-        image: null,
-      });
-      setEditingStaffId(null);
-    } else {
-      alert("Failed to save staff");
+      if (response.ok) {
+        const savedStaff = await response.json();
+        setSuccessMessage(editingStaffId ? "✅ Staff updated successfully!" : "✅ Staff added successfully!");
+        setShowSuccessMessage(true);
+        setTimeout(() => setShowSuccessMessage(false), 3000);
+
+        if (editingStaffId) {
+          setStaffList(prevList => prevList.map(staff => (staff._id === editingStaffId ? savedStaff : staff)));
+        } else {
+          setStaffList(prevList => [...prevList, savedStaff]);
+        }
+
+        setFormData({
+          name: '',
+          email: '',
+          password: '',
+          phone: '',
+          joiningDate: '',
+          role: '',
+          image: null,
+        });
+        setEditingStaffId(null);
+      } else {
+        alert("Failed to save staff");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred");
     }
-  } catch (error) {
-    console.error(error);
-    alert("An error occurred");
-  }
-};
+  };
 
-
-const handleEditClick = (staff) => {
-  setEditingStaffId(staff._id);
-  setFormData({
-    name: staff.name || '',
-    email: staff.email || '',
-    password: '', // don't fill password for security reasons
-    phone: staff.phone || '',
-    joiningDate: staff.joiningDate ? new Date(staff.joiningDate).toISOString().split('T')[0] : '',
-    role: staff.role || '',
-    image: null, // you can optionally show existing image, but file input can't be prefilled
-  });
-};
-
+  const handleEditClick = (staff) => {
+    setEditingStaffId(staff._id);
+    setFormData({
+      name: staff.name || '',
+      email: staff.email || '',
+      password: '',
+      phone: staff.phone || '',
+      joiningDate: staff.joiningDate ? new Date(staff.joiningDate).toISOString().split('T')[0] : '',
+      role: staff.role || '',
+      image: null,
+    });
+  };
 
   return (
     <div className="d-flex">
@@ -212,7 +199,6 @@ const handleEditClick = (staff) => {
               <h6 style={{ marginTop: "20px" }}>Upload Image</h6>
 
               <div style={{ marginBottom: "10px" }}>
-                {/* Hidden file input */}
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -220,9 +206,6 @@ const handleEditClick = (staff) => {
                   onChange={(e) => setFormData({ ...formData, image: e.target.files[0] })}
                   style={{ display: "none" }}
                 />
-                {/* Upload button triggers file input click */}
-
-                {/* Show selected image if available, else show default Uploadimage */}
                 <img
                   src={formData.image ? URL.createObjectURL(formData.image) : Uploadimage}
                   alt="upload-img"
@@ -234,7 +217,6 @@ const handleEditClick = (staff) => {
                     margin: "0 auto",
                   }}
                 />
-
                 <small style={{ display: "block", textAlign: "center" }}>
                   (Only png, jpg, jpeg, webp will be accepted)
                 </small>
@@ -367,10 +349,9 @@ const handleEditClick = (staff) => {
                 </select>
               </div>
 
-            <button className="my-button" onClick={handleSubmit}>
-  {editingStaffId ? "Update Staff" : "Add Staff"}
-</button>
-
+              <button className="my-button" onClick={handleSubmit}>
+                {editingStaffId ? "Update Staff" : "Add Staff"}
+              </button>
             </div>
 
             {/* Right Div */}
@@ -407,25 +388,20 @@ const handleEditClick = (staff) => {
                         <td style={{ paddingLeft: "100px" }}>{staff.phone}</td>
                         <td style={{ paddingLeft: "100px" }}>{staff.status || "Active"}</td>
                         <td style={{ paddingLeft: "100px" }}>{staff.role}</td>
-                       <td style={{ paddingLeft: "100px", display: "flex", gap: "10px" }}>
- <button
-  style={{ backgroundColor: "blue", color: "white",
-    borderRadius:"5px", border: "none", padding: "5px 10px", cursor: "pointer" }}
-  onClick={() => handleEditClick(staff)}
->
-  Edit
-</button>
-<button
-  style={{ backgroundColor: "red", color: "white",
-    borderRadius:"5px", border: "none", padding: "5px 10px", cursor: "pointer" }}
-  onClick={() => handleDelete(staff._id)}
->
-  Delete
-</button>
-
-</td>
-
-
+                        <td style={{ paddingLeft: "100px", display: "flex", gap: "10px" }}>
+                          <button
+                            style={{ backgroundColor: "blue", color: "white", borderRadius: "5px", border: "none", padding: "5px 10px", cursor: "pointer" }}
+                            onClick={() => handleEditClick(staff)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            style={{ backgroundColor: "red", color: "white", borderRadius: "5px", border: "none", padding: "5px 10px", cursor: "pointer" }}
+                            onClick={() => handleDelete(staff._id)}
+                          >
+                            Delete
+                          </button>
+                        </td>
                       </tr>
                     ))}
                     {staffList.length === 0 && (
@@ -445,39 +421,38 @@ const handleEditClick = (staff) => {
             </div>
           </div>
         </div>
-
       </div>
-      {/* Success Message Modal */}
-{showSuccessMessage && (
-  <div
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100vw",
-      height: "100vh",
-      backgroundColor: "rgba(0,128,0,0.1)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 9998,
-    }}
-  >
-    <div
-      style={{
-        backgroundColor: "white",
-        padding: "20px 40px",
-        borderRadius: "10px",
-        fontSize: "18px",
-        fontWeight: "bold",
-        color: "green",
-      }}
-    >
-      {successMessage}
-    </div>
-  </div>
-)}
 
+      {/* Success Message Modal */}
+      {showSuccessMessage && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0,128,0,0.1)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9998,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "20px 40px",
+              borderRadius: "10px",
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "green",
+            }}
+          >
+            {successMessage}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import logo1 from "../logo3.png";
@@ -13,16 +13,279 @@ import Uploadimage from "../Uploadimage.png";
 
 function Brand() {
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = useState(false);
   const [isHovered1, setIsHovered1] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const fileInputRef = useRef();
+  const [editingBrandId, setEditingBrandId] = useState(null);
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const [brands, setBrands] = useState([]);
+
+  useEffect(() => {
+    const url = "http://localhost:5000/api/brand/getbrands";
+
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setBrands(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch brands:", error);
+      });
+  }, []);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    website: "",
+    location: "",
+    description: "",
+    status: "",
+  });
+
+  const showModalWithMessage = (message) => {
+    setSuccessMessage(message);
+    setShowSuccessModal(true);
+    setTimeout(() => {
+      setShowSuccessModal(false);
+    }, 3000);
+  };
+
+  const handleEditClick = (brand) => {
+    setEditingBrandId(brand._id);
+    setFormData({
+      name: brand.name || "",
+      email: brand.email || "",
+      website: brand.website || "",
+      location: brand.location || "",
+      description: brand.description || "",
+      status: brand.status || "",
+    });
+    setSelectedImage(brand.imageUrl || null);
+  };
+
+  const handleUpdateBrand = () => {
+    if (!formData.name.trim()) {
+      alert("Please enter a name");
+      return;
+    }
+
+    if (!formData.status) {
+      alert("Please select a status");
+      return;
+    }
+
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("email", formData.email);
+    form.append("website", formData.website);
+    form.append("location", formData.location);
+    form.append("description", formData.description);
+    form.append("status", formData.status);
+
+    if (selectedImage && typeof selectedImage === "string" && selectedImage.startsWith("data:")) {
+      const byteString = atob(selectedImage.split(",")[1]);
+      const mimeString = selectedImage.split(",")[0].split(":")[1].split(";")[0];
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type: mimeString });
+      form.append("image", blob, "upload-image.png");
+    }
+
+    fetch(`http://localhost:5000/api/brand/${editingBrandId}`, {
+      method: "PUT",
+      body: form,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to update brand");
+        return response.json();
+      })
+      .then((updatedBrand) => {
+        setBrands((prevBrands) =>
+          prevBrands.map((brand) =>
+            brand._id === updatedBrand._id ? updatedBrand : brand
+          )
+        );
+        setEditingBrandId(null);
+        setFormData({
+          name: "",
+          email: "",
+          website: "",
+          location: "",
+          description: "",
+          status: "",
+        });
+        setSelectedImage(null);
+        fileInputRef.current.value = null;
+        showModalWithMessage("Brand updated successfully!");
+      })
+      .catch((error) => {
+        console.error("Error updating brand:", error);
+        alert("Failed to update brand. Please try again.");
+      });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file && /\.(jpe?g|png|webp)$/i.test(file.name)) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setSelectedImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      alert("Only png, jpg, jpeg, webp files are allowed.");
+    }
+  };
+
+  const handleUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleAddBrand = () => {
+    if (!formData.name.trim()) {
+      alert("Please enter a name");
+      return;
+    }
+
+    if (!formData.status) {
+      alert("Please select a status");
+      return;
+    }
+
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("email", formData.email);
+    form.append("website", formData.website);
+    form.append("location", formData.location);
+    form.append("description", formData.description);
+    form.append("status", formData.status);
+
+    if (selectedImage) {
+      const byteString = atob(selectedImage.split(",")[1]);
+      const mimeString = selectedImage.split(",")[0].split(":")[1].split(";")[0];
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const blob = new Blob([ab], { type: mimeString });
+      form.append("image", blob, "upload-image.png");
+    } else {
+      alert("Please upload an image.");
+      return;
+    }
+
+    fetch("http://localhost:5000/api/brand/addbrand", {
+      method: "POST",
+      body: form,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to add brand");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setBrands((prevBrands) => [...prevBrands, data]);
+        setFormData({
+          name: "",
+          email: "",
+          website: "",
+          location: "",
+          description: "",
+          status: "",
+        });
+        setSelectedImage(null);
+        fileInputRef.current.value = null;
+        showModalWithMessage("Brand added successfully!");
+      })
+      .catch((error) => {
+        console.error("Error adding brand:", error);
+        alert("Failed to add brand. Please try again.");
+      });
+  };
+
+  const handleDeleteBrand = (id) => {
+    if (window.confirm("Are you sure you want to delete this brand?")) {
+      fetch(`http://localhost:5000/api/brand/${id}`, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("Failed to delete");
+          setBrands((prevBrands) => prevBrands.filter((brand) => brand._id !== id));
+          showModalWithMessage("Brand deleted successfully!");
+        })
+        .catch((error) => {
+          console.error("Delete error:", error);
+          alert("Failed to delete brand.");
+        });
+    }
+  };
 
   return (
     <div className="d-flex">
-      {/* Sidebar */}
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1050,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "20px",
+              borderRadius: "5px",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              textAlign: "center",
+              width: "300px",
+            }}
+          >
+            <h5 style={{ color: "green" }}>Success!</h5>
+            <p>{successMessage}</p>
+            <button
+              style={{
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                padding: "8px 15px",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+              onClick={() => setShowSuccessModal(false)}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+      
       <Sidebar />
-
-      {/* Content Area */}
       <div className="content flex-grow-1 p-4" style={{ marginTop: "-50px" }}>
         <div
           className="body-content px-4 py-4 "
@@ -40,29 +303,35 @@ function Brand() {
                 onMouseLeave={() => setIsHovered1(false)}
               >
                 <h6
-        style={{
-          display: "inline",
-          color: isHovered1 ? "blue" : "black",
-          margin: 0,
-          opacity:0.6,
-          fontSize:"13px"
-        }}
-      >
-        Home
-      </h6>
+                  style={{
+                    display: "inline",
+                    color: isHovered1 ? "blue" : "black",
+                    margin: 0,
+                    opacity: 0.6,
+                    fontSize: "13px",
+                  }}
+                >
+                  Home
+                </h6>
               </a>
 
-              <h6 style={{ display: "inline", marginLeft: "10px", opacity:0.6,
-          fontSize:"13px" }}>
+              <h6
+                style={{
+                  display: "inline",
+                  marginLeft: "10px",
+                  opacity: 0.6,
+                  fontSize: "13px",
+                }}
+              >
                 &#8226; Brands
               </h6>
             </div>
           </div>
+
           <div
             className="container"
             style={{
               width: "100%",
-
               backgroundColor: "#f1f5f9",
               display: "flex",
               justifyContent: "space-between",
@@ -78,7 +347,6 @@ function Brand() {
                 width: "35%",
                 backgroundColor: "white",
                 padding: "15px",
-                border: "0px solid #ddd",
                 borderRadius: "5px",
               }}
             >
@@ -86,7 +354,7 @@ function Brand() {
 
               <div style={{ marginBottom: "10px" }}>
                 <img
-                  src={Uploadimage}
+                  src={selectedImage || Uploadimage}
                   alt="upload-img"
                   style={{
                     width: "30%",
@@ -101,19 +369,26 @@ function Brand() {
                 </small>
               </div>
 
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/jpg, image/webp"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={handleImageChange}
+              />
+
               <button
                 style={{
                   marginBottom: "15px",
                   width: "100%",
                   height: "40px",
-                  border: "0.5px solid rgba(97, 94, 94, 0.09)", // light border with opacity 0.2
+                  border: "0.5px solid rgba(97, 94, 94, 0.09)",
                   backgroundColor: "transparent",
                   color: "gray",
                   padding: "10px",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   borderRadius: "4px",
-                  display: "block",
                   textAlign: "center",
                 }}
                 onMouseEnter={(e) => {
@@ -123,222 +398,180 @@ function Brand() {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = "transparent";
-                  e.currentTarget.style.color = "black";
+                  e.currentTarget.style.color = "gray";
                   e.currentTarget.style.borderColor = "rgba(97, 94, 94, 0.09)";
                 }}
+                onClick={handleUploadClick}
               >
-                <p style={{ opacity: 0.6 }}>Upload Image</p>
+                <p style={{ opacity: 0.6, margin: 0 }}>Upload Image</p>
               </button>
 
+              {/* Form Inputs */}
               <div style={{ marginBottom: "10px" }}>
-                <label>name</label>
+                <label htmlFor="name">Name</label>
                 <input
                   type="text"
+                  id="name"
+                  name="name"
                   placeholder="name"
                   className="input-light-border"
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  value={formData.name}
+                  onChange={handleInputChange}
                 />
               </div>
 
               <div style={{ marginBottom: "5px" }}>
-                <label>email</label>
+                <label htmlFor="email">Email</label>
                 <input
-                  type="text"
+                  type="email"
+                  id="email"
+                  name="email"
                   placeholder="email"
-                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
                   className="input-light-border"
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  value={formData.email}
+                  onChange={handleInputChange}
                 />
               </div>
 
               <div style={{ marginBottom: "5px" }}>
-                <label>website</label>
+                <label htmlFor="website">Website</label>
                 <input
                   type="text"
+                  id="website"
+                  name="website"
                   placeholder="website"
-                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
                   className="input-light-border"
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  value={formData.website}
+                  onChange={handleInputChange}
                 />
               </div>
 
               <div style={{ marginBottom: "5px" }}>
-                <label>location</label>
+                <label htmlFor="location">Location</label>
                 <input
                   type="text"
+                  id="location"
+                  name="location"
                   placeholder="location"
-                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
                   className="input-light-border"
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  value={formData.location}
+                  onChange={handleInputChange}
                 />
               </div>
 
-              <div style={{ margin: "15px 0" }}>
-                <label>Description</label>
+              <div style={{ marginBottom: "5px" }}>
+                <label htmlFor="description">Description</label>
                 <textarea
-                  placeholder="Description Here"
-                  rows={4}
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    marginTop: "5px",
-                    resize: "vertical",
-                  }}
+                  id="description"
+                  name="description"
+                  placeholder="description"
                   className="input-light-border"
-                ></textarea>
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  value={formData.description}
+                  onChange={handleInputChange}
+                />
               </div>
 
-            <div className="dropdown-wrapper">
-  <label htmlFor="status">Status</label>
-  <div
-    className="custom-select"
-    style={{
-      position: "relative",
-      width: "100%",
-      height: "40px",
-      display: "inline-flex",
-      alignItems: "center",
-    }}
-  >
-    <select
-      id="status"
-      defaultValue=""
-      className="input-light-border"
-      style={{
-        height: "40px",
-        paddingRight: "30px",
-        appearance: "none",
-        WebkitAppearance: "none",
-        MozAppearance: "none",
-        boxSizing: "border-box",
-        marginTop: "0px", // override default if needed
-      }}
-    >
-      <option value="" disabled>
-        &nbsp;&nbsp;&nbsp;&nbsp;Select
-      </option>
-      <option value="active">Active</option>
-      <option value="inactive">Inactive</option>
-    </select>
+              <div style={{ marginBottom: "10px" }}>
+                <label htmlFor="status">Status</label>
+                <select
+                  id="status"
+                  name="status"
+                  className="input-light-border"
+                  style={{ width: "100%", padding: "8px", marginTop: "5px" }}
+                  value={formData.status}
+                  onChange={handleInputChange}
+                >
+                  <option value="">Select status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                </select>
+              </div>
 
-    {/* Vertical divider */}
-    <div
-      className="icon-wrapper"
-      style={{
-        position: "absolute",
-        right: "30px",
-        height: "24px",
-        borderLeft: "1px solid rgba(0, 0, 0, 0.2)",
-        top: "50%",
-        transform: "translateY(-50%)",
-      }}
-    ></div>
-
-    {/* Dropdown arrow icon */}
-    <div
-      className="dropdown-icon"
-      style={{
-        position: "absolute",
-        right: "8px",
-        top: "50%",
-        transform: "translateY(-50%)",
-        pointerEvents: "none",
-        width: "10px",
-        height: "10px",
-        borderLeft: "5px solid transparent",
-        borderRight: "5px solid transparent",
-        borderTop: "5px solid rgba(0, 0, 0, 0.2)",
-      }}
-    ></div>
-  </div>
-</div>
-<button className="add-brand-btn">
-  Add Brand
-</button>
-
-            </div>
-
-            {/* Right Div */}
-            <div style={{ width: "65%",  backgroundColor: "#fff",}}>
-              {/* Scrollable Table Container */}
-              <div
+              <button
+                onClick={editingBrandId ? handleUpdateBrand : handleAddBrand}
+                onMouseEnter={() => setIsButtonHovered(true)}
+                onMouseLeave={() => setIsButtonHovered(false)}
                 style={{
-                  backgroundColor: "#fff",
-                  padding: "10px",
-                  border: "0px solid #ddd",
-                  overflow: "auto",
-                  maxHeight: "400px",
-                  width:"90%",
-                  marginLeft:"20px"
+                  width: "100%",
+                  height: "40px",
+                  backgroundColor: isButtonHovered ? "#0056b3" : "#007bff",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  transition: "background-color 0.3s ease",
                 }}
               >
-                <table
-                  style={{
-                    minWidth: "1000px",
-                    borderCollapse: "collapse",
-                    width: "100%",
-                  }}
-                >
-                  <thead>
-                    <tr style={{ opacity: 0.3 ,fontSize:"12px"}}>
-                      <th style={{ textAlign: "left", padding: "10px" }}>Id</th>
-                     
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "200px",
-                        }}
-                      >
-                        NAME
-                      </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "100px",
-                        }}
-                      >
-                        EMAIL
-                      </th>
+                {editingBrandId ? "Update Brand" : "Add Brand"}
+              </button>
+            </div>
 
-
-
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "100px",
-                        }}
-                      >
-                        WEBSITE
-                      </th>
-
-
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "100px",
-                        }}
-                      >
-                        LOCATION
-                      </th>
-                      <th
-                        style={{
-                          textAlign: "left",
-                          padding: "10px",
-                          paddingLeft: "75px",
-                        }}
-                      >
-                        ACTION
-                      </th>
+            {/* Right Div - Brand Table */}
+            <div
+              style={{
+                width: "60%",
+                backgroundColor: "white",
+                borderRadius: "5px",
+                padding: "10px",
+                overflowX: "auto",
+              }}
+            >
+              <table
+                className="table table-bordered"
+                style={{ width: "100%", borderCollapse: "collapse" }}
+              >
+                <thead>
+                  <tr style={{ opacity: 0.2 }}>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Website</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {brands.map((brand) => (
+                    <tr key={brand._id}>
+                      <td>{brand.name}</td>
+                      <td>{brand.email}</td>
+                      <td>{brand.website}</td>
+                      <td>{brand.location}</td>
+                      <td>{brand.description}</td>
+                      <td>{brand.status}</td>
+                      <td>
+                        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                          <button
+                            style={{
+                              backgroundColor: "blue",
+                              color: "white",
+                              border: "none",
+                              padding: "5px 10px",
+                              cursor: "pointer",
+                              borderRadius: "5px"
+                            }}
+                            onClick={() => handleEditClick(brand)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="btn btn-danger btn-sm"
+                            onClick={() => handleDeleteBrand(brand._id)}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>{/* Rows go here */}</tbody>
-                </table>
-              </div>
-
-              {/* Text below scrollable table */}
-              <div style={{ marginTop: "10px",marginLeft:"20px", fontSize: "14px" }}>
-                Showing 1–0 of 0
-              </div>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

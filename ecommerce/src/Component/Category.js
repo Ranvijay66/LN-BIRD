@@ -107,22 +107,26 @@ function Category() {
     setShowConfirmModal(true);
   };
 
-  const confirmDelete = async () => {
-    try {
-      await axios.delete(
-        `http://localhost:5000/api/category/categories/${categoryToDelete._id}`
-      );
-      setShowConfirmModal(false);
-      setCategoryToDelete(null);
-      fetchCategories();
+ const confirmDelete = async () => {
+  try {
+    await axios.delete(
+      `http://localhost:5000/api/category/categories/${categoryToDelete._id}`
+    );
+    setShowConfirmModal(false);
+    setCategoryToDelete(null);
+    fetchCategories();
 
-      setShowSuccessMessage(true);
-      setTimeout(() => setShowSuccessMessage(false), 2000);
-    } catch (error) {
-      console.error(error);
-      alert("Failed to delete category");
-    }
-  };
+    // Show success message
+    setSuccessMessage("Deleted successfully");
+    setShowSuccessMessage(true);
+
+    // Hide message after 2 seconds
+    setTimeout(() => setShowSuccessMessage(false), 3000);
+  } catch (error) {
+    console.error(error);
+    alert("Failed to delete category");
+  }
+};
 
   return (
     <div className="d-flex">

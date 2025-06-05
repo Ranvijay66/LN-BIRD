@@ -317,3 +317,24 @@ body, html, #root {
 
 
 
+.success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* semi-transparent dark */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* above other content */
+}
+
+.success-message {
+  background-color: #28a745; /* bootstrap success green */
+  color: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}

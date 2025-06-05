@@ -194,7 +194,7 @@ function Sidebar() {
 >
   <a
     href="#"
-    className="text-white text-start d-flex align-items-center"
+    className="text-white text-start d-flex align-items-center" onClick={() => navigate("/LoginForm")}
     style={{
       textDecoration: "none",
     }}
