@@ -1,13 +1,36 @@
 const mongoose = require('mongoose');
 
 const lawyerSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  specialization: { type: String, required: true },
-  location: String,
-  experience: Number,
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  practiceAreas: [{ type: String }],
+  yearsOfExperience: Number,
   email: { type: String, required: true, unique: true },
-  phone: String
+  phone: String,
+  password: { type: String, required: true },
+  barRegistrationNumber: String,
+  documents: [{ type: String }],
+  
+  workingHours: {
+    // Example: { monday: { start: '09:00', end: '17:00' }, ... }
+    type: Map,
+    of: {
+      start: String,
+      end: String
+    },
+    default: {}
+  },
+
+  onlineStatus: {
+    type: Boolean,
+    default: false
+  },
+
+  status: {
+    type: String,
+    enum: ['pending', 'verified', 'rejected'],
+    default: 'pending'
+  }
 }, { timestamps: true });
 
-const LawyerModel = mongoose.model('Lawyer', lawyerSchema);
-module.exports = LawyerModel;
+module.exports = mongoose.model('Lawyer', lawyerSchema);
