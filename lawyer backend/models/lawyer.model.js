@@ -9,10 +9,9 @@ const lawyerSchema = new mongoose.Schema({
   phone: String,
   password: { type: String, required: true },
   barRegistrationNumber: String,
-  documents: [{ type: String }],
+  documents: [{ type: String }],  // For uploaded verification docs
   
   workingHours: {
-    // Example: { monday: { start: '09:00', end: '17:00' }, ... }
     type: Map,
     of: {
       start: String,
@@ -26,11 +25,26 @@ const lawyerSchema = new mongoose.Schema({
     default: false
   },
 
-  status: {
+  status: {  // Verification status
     type: String,
     enum: ['pending', 'verified', 'rejected'],
     default: 'pending'
-  }
+  },
+
+  isVerified: {  // convenience boolean, keep in sync with status === 'verified'
+    type: Boolean,
+    default: false
+  },
+
+  verificationHistory: [  // admin actions log
+    {
+      adminId: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },
+      action: { type: String, enum: ['approved', 'rejected'] },
+      reason: String,
+      timestamp: { type: Date, default: Date.now }
+    }
+  ]
+
 }, { timestamps: true });
 
 module.exports = mongoose.model('Lawyer', lawyerSchema);

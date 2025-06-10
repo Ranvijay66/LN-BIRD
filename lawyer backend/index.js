@@ -5,11 +5,18 @@ const socketIO = require('socket.io');
 require('dotenv').config();
 require('./config'); // DB config
 
+
+//const adminRoutes = require('./routes/admin.route');
+const adminUserRoutes = require('./routes/adminUser.route');
+const systemSettingsRoutes = require('./routes/systemSettings.route');
+
 // Routes
 const userRoutes = require('./routes/user.route');
 const lawyerRoutes = require('./routes/lawyer.route');
 const consultationRoutes = require('./routes/consultationRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
+const adminRoutes = require('./routes/admin.route');
+
 
 // WebSocket Logic
 const chatSocket = require('./sockets/chat');
@@ -31,6 +38,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/api/upload', require('./routes/upload.route'));
+//app.use('/uploads', express.static('uploads')); // Serve files
+
+
+
+app.use('/api/admin', adminRoutes);
+app.use('/api/admin', adminUserRoutes);           // → for user management
+app.use('/api/admin/system/settings', systemSettingsRoutes); // → for settings
+
 // Routes
 app.get('/', (req, res) => res.send('User Management System is running'));
 app.use('/api/user', userRoutes);
@@ -38,6 +54,8 @@ app.use('/api/lawyers', lawyerRoutes);
 app.use('/api/user/consultation', consultationRoutes);
 app.use('/uploads', express.static('uploads'));
 app.use('/api/user/payment', paymentRoutes);
+app.use('/api/admin', adminRoutes);
+
 
 // WebSocket event registration
 chatSocket(io);
