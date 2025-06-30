@@ -1,2 +1,2 @@
-this is my repository.
-author Ranvijay kumar
+This is my repository.
+Author Ranvijay kumar
